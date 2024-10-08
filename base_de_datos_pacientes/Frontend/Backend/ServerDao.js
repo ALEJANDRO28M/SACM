@@ -6,6 +6,8 @@ const app = express();
 const cors = require('cors');
 // Definimos el puerto en el que va a correr el servidor
 const port = 3000;
+// Importamos el módulo dotenv para manejar variables de entorno
+require('dotenv').config();
 
 // Usamos el middleware cors() para habilitar CORS en todas las rutas de la aplicación
 app.use(cors());
@@ -22,6 +24,10 @@ const connection = require('./coneccionBd');  // Asegúrate de que este archivo 
 // Usamos express.json() para parsear el cuerpo de las solicitudes con JSON
 app.use(express.json());  // Asegúrate de incluir esto si vas a manejar JSON en el cuerpo de las solicitudes
 
+
+
+
+
 // Importamos las rutas para el servidor express
 const iniciarSesion = require('./Controllers/backendInicioSesion');
 const registrarUser = require('./Controllers/Registrar');
@@ -29,7 +35,12 @@ const dataUser = require('./Controllers/dataUsers');
 const deleteDataUser = require('./Controllers/deleteDataUser');
 
 // Vamos a generar las rutas del servidor de los siguientes archivos
-app.use('/Login', iniciarSesion);      // Para manejar la ruta de inicio de sesión
+app.use(cors({
+    origin: process.env.URLFRONTEND || 'http://localhost:5173',
+    credentials: true 
+}));   
+
+// Para manejar la ruta de inicio de sesión
 app.use('/Registrar', registrarUser);  // Para manejar la ruta de registro
 app.use('/Data', dataUser);
 app.use('/DeleteUser', deleteDataUser);
