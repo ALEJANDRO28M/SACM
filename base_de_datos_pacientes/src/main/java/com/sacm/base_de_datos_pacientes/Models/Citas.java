@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="citas") 
+@Table(name="citaspacientes") 
 public class Citas {
 
     @Id @Getter @Setter

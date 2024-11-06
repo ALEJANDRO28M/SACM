@@ -23,12 +23,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Ruta para la página de inicio de sesión */}
-        <Route index path="/" element={<InicioSesion />} />
+        <Route index path="/sesion" element={<InicioSesion />} />
 
         {/* Ruta para el registro de usuario */}
         <Route path="/registro" element={<Registro />} />
 
         <Route  path="/datos" element={<DatosUser />}/>
+
+        
       </Routes>
     </BrowserRouter>
   );

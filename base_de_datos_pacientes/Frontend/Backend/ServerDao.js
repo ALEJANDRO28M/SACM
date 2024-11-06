@@ -44,6 +44,7 @@ app.use(cors({
 app.use('/Registrar', registrarUser);  // Para manejar la ruta de registro
 app.use('/Data', dataUser);
 app.use('/DeleteUser', deleteDataUser);
+app.use('/IniciarSesion',iniciarSesion);
 // Ruta raíz
 app.get('/', (req, res) => {
     res.send('Hello World!');

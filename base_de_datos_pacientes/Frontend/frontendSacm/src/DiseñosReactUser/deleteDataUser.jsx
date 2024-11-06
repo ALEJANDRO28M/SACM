@@ -4,7 +4,7 @@
 async function deleteDataUser(id) {
     try {
 
-        const peticion = await fetch(`http://localhost:3000/DeleteUser/${id}`
+        const peticion = await fetch(`http://localhost:8080/api/DeleteUser/${id}`
 , { // Uso de backticks para interpolar el ID
             method: 'DELETE',
             headers: {

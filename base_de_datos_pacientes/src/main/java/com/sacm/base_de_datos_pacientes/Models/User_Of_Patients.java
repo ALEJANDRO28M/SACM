@@ -14,7 +14,7 @@ import lombok.Setter;
  * en la base de datos.
  */
 @Entity
-@Table(name="pacientes")
+@Table(name="user_of_patient")
 public class User_Of_Patients {
 
     // Identificador único del paciente. Mapeado a la columna 'id' en la base de datos.

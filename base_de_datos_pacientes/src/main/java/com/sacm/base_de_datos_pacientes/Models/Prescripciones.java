@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="prescripcion de los pacientes")
+@Table(name="prescripcion")
 public class Prescripciones {
 
     @Id 

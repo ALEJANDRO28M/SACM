@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.sacm.base_de_datos_pacientes.Models.ModelUserLogin;
 import com.sacm.base_de_datos_pacientes.Models.User_Of_Patients;
 
 import jakarta.persistence.EntityManager;
@@ -45,10 +46,43 @@ public class DaoSacmImp implements DaoSacm {
      * @param id El identificador del paciente que se desea eliminar.
      */
     @Override
-    public void deleteUser(int id) {
+    public void deleteUserSacm(int id) {
         // Busca el paciente con el ID proporcionado.
         User_Of_Patients user = entityManager.find(User_Of_Patients.class, id);
         // Elimina el paciente encontrado.
         entityManager.remove(user);
     }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<ModelUserLogin> mostrarListaUsuariosLogin() {
+        // Define la consulta JPQL para seleccionar todos los pacientes.
+        query = "FROM ModelUserLogin";
+        // Ejecuta la consulta y devuelve el resultado como una lista de objetos User_Of_Patients.
+        return entityManager.createQuery(query).getResultList();
+    }
+
+    @Override
+    public void deleteUserLogin(int id) {
+      // Busca el paciente con el ID proporcionado.
+      ModelUserLogin user = entityManager.find(ModelUserLogin.class, id);
+      // Elimina el paciente encontrado.
+      entityManager.remove(user);
+    }
+    
+    @Override
+    public boolean validarInicioSesion(String usuario, String password) {
+        // Consulta JPQL corregida, usando parámetros
+         query = "SELECT COUNT(*) FROM ModelUserLogin u WHERE u.usuario = :usuario AND u.password = :password";
+        
+        Long count = (Long) entityManager.createQuery(query)
+            .setParameter("usuario", usuario)
+            .setParameter("password", password)
+            .getSingleResult();
+    
+        return count > 0;
+        // Retorna true si existe al menos un usuario con las credenciales dadas
+    
+    
 }
+}    

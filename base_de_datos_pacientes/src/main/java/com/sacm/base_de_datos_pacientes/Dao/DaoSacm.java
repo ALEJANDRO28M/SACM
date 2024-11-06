@@ -2,6 +2,7 @@ package com.sacm.base_de_datos_pacientes.Dao;
 
 import java.util.List;
 
+import com.sacm.base_de_datos_pacientes.Models.ModelUserLogin;
 import com.sacm.base_de_datos_pacientes.Models.User_Of_Patients;
 
 /**
@@ -21,6 +22,12 @@ public interface DaoSacm {
      * 
      * @param id El identificador del paciente que se desea eliminar.
      */
-    public void deleteUser(int id);
+    public void deleteUserSacm(int id);
+
+    public List<ModelUserLogin> mostrarListaUsuariosLogin();
+
+    public void deleteUserLogin(int id);
+
+    public boolean  validarInicioSesion(String usuario, String password);
     
 }

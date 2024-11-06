@@ -13,7 +13,7 @@ function DatosUser() {
 
     const fetchData = async () => {
         try {
-            const peticion = await fetch('http://localhost:3000/Data', {
+            const peticion = await fetch('http://localhost:8080/api/Data', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,8 +68,7 @@ function DatosUser() {
                     <tr>
                         <th>ID</th>
                         <th>Usuario</th>
-                        <th>Clave</th>
-                        <th>Correo</th>
+                        <th>password</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -78,8 +77,7 @@ function DatosUser() {
                         <tr key={usuario.id}>
                             <td>{usuario.id}</td>
                             <td>{usuario.usuario}</td>
-                            <td>{usuario.clave}</td>
-                            <td>{usuario.correo}</td>
+                            <td>{usuario.password}</td>
                             <td>
                                 <button onClick={() => eliminarUser(usuario.id)}>Eliminar</button> {/* Botón de eliminar */}
                             </td>

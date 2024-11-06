@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name="historial medico")
+@Table(name="historialesmedicos")
 
 public class HistorialMedico {
 

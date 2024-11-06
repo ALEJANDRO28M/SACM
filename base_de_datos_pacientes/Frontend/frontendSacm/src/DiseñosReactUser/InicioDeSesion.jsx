@@ -29,21 +29,31 @@ export default function InicioSesion(){
     setRecuerdame(e.target.checked);
   };
 
-
-  // Función asíncrona para manejar el ingreso
   async function ingresar() {
     try {
-      const peticion = await fetch(`http://localhost:3000/Login?usuario=${usuario}&clave=${password}`);
+      // Realizamos la solicitud GET al backend
+      const peticion = await fetch(`http://localhost:8080/api/validarInicio/${usuario}/${password}`);
+      
       if (peticion.ok) {
-        alert("¡Bienvenido!");
-        redireccionar('/datos');
+        // Convertir la respuesta a JSON
+        const resultado = await peticion.json();
+  
+        // Verificamos si la respuesta es true o false
+        if (resultado === true) {
+          alert("¡Bienvenido!");
+          redireccionar('/datos');
+        } else {
+          alert('Usuario o clave incorrectos');
+        }
       } else {
-        alert('Usuario o clave incorrectos');
+        alert('Error al conectar con el servidor');
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);
+      alert('Hubo un problema al realizar la solicitud');
     }
   }
+  
 
   // Maneja el envío del formulario
   const handleSubmit = (e) => {
