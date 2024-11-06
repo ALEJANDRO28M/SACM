@@ -29,5 +29,7 @@ public interface DaoSacm {
     public void deleteUserLogin(int id);
 
     public boolean  validarInicioSesion(String usuario, String password);
+
+    public void registrarUserLogin(ModelUserLogin modelUserLogin);
     
 }

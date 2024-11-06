@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sacm.base_de_datos_pacientes.Dao.DaoSacmImp;
+import com.sacm.base_de_datos_pacientes.Dao.DaoSacm;
 import com.sacm.base_de_datos_pacientes.Models.User_Of_Patients;
 
 /**
@@ -19,7 +19,7 @@ public class PacientsController {
 
     // Inyección de dependencia del DAO para la manipulación de datos
     @Autowired
-    private DaoSacmImp daoSacmImp;
+    private DaoSacm daoSacmImp;
 
     /**
      * Obtiene la lista de todos los pacientes.
@@ -40,7 +40,7 @@ public class PacientsController {
     @DeleteMapping("Api/DeleteUser/{id}")
     public void eliminarPaciente(@PathVariable int id) {
         // Llama al método del DAO para eliminar al paciente con el ID proporcionado
-        daoSacmImp.deleteUser(id);
+        daoSacmImp.deleteUserSacm(id);;
     }
     // cambios
 }

@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sacm.base_de_datos_pacientes.Dao.DaoSacmImp;
+import com.sacm.base_de_datos_pacientes.Dao.DaoSacm;
 import com.sacm.base_de_datos_pacientes.Models.ModelUserLogin;
 @CrossOrigin(origins = "http://localhost:5173")  // Cambia el puerto si es necesario
 @RestController
@@ -19,7 +21,7 @@ import com.sacm.base_de_datos_pacientes.Models.ModelUserLogin;
 public class BdUserLoginController {
 
     @Autowired
-    DaoSacmImp daoSacmImp;
+    DaoSacm daoSacmImp;
 
 @GetMapping("/Data")
 public List<ModelUserLogin> dataLoginUser(){
@@ -46,5 +48,10 @@ public List<ModelUserLogin> dataLoginUser(){
         System.out.println(valida);
         return valida;
         
+    }
+
+    @PostMapping("/Registrar")
+    public void Registro(@RequestBody ModelUserLogin modelUserLogin){
+      daoSacmImp.registrarUserLogin(modelUserLogin);
     }
 }

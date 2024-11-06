@@ -1,12 +1,13 @@
 import { useState } from 'react'; // Importar el hook useState de React para manejar el estado
 import '../css/Registros.css'; // Importar el archivo CSS para estilizar el componente
+import { useNavigate } from 'react-router-dom';
 
 
 function Registro() {
   // Definición de los estados para almacenar los datos del usuario
   const [usuario, setUsuario] = useState(''); // Estado para el nombre de usuario
   const [correo, setCorreo] = useState(''); // Estado para el correo electrónico
-  const [clave, setClave] = useState(''); // Estado para la contraseña
+  const [password, setPassword] = useState(''); // Estado para la contraseña
   const [confirmPassword, setConfirmPassword] = useState(''); // Nuevo estado para confirmar la contraseña
 
   // Función para manejar el cambio en los inputs
@@ -14,6 +15,7 @@ function Registro() {
     setter(event.target.value); // Actualizar el estado correspondiente
   };
 
+  const redireccionar = useNavigate();
   // Función para manejar el envío del formulario
   const handleRegistro = async (event) => {
     event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
@@ -21,28 +23,31 @@ function Registro() {
     console.log('Formulario de registro enviado');
     console.log('Nombre:', usuario);
     console.log('Email:', correo);
-    console.log('Password:', clave);
+    console.log('Password:', password);
     console.log('Confirmar Password:', confirmPassword);
      
     // Lógica para verificar que las contraseñas coincidan
-    if (clave !== confirmPassword) {
+    if (password !== confirmPassword) {
       console.error('Las contraseñas no coinciden'); // Mensaje de error si las contraseñas no coinciden
       return; // Salir si las contraseñas no coinciden
     }
     
     try {
       // Realizar la petición al backend para registrar el usuario
-      const peticion = await fetch('http://localhost:3000/Registrar', {
+      const peticion = await fetch('http://localhost:8080/api/Registrar', {
         method: 'POST', // Método de la solicitud
         headers: {
           'Content-Type': 'application/json', // Especificar que el contenido es JSON
         },
-        body: JSON.stringify({ usuario, correo, clave }), // Enviar los datos del formulario en formato JSON
+        body: JSON.stringify({ usuario,  password }), // Enviar los datos del formulario en formato JSON
       });
   
       // Verificar la respuesta del servidor
       if (peticion.ok) {
-        alert("¡Bienvenido!"); // Mensaje de bienvenida si la solicitud fue exitosa
+        alert("¡Registrado con exito!"); // Mensaje de bienvenida si la solicitud fue exitosa
+        alert("¡Ya puedes iniciar Sesion!");
+        redireccionar("/sesion")
+
 
       } else {
         alert('Usuario o clave incorrectos'); // Mensaje de error si la solicitud falló
@@ -88,8 +93,8 @@ function Registro() {
             placeholder='Genere una contraseña' // Placeholder para el input
             type="password" // Tipo de input
             id="password" // ID del input
-            value={clave} // Valor controlado del input
-            onChange={handleInputChange(setClave)} // Manejar el cambio en el input
+            value={password} // Valor controlado del input
+            onChange={handleInputChange(setPassword)} // Manejar el cambio en el input
             required // Campo requerido
           />
         </div>
