@@ -1,0 +1,39 @@
+.menu-horizontal {
+    list-style: none; /* */
+    display: flex; /* Haciendo el menú horizontal */
+    justify-content: space-around; /* Distribuyendo los elementos */
+    margin: 0;
+    padding: 0;
+    background-color: aquamarine;
+}
+
+body{
+    background-image: url('/src/main/resources/static/img/indexBackground.webp');
+    background-size: cover;
+}
+
+.menu-horizontal > li {
+    position: relative; /* Permite ubicar los submenús */
+}
+
+.menu-vertical {
+    list-style: none; /*style = estilo and list = lista estilo de lista = liste style none = ninguno o ninguna */
+    display: none; /* Oculto por defecto */
+    position: absolute; /* Ubicado debajo del menú principal */
+    top: 100%; /* Alineado debajo del elemento principal */
+    left: 0;
+    background-color: aquamarine;
+}
+
+.menu-horizontal > li:hover .menu-vertical {
+    display: flex; /* Mostrar al hacer hover */
+    flex-direction: column; /* Alinear verticalmente */
+}
+
+.menu-desplegable {
+    max-width: 999px; /*max = maximo and width = ancho*/
+    margin: auto;
+    background-color: aquamarine; /*background = fondo and color = color color de fondo */
+    font-size: 20px; /*font = fuente and size = tamaño*/
+    margin-top: 50px; /*margin = margen and top = arriba*/
+}
