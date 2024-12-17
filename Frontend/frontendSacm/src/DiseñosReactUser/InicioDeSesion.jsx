@@ -14,7 +14,7 @@ export default function InicioSesion() {
 
   // Maneja el cambio en el campo de usuario
   const handleUsuarioChange = (e) => {
-    setUsuario(e.target.value);
+    setUsuario(e.target.value); 
   };
 
   // Maneja el cambio en el campo de contraseña

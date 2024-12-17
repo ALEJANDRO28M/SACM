@@ -1,9 +1,14 @@
 package com.sacm.Backend.Models;
 
+import java.util.List;
+
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +34,11 @@ public class Doctores {
 
 
     //RELACIONES ENTRE CLASES-MODELOS
+    
+    //UN MEDICO PUEDE TENER MUCHAS CITAS CON MUCHOS PACIENTES;
+      @OneToMany(cascade= CascadeType.ALL)
+      @JoinColumn(name="Medico_id") //El join column genera una nueva fila llamada medico_id en la tabla citas
+      private List<Citas> relaOf_Citas;
 
 
     //@OneToMany @Getter @Setter @Column(name="HistorialMedico_id")

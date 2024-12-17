@@ -1,10 +1,15 @@
 package com.sacm.Backend.Models;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -53,6 +58,23 @@ public class User_Of_Patients {
     // Género del paciente. Mapeado a la columna 'genero' en la base de datos.
     @Getter @Setter @Column(name="genero")
     private String genero;
+
+
+
+    ///RELACIONES ENTRE CLASES///
+    
+    @OneToOne(cascade= CascadeType.ALL)
+    private HistorialMedico historialMedico;
+
+    @OneToMany(cascade=CascadeType.ALL)//ESPECIFICA QUE CADA CAMBIO QUE SE HAGA, TAMBIEN LO HARA EN CITAS
+    @JoinColumn(name="Paciente_id")
+    private List<Citas> citas;
+    /*
+     * La anotación @JoinColumn se utiliza para especificar el nombre de la columna de
+     *  clave foránea que se creará en la tabla de la entidad "muchos" (en este caso, Citas).
+     */
+
+
 
     // Constructor vacío necesario para JPA.
     public User_Of_Patients() {

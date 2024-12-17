@@ -1,9 +1,12 @@
 package com.sacm.Backend.Models;
 
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -27,6 +30,10 @@ public class Citas {
     private String motivo;
 
     //RELACIONES ENTRE CLASES O MODELS 
+    @ManyToOne
+    @JoinColumn(name="Historial_id")
+    private HistorialMedico historialMedico;
+
     //MANY TO ONE- MUCHAS CITAS PUEDE TENER UN DOCTOR 
     //@ManyToOne @Getter @Setter @Column(name="Doctor_id")
     //private Doctores doctor;
