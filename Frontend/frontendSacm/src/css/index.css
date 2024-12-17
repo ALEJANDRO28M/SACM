@@ -1,39 +1,63 @@
 .menu-horizontal {
-    list-style: none; /* */
-    display: flex; /* Haciendo el menú horizontal */
-    justify-content: space-around; /* Distribuyendo los elementos */
-    margin: 0;
-    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center; /* Centra los elementos en el menú */
+    margin: 0; /* Eliminar el margen extra */
+    padding: 10px;
     background-color: aquamarine;
+    position: fixed; /* Fija el menú en la parte superior */
+    top: 0; /* Lo coloca en la parte superior */
+    left: 0; /* Asegura que empiece desde el lado izquierdo */
+    width: 100%; /* Asegura que el menú ocupe todo el ancho de la página */
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
 }
 
-body{
+body {
     background-image: url('../img/indexBackground.webp');
     background-size: cover;
+    padding-top: 60px; /* Da espacio para que el menú no cubra el contenido */
+    margin: 0; /* Elimina el margen por defecto */
 }
 
 .menu-horizontal > li {
-    position: relative; /* Permite ubicar los submenús */
+    margin-right: 20px;
+    position: relative; /* Esto es necesario para que el submenú se posicione respecto a este li */
+    top: 0;
 }
 
 .menu-vertical {
-    list-style: none; /*style = estilo and list = lista estilo de lista = liste style none = ninguno o ninguna */
-    display: none; /* Oculto por defecto */
-    position: absolute; /* Ubicado debajo del menú principal */
-    top: 100%; /* Alineado debajo del elemento principal */
+    list-style: none;
+    display: none;
+    position: absolute;
+    top: 100%; /* Alinea el submenú debajo del item principal */
     left: 0;
     background-color: aquamarine;
+    z-index: 999;
+    padding: 10px 0; /* Añade algo de espacio alrededor de los ítems */
+    border-radius: 8px; /* Redondea los bordes del submenú */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Añade sombra para un efecto más suave */
+}
+
+.menu-vertical > li {
+    padding: 8px 20px; /* Añade algo de espacio a cada item */
+    border-radius: 5px; /* Redondea los bordes de cada ítem de la lista */
+    transition: background-color 0.3s ease; /* Efecto de transición para el hover */
+}
+
+.menu-vertical > li:hover {
+    background-color: #70b7b3; /* Color de fondo cuando se pasa el ratón sobre un item */
 }
 
 .menu-horizontal > li:hover .menu-vertical {
-    display: flex; /* Mostrar al hacer hover */
-    flex-direction: column; /* Alinear verticalmente */
+    display: flex;
+    flex-direction: column;
+    z-index: 1001; /* Asegura que el submenú se muestre por encima del menú horizontal al hacer hover */
 }
 
 .menu-desplegable {
-    max-width: 999px; /*max = maximo and width = ancho*/
+    max-width: 999px;
     margin: auto;
-    background-color: aquamarine; /*background = fondo and color = color color de fondo */
-    font-size: 20px; /*font = fuente and size = tamaño*/
-    margin-top: 50px; /*margin = margen and top = arriba*/
+    background-color: aquamarine;
+    font-size: 20px;
+    margin-top: 50px;
 }

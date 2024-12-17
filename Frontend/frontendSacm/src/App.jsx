@@ -6,7 +6,9 @@ import Registro from './DiseñosReactUser/Registro';
 import InicioSesion from './DiseñosReactUser/InicioDeSesion';
 import DatosUser from './DiseñosReactUser/DatosUser';
 import CitasPacientes from './DiseñosReactUser/BasesDeDatosSacm/CitasPacientes';
-import Prueba from './DiseñosReactUser/prueba';
+import Sacm from './DiseñosReactUser/Sacm';
+import DoctoresBd from './DiseñosReactUser/BasesDeDatosSacm/DoctoresBd';
+import HistorialMedico from './DiseñosReactUser/BasesDeDatosSacm/HistorialMedico';
 
 
 /*
@@ -28,7 +30,9 @@ function App() {
         <Route path="/datos" element={<DatosUser />} />
         <Route path="/datoscitPacient" element={<CitasPacientes />} />
         {/* Asegúrate de pasar el componente correctamente como JSX */}
-        <Route path="/prueba" element={<Prueba />}/>
+        <Route path="/Sacm" element={<Sacm />}/>
+        <Route path="/DoctoresBd" element={<DoctoresBd />}/>
+        <Route path="/HistoryDoctor" element={<HistorialMedico />}/>
       </Routes>
     </BrowserRouter>
   );

@@ -12,21 +12,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sacm.Backend.Dao.DaoSacm;
 import com.sacm.Backend.Models.Citas;
+import com.sacm.Backend.Models.Doctores;
+import com.sacm.Backend.Models.HistorialMedico;
+import com.sacm.Backend.Models.Medicamentos;
 import com.sacm.Backend.Models.User_Of_Patients;
 
-/**
- * Controlador para manejar las operaciones relacionadas con los pacientes.
- */
-@CrossOrigin(origins = "http://localhost:5173")  // Cambia el puerto si es necesario
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/Api")
-public class PacientsController {
+public class PeticionesBdController {
+    
 
-    // Inyección de dependencia del DAO para la manipulación de datos
     @Autowired
-    private DaoSacm daoSacmImp;
+    DaoSacm daoSacm;
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @GetMapping("/DataDoctor")
+    public List<Doctores> listDoctoresController() {
+        return daoSacm.viewDoctores();
+    }
+
+    
+    @GetMapping("/HistoryDoctor")
+    public List<HistorialMedico> showHistory(){
+        return daoSacm.showDataHistory();
+    }
+
+    @GetMapping("/Medicines")
+    public List<Medicamentos> showListMedicines(){
+        return daoSacm.showDataListMedicine();
+    }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////GESTION DE LOS PACIENTES/////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -38,7 +53,7 @@ public class PacientsController {
     @GetMapping("/ListPacients")
     public List<User_Of_Patients> pacientes() {
         // Llama al método del DAO para obtener la lista de pacientes
-        return daoSacmImp.MostrarUsers();
+        return daoSacm.MostrarUsers();
     }
 
     /**
@@ -49,7 +64,7 @@ public class PacientsController {
     @DeleteMapping("DeleteUser/{id}")
     public void eliminarPaciente(@PathVariable int id) {
         // Llama al método del DAO para eliminar al paciente con el ID proporcionado
-        daoSacmImp.deleteUserSacm(id);
+        daoSacm.deleteUserSacm(id);
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,6 +74,6 @@ public class PacientsController {
     @GetMapping("/CitasPacientes")
     public List<Citas> viewCitas(){
         
-        return daoSacmImp.viewCitas();
+        return daoSacm.viewCitas();
     }
 }

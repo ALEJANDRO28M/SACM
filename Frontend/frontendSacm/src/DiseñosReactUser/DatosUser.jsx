@@ -85,6 +85,8 @@ function DatosUser() {
                     ))}
                 </tbody>
             </table>
+            <br/>
+            <button><a href="http://localhost:5173/Sacm">Volver</a></button>
         </div>
     );
 }

@@ -37,7 +37,7 @@ export default function InicioSesion() {
 
         if (resultado === true) {
           alert("¡Bienvenido!");
-          window.location.href='http://localhost:5173/prueba';
+          window.location.href='http://localhost:5173/Sacm';
         } else {
           alert('Usuario o clave incorrectos');
         }

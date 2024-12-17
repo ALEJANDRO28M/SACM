@@ -60,7 +60,9 @@ function Registro() {
   };
 
   return (
+    
     <div className="registro-container"> {/* Contenedor principal del formulario de registro */}
+  
       <h2>Registro de Usuario</h2> {/* Título del formulario */}
       <form onSubmit={handleRegistro} className="formulario"> {/* Manejar el envío del formulario */}
         <div className="form-group"> {/* Grupo de input para el nombre */}

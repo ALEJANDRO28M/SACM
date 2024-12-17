@@ -69,7 +69,7 @@ h2 {
 
 .loading {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.5em; 
     color: #007bff; /* Color azul para el texto de carga */
 }
 

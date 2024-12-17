@@ -3,6 +3,7 @@ import React from "react";
 import '../img/indexBackground.webp';
 import '../css/index.css';
 import '../css/transiciones.css';
+import '../css/Autor_indexBd.css';
 
 function Prueba (){
 
@@ -30,9 +31,18 @@ function Prueba (){
             </li>
             <li><a href="">PRAGRAMA DE CITAS</a></li>
         </ul>
-
-
     </nav>
+    <div className="DataUser">
+    <ul id="listaSinIndice">
+
+        
+        <li>Luis</li>
+        <li>alejandro</li>
+        <li>forero</li>
+        <li>zapata</li>
+
+        </ul>
+    </div>
       </div>);
 }
 export default Prueba;

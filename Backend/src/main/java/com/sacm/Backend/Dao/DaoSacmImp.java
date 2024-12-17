@@ -4,6 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.sacm.Backend.Models.Citas;
+import com.sacm.Backend.Models.Doctores;
+import com.sacm.Backend.Models.HistorialMedico;
+import com.sacm.Backend.Models.Medicamentos;
 import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
 
@@ -20,12 +24,16 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class DaoSacmImp implements DaoSacm {
 
+    ///////////////// INYECCIÓN DE DEPENDENCIAS /////////////////////
+
     // EntityManager se utiliza para manejar las operaciones de persistencia en la base de datos.
     @PersistenceContext
     private EntityManager entityManager;
 
     // Consulta JPQL para obtener los pacientes.
     private String query;
+
+    ///////////////// GESTIÓN DE LOS PACIENTES /////////////////////
 
     /**
      * Obtiene la lista de todos los pacientes desde la base de datos.
@@ -54,6 +62,8 @@ public class DaoSacmImp implements DaoSacm {
         // Elimina el paciente encontrado.
         entityManager.remove(user);
     }
+
+    ///////////////// GESTIÓN DE USUARIOS DE LOGIN /////////////////////
 
     @SuppressWarnings("unchecked")
     @Override
@@ -84,7 +94,6 @@ public class DaoSacmImp implements DaoSacm {
 
         return count > 0;
         // Retorna true si existe al menos un usuario con las credenciales dadas
-
     }
 
     @Override
@@ -107,5 +116,35 @@ public class DaoSacmImp implements DaoSacm {
 
         // Ejecutar la consulta de inserción
         peticion.executeUpdate();
+    }
+
+    ///////////////// GESTIÓN DE CITAS /////////////////////
+
+    @Override
+    public List<Citas> viewCitas() {
+         query = "FROM Citas";
+         return entityManager.createQuery(query,Citas.class).getResultList();
+     
+    }
+
+    /////////////////GESTION DE USUARIO DE DOCTORES////////////
+
+    @Override
+    public List<Doctores> viewDoctores() {
+     query = "FROM Doctores";
+     return  entityManager.createQuery(query,Doctores.class).getResultList();
+
+    }
+
+    @Override
+    public List<HistorialMedico> showDataHistory() {
+    query = "FROM HistorialMedico";
+    return entityManager.createQuery(query, HistorialMedico.class).getResultList();
+    }
+
+    @Override
+    public List<Medicamentos> showDataListMedicine() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'showDataListMedicine'");
     }
 }
