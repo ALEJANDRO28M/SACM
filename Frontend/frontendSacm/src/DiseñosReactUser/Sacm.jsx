@@ -1,48 +1,44 @@
 import React from "react";
-
-import '../img/indexBackground.webp';
-import '../css/index.css';
-import '../css/transiciones.css';
-import '../css/Autor_indexBd.css';
-
-function Prueba (){
+import "../img/indexBackground.webp";
+import "../css/index.css";
 
 
- 
-
-    return( <div className="home-container">
-         <nav class="menu-desplegable">
-        <ul class="menu-horizontal">
-            <li><a href="#">INICIO</a></li>
-            <li>
-                <a href="#">BASES DE DATOS</a>
-                <ul class="menu-vertical">
-                    <li><a href="http://localhost:8080/TablaPacientes.html">PACIENTES</a></li>
-                    <li><a href="#">CITAS</a></li>
-                    <li><a href="http://localhost:5173/datos">USUARIOS</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="">HISTORIALES CLINICOS</a>
-                <ul class="menu-vertical">
-                    <li><a href="#">PACIENTES CONTRIBUTIVOS</a></li>
-                    <li><a href="#">PACIENTES SUBSIDIADOS</a></li>
-                </ul>
-            </li>
-            <li><a href="">PRAGRAMA DE CITAS</a></li>
-        </ul>
-    </nav>
-    <div className="DataUser">
-    <ul id="listaSinIndice">
-
-        
-        <li>Luis</li>
-        <li>alejandro</li>
-        <li>forero</li>
-        <li>zapata</li>
-
-        </ul>
-    </div>
-      </div>);
+function Prueba() {
+  return (
+    <body>
+      <header className="header">
+        <div className="container">
+          <div className="btn-menu">
+            <label htmlFor="btn-menu">☰</label>
+          </div>
+          <div className="logo">
+            <h1>SACM</h1>
+          </div>
+          <nav className="menu">
+            <a href="#">Inicio</a>
+            <a href="#">Nosotros</a>
+            <a href="#">Blog</a>
+            <a href="#">Contacto</a>
+          </nav>
+        </div>
+      </header>
+      <div className="capa"></div>
+      <input type="checkbox" id="btn-menu" />
+      <div className="container-menu">
+        <div className="cont-menu">
+          <nav>
+            <a href="#">Portafolio</a>
+            <a href="#">Servicios</a>
+            <a href="#">Suscribirse</a>
+            <a href="#">Facebook</a>
+            <a href="#">Youtube</a>
+            <a href="#">Instagram</a>
+          </nav>
+          <label htmlFor="btn-menu">✖️</label>
+        </div>
+      </div>
+    </body>
+  );
 }
+
 export default Prueba;

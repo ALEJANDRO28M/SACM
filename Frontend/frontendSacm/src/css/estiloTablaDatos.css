@@ -1,3 +1,16 @@
+
+.menu {
+display:flex;
+justify-content: flex-start;
+align-items: flex-start;
+border-style: groove;
+border-color: #007bff;
+position: initial;
+margin: 0%;
+padding: 0%;
+
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
@@ -8,7 +21,8 @@ body {
 .tabla-container {
     margin: 20px auto;
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 22px;
+    border-color: #ff1f1f;
     background-color: #ffffff;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     max-width: 800px; /* Ajuste para una mejor presentación */
@@ -29,6 +43,7 @@ h2 {
 .tabla_Users thead {
     background-color: #007bff;
     color: white;
+    
 }
 
 .tabla_Users th,
@@ -38,6 +53,7 @@ h2 {
     border-bottom: 1px solid #ddd;
     transition: background-color 0.3s; /* Suaviza la transición */
 }
+
 
 .tabla_Users tbody tr {
     transition: background-color 0.3s; /* Suaviza la transición */
@@ -96,4 +112,11 @@ button {
 
 button:hover {
     background-color: #ff1f1f; /* Cambia el color al pasar el ratón */
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
 }

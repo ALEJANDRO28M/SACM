@@ -1,63 +1,140 @@
-.menu-horizontal {
-    list-style: none;
-    display: flex;
-    justify-content: center; /* Centra los elementos en el menú */
-    margin: 0; /* Eliminar el margen extra */
-    padding: 10px;
-    background-color: aquamarine;
-    position: fixed; /* Fija el menú en la parte superior */
-    top: 0; /* Lo coloca en la parte superior */
-    left: 0; /* Asegura que empiece desde el lado izquierdo */
-    width: 100%; /* Asegura que el menú ocupe todo el ancho de la página */
-    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat Alternates", sans-serif;
 }
-
 body {
-    background-image: url('../img/indexBackground.webp');
-    background-size: cover;
-    padding-top: 60px; /* Da espacio para que el menú no cubra el contenido */
-    margin: 0; /* Elimina el margen por defecto */
+  background-image: url("../css/istockphoto-1460853312-612x612.jpg");
+  background-attachment: fixed;
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+}
+.capa {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+/*Estilos para el encabezado*/
+.header {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+.container .btn-menu,
+.logo {
+  float: left;
+  line-height: 100px;
+}
+.logo h1{
+  margin-top: 37.5px;
+}
+.menu {
+  margin-top: 30px;
+  border-style: none;
+}
+.menu a{
+  border-radius: 8px;
 }
 
-.menu-horizontal > li {
-    margin-right: 20px;
-    position: relative; /* Esto es necesario para que el submenú se posicione respecto a este li */
-    top: 0;
-}
 
-.menu-vertical {
-    list-style: none;
-    display: none;
-    position: absolute;
-    top: 100%; /* Alinea el submenú debajo del item principal */
-    left: 0;
-    background-color: aquamarine;
-    z-index: 999;
-    padding: 10px 0; /* Añade algo de espacio alrededor de los ítems */
-    border-radius: 8px; /* Redondea los bordes del submenú */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Añade sombra para un efecto más suave */
+.container .btn-menu label {
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
 }
+.logo h1 {
+  color: #fff;
+  font-weight: 400;
+  font-size: 22px;
+  margin-left: 10px;
+}
+.container .menu {
+  float: right;
+  line-height: 100px;
+}
+.container .menu a {
+  display: inline-block;
+  padding: 15px;
+  line-height: normal;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  font-size: 15px;
+  margin-right: 5px;
+}
+.container .menu a:hover {
+  border-bottom: 2px solid aqua;
+  padding-bottom: 5px;
+}
+/*Fin de Estilos para el encabezado*/
 
-.menu-vertical > li {
-    padding: 8px 20px; /* Añade algo de espacio a cada item */
-    border-radius: 5px; /* Redondea los bordes de cada ítem de la lista */
-    transition: background-color 0.3s ease; /* Efecto de transición para el hover */
+/*Menù lateral*/
+#btn-menu {
+  display: none;
 }
-
-.menu-vertical > li:hover {
-    background-color: #70b7b3; /* Color de fondo cuando se pasa el ratón sobre un item */
+.container-menu {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transition: all 500ms ease;
+  opacity: 0;
+  visibility: hidden;
 }
-
-.menu-horizontal > li:hover .menu-vertical {
-    display: flex;
-    flex-direction: column;
-    z-index: 1001; /* Asegura que el submenú se muestre por encima del menú horizontal al hacer hover */
+#btn-menu:checked ~ .container-menu {
+  opacity: 1;
+  visibility: visible;
 }
-
-.menu-desplegable {
-    max-width: 999px;
-    margin: auto;
-    background-color: aquamarine;
-    font-size: 20px;
-    margin-top: 50px;
+.cont-menu {
+  width: 100%;
+  max-width: 250px;
+  background: #1c1c1c;
+  height: 100vh;
+  position: relative;
+  transition: all 500ms ease;
+  transform: translateX(-100%);
 }
+#btn-menu:checked ~ .container-menu .cont-menu {
+  transform: translateX(0%);
+}
+.cont-menu nav {
+  transform: translateY(15%);
+}
+.cont-menu nav a {
+  display: block;
+  text-decoration: none;
+  padding: 20px;
+  color: aqua;
+  border-left: 5px solid transparent;
+  transition: all 400ms ease;
+}
+.cont-menu nav a:hover {
+  border-left: 5px solid aqua;
+  background: #1f1f1f;
+}
+.cont-menu label {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+}
+/*Fin de Menù lateral*/

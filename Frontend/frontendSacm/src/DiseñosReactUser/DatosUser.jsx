@@ -60,34 +60,38 @@ function DatosUser() {
 
     // Renderizar la tabla cuando los datos estén listos
     return (
-        <div className="tabla-container">
-            <h2>Lista de Usuarios</h2>
-            
-            <table className="tabla_Users">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Usuario</th>
-                        <th>password</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {usuarios.map((usuario) => (
-                        <tr key={usuario.id}>
-                            <td>{usuario.id}</td>
-                            <td>{usuario.usuario}</td>
-                            <td>{usuario.password}</td>
-                            <td>
-                                <button onClick={() => eliminarUser(usuario.id)}>Eliminar</button> {/* Botón de eliminar */}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <br/>
-            <button><a href="http://localhost:5173/Sacm">Volver</a></button>
+    <main>
+        <div class="menu">
+            <a href="#">anterior</a>
         </div>
+         <div className="tabla-container">
+            <h2>Listado de usuarios</h2>
+        <table className="tabla_Users">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>password</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {usuarios.map((usuario) => (
+                    <tr key={usuario.id} >
+                        <td>{usuario.id}</td>
+                        <td>{usuario.usuario}</td>
+                        <td>{usuario.password}</td>
+                        <td>
+                            <button onClick={() => eliminarUser(usuario.id)}>Eliminar</button> {/* Botón de eliminar */}
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+        <br/>
+        <button><a href="http://localhost:5173/Sacm">Volver</a></button>
+        </div>
+        </main>
     );
 }
 
