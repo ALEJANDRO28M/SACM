@@ -111,6 +111,12 @@ body {
   transition: all 500ms ease;
   transform: translateX(-100%);
 }
+
+
+
+
+
+
 #btn-menu:checked ~ .container-menu .cont-menu {
   transform: translateX(0%);
 }
@@ -138,3 +144,65 @@ body {
   font-size: 18px;
 }
 /*Fin de Menù lateral*/
+
+
+/*INICIO DEL CUERPO-BODY*/
+
+.container-body h1 {
+  position: static;
+  top: 0;
+  font-size: 22px;
+  text-align: right;
+  color: white;
+  background-color: rgba(0, 255, 255, 0.5); /* Aqua con 50% de opacidad */
+  margin-top: -80px;
+  border-style: solid;
+  border-radius: 14px 44px;
+  padding: 20px;
+  text-shadow: 6px 2px 2px black;
+  /* Centra horizontalmente */
+
+}
+.container-body h3{
+  position: static;
+  top: 0;
+  font-size: 19px;
+  width: 40% ;
+  margin-left: 2%;
+  text-align: right;
+  color: white;
+  background-color: rgba(0, 255, 255, 0.5); /* Aqua con 50% de opacidad */
+  border-style: solid;
+  border-radius: 14px 44px;
+  padding: 30px;
+  text-shadow: 3px 4px 2px black;
+}
+
+section{
+  display: flex;
+  position: absolute;
+  top:36%; /* Separación entre imágenes */
+  right: 5%;
+  width: 600px;
+  height: 250px;
+  gap: 10px; /* Espacio entre las imágenes */
+
+}
+section img{
+
+  width: 0px;
+  flex-grow: 1;
+  object-fit:cover;
+  opacity: .9;
+  transition: .5s ease;
+  border-radius: 15px;
+
+ 
+}
+section img:hover{
+  cursor: crosshair;
+  width: 300px;
+  opacity: 1;
+  filter: contrast(120%);
+  
+}
