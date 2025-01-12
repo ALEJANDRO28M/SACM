@@ -17,6 +17,7 @@ h1.TituloSesion {
     color: hsla(103, 72%, 46%, 0.984);
     font-size: 36px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 i.subtituloSesion {

@@ -88,7 +88,7 @@ public class User_Of_Patients {
      * @param apellidos Apellido del paciente.
      * @param fecha_De_Nacimiento Fecha de nacimiento del paciente.
      * @param documento_De_Identidad Documento de identidad del paciente.
-     * @param telefono Número de teléfono del paciente.
+     * @param telefono Número de teléfono del paciente. 
      * @param email Correo electrónico del paciente.
      * @param genero Género del paciente.
      * @param edad Edad del paciente.

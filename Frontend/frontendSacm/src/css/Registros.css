@@ -1,24 +1,32 @@
 .registro-container {
-  max-width: 400px; /* Mantiene el ancho máximo del contenedor en 400px */
+  width: 100%; /* Mantiene el ancho máximo del contenedor en 400px */
   margin: auto; /* Centra el contenedor horizontalmente */
-  padding: 40px 100px; /* Espacio interno del contenedor, manteniendo lo que pediste */
-  background-color: #f9f9f9; /* Color de fondo del contenedor */
-  border-radius: 8px; /* Bordes redondeados */
+  padding: 50px 450px; /* Espacio interno del contenedor, manteniendo lo que pediste */
+  background-color: white; /* Color de fondo del contenedor */
+  border-radius: 22px; /* Bordes redondeados */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
   display: flex;
   flex-direction: column;
   align-items: center; /* Alinea todo al centro del contenedor */
 }
 
+
+
+
 /* Estilo para el título del formulario */
-h2 {
-  text-align: center; /* Centra el texto del título */
-  color: #333;
-  margin-bottom: 50px; /* Ajuste del margen inferior para que no haya mucho espacio */
+#titulo {
+  color: darkblue;
+  position: relative ;
+  left: 100%; /* Centra el texto del título */
+  top: 16%;
+  background-size: cover;
+  margin-bottom: 20px; /* Ajuste del margen inferior para que no haya mucho espacio */
+
 }
 
 /* Estilo para el formulario */
 .formulario {
+ 
   width: 100%; /* El formulario ocupa el 100% del ancho del contenedor */
   display: flex;
   flex-direction: column;
@@ -27,23 +35,29 @@ h2 {
 
 /* Estilo para cada grupo de formulario */
 .form-group {
+  
+  position: relative;
   width: 100%; /* El grupo ocupa todo el ancho disponible */
+  left: 100%;
+
+
 }
 
 /* Estilo para las etiquetas de los campos */
 label {
+  padding: 2px;
   margin-bottom: 5px; /* Espacio entre la etiqueta y el campo */
   font-weight: bold;
-  color: #555;
+  color: black;
 }
 
 /* Estilo para los campos de entrada */
 input {
   width: 100%; /* El campo de entrada ocupa el ancho completo */
-  padding: 10px; /* Espacio interno */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  padding: 12px; /* Espacio interno */
+  border: 1px solid black;
+  border-radius:15px;
+  font-size: 12px;
 }
 
 /* Efecto al hacer foco en los campos */
@@ -59,7 +73,7 @@ input:focus {
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
 }
@@ -67,4 +81,17 @@ input:focus {
 /* Hover para el botón */
 .btn:hover {
   background-color: #0056b3;
+}
+
+img{
+  background-size: cover;
+  border-radius: 50%;
+  top: 18%;
+  position: fixed;
+  left: 15%;
+  width: 620px;
+  height: 375px;
+  
+
+
 }

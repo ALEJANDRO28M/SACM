@@ -3,10 +3,14 @@ package com.sacm.Backend.Controllers.Controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +19,7 @@ import com.sacm.Backend.Models.Citas;
 import com.sacm.Backend.Models.Doctores;
 import com.sacm.Backend.Models.HistorialMedico;
 import com.sacm.Backend.Models.Medicamentos;
+import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
 
 @CrossOrigin(origins = "http://localhost:5173")
@@ -22,6 +27,8 @@ import com.sacm.Backend.Models.User_Of_Patients;
 @RequestMapping("/Api")
 public class PeticionesBdController {
     
+
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
     DaoSacm daoSacm;
@@ -41,7 +48,8 @@ public class PeticionesBdController {
     public List<Medicamentos> showListMedicines(){
         return daoSacm.showDataListMedicine();
     }
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////GESTION DE LOS PACIENTES/////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -61,7 +69,7 @@ public class PeticionesBdController {
      * 
      * @param id El ID del paciente a eliminar.
      */
-    @DeleteMapping("DeleteUser/{id}")
+    @DeleteMapping("DeleteUserPacient/{id}")
     public void eliminarPaciente(@PathVariable int id) {
         // Llama al método del DAO para eliminar al paciente con el ID proporcionado
         daoSacm.deleteUserSacm(id);
@@ -76,4 +84,45 @@ public class PeticionesBdController {
         
         return daoSacm.viewCitas();
     }
+
+      @PostMapping("/Registrar")
+    public void Registro(@RequestBody ModelUserLogin modelUserLogin){
+        
+        System.out.println("datos:" + modelUserLogin);
+        modelUserLogin.setPassword(passwordEncoder.encode(modelUserLogin.getPassword()));
+        System.out.println("enciptacion = " + modelUserLogin.getPassword());
+
+      daoSacm.registrarUserLogin(modelUserLogin);
+    
+    }
+
+        /**
+     * Elimina un paciente basado en el ID proporcionado.
+     * 
+     * @param id El ID del paciente a eliminar.
+     */
+    @DeleteMapping("/DeleteUserLogin/{id}")
+    public void deleteUserLogin(@PathVariable int id) {
+        // Llama al método del DAO para eliminar al paciente con el ID proporcionado
+        daoSacm.deleteUserLogin(id);
+    }
+
+    @GetMapping("/validarInicio/{usuario}/{password}")
+    public boolean validar(@PathVariable String usuario, @PathVariable String password){
+        System.out.println("usuario =  " + usuario + "password = " + password);
+        boolean valida = daoSacm.validarInicioSesion(usuario, password);
+        System.out.println(valida);
+        return valida;
+        
+    }
+
+    @GetMapping("/Data")
+public List<ModelUserLogin> dataLoginUser(){
+  
+    return daoSacm.mostrarListaUsuariosLogin(); 
 }
+
+}
+
+    
+

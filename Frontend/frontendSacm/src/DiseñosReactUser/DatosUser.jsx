@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../css/estiloTablaDatos.css';
 import deleteDataUser from './deleteDataUser';
+import '../css/index.css'
 
 function DatosUser() {
     const [usuarios, setUsuarios] = useState([]); // Estado inicial como un arreglo vacío
@@ -60,10 +61,39 @@ function DatosUser() {
 
     // Renderizar la tabla cuando los datos estén listos
     return (
-    <main>
-        <div class="menu">
-            <a href="#">anterior</a>
-        </div>
+       <body>
+         <header className="header">
+           <div className="container">
+             <div className="btn-menu">
+               <label htmlFor="btn-menu">☰</label>
+             </div>
+             <div className="logo">
+               <h1>SACM</h1>
+             </div>
+             <nav className="menu">
+               <a href="#">Inicio</a>
+               <a href="#">Nosotros</a>
+               <a href="#">Blog</a>
+               <a href="#">Contacto</a>
+             </nav>
+           </div>
+         </header>
+         <div className="capa"></div>
+         <input type="checkbox" id="btn-menu" />
+         <div className="container-menu">
+           <div className="cont-menu">
+             <nav>
+               <a href="#">Portafolio</a>
+               <a href="#">Bases de Datos</a>
+               <a href="#">Reportes</a>
+               <a href="#">Citas Pendientes</a>
+               <a href="#">Perfil</a>
+               <a href="#">Cerrar Sesion</a>
+             </nav>
+             <label htmlFor="btn-menu">✖️</label>
+           </div>
+         </div>
+
          <div className="tabla-container">
             <h2>Listado de usuarios</h2>
         <table className="tabla_Users">
@@ -91,7 +121,7 @@ function DatosUser() {
         <br/>
         <button><a href="http://localhost:5173/Sacm">Volver</a></button>
         </div>
-        </main>
+       </body>
     );
 }
 

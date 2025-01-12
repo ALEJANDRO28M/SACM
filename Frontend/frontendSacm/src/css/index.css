@@ -178,31 +178,31 @@ body {
   text-shadow: 3px 4px 2px black;
 }
 
-section{
-  display: flex;
-  position: absolute;
-  top:36%; /* Separación entre imágenes */
-  right: 5%;
-  width: 600px;
-  height: 250px;
-  gap: 10px; /* Espacio entre las imágenes */
-
+.container-img {
+  display: flex; /* Activa flexbox */
+  flex-wrap: wrap; /* Permite que las imágenes se ajusten si el espacio es insuficiente */
+  justify-content: flex-end; /* Alinea las imágenes hacia la derecha */
+  align-items: center; /* Centra las imágenes verticalmente dentro del contenedor */
+  gap: 20px; /* Añade espacio entre las imágenes */
+  margin: 20px; /* Espaciado exterior */
+  width: 50%; /* Ocupa la mitad derecha del contenedor */
+  position: absolute; /* Permite el posicionamiento preciso */
+  top: 50%; /* Centra verticalmente */
+  right: 0; /* Posiciona al borde derecho */
+  transform: translateY(-50%); /* Ajusta para un centrado más preciso */
 }
-section img{
 
-  width: 0px;
-  flex-grow: 1;
-  object-fit:cover;
-  opacity: .9;
-  transition: .5s ease;
-  border-radius: 15px;
-
+.container-img img {
+  width: 150px; /* Tamaño estándar de las imágenes */
  
+  height: auto; /* Mantiene las proporciones */
+  border-radius: 10px; /* Bordes redondeados */
+  object-fit: cover; /* Ajusta la imagen dentro de su contenedor sin deformarla */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Efecto al pasar el ratón */
 }
-section img:hover{
-  cursor: crosshair;
-  width: 300px;
-  opacity: 1;
-  filter: contrast(120%);
-  
+
+.container-img img:hover {
+  transform: scale(1.1); /* Efecto de agrandamiento */
+  opacity: 1; /* Aumenta la opacidad */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
 }

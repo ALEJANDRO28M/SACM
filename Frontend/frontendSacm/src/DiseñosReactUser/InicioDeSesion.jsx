@@ -30,11 +30,12 @@ export default function InicioSesion() {
   // Función para manejar el inicio de sesión
   async function ingresar() {
     try {
-      const peticion = await fetch(`http://localhost:8080/api/validarInicio/${usuario}/${password}`);
+   
+      const peticion = await fetch(`http://localhost:8080/Api/validarInicio/${usuario}/${password}`);
       
       if (peticion.ok) {
         const resultado = await peticion.json();
-
+        
         if (resultado === true) {
           alert("¡Bienvenido!");
           window.location.href='http://localhost:5173/Sacm';
@@ -43,6 +44,7 @@ export default function InicioSesion() {
         }
       } else {
         alert('Error al conectar con el servidor');
+        
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);

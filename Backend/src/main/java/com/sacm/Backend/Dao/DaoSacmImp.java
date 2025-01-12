@@ -2,6 +2,8 @@ package com.sacm.Backend.Dao;
 
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.sacm.Backend.Models.Citas;
@@ -12,6 +14,7 @@ import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
@@ -32,6 +35,8 @@ public class DaoSacmImp implements DaoSacm {
 
     // Consulta JPQL para obtener los pacientes.
     private String query;
+
+    PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     ///////////////// GESTIÓN DE LOS PACIENTES /////////////////////
 
@@ -83,18 +88,28 @@ public class DaoSacmImp implements DaoSacm {
     }
 
     @Override
-    public boolean validarInicioSesion(String usuario, String password) {
-        // Consulta JPQL corregida, usando parámetros
-        query = "SELECT COUNT(*) FROM ModelUserLogin u WHERE u.usuario = :usuario AND u.password = :password";
+public boolean validarInicioSesion(String usuario, String password) {
+  try {
+        // Usamos JPQL para buscar por el campo 'usuario'
+        Query query = entityManager.createQuery("SELECT u FROM ModelUserLogin u WHERE u.usuario = :usuario");
+        query.setParameter("usuario", usuario);
 
-        Long count = (Long) entityManager.createQuery(query)
-                .setParameter("usuario", usuario)
-                .setParameter("password", password)
-                .getSingleResult();
+        // Intentamos obtener el usuario de la base de datos
+        ModelUserLogin user = (ModelUserLogin) query.getSingleResult();
 
-        return count > 0;
-        // Retorna true si existe al menos un usuario con las credenciales dadas
+        // Validamos la contraseña con BCrypt
+        return passwordEncoder.matches(password, user.getPassword());
+        
+    } catch (NoResultException e) {
+        // Si no se encuentra el usuario, devuelve false
+        return false;
+    } catch (Exception e) {
+        // Maneja cualquier otra excepción y muestra detalles en los logs
+        e.printStackTrace();
+        return false;
     }
+}
+
 
     @Override
     public void registrarUserLogin(ModelUserLogin modelUserLogin) {
@@ -107,7 +122,7 @@ public class DaoSacmImp implements DaoSacm {
          * reemplace correctamente.
          */
 
-        query = "INSERT INTO `userlogin` (`id`, `usuario`, `password`) VALUES (NULL, :usuario , :password)";
+        query = "INSERT INTO `userlogin` ( `usuario`, `password`) VALUES (:usuario , :password)";
 
         // Crear la consulta y establecer los parámetros
         Query peticion = entityManager.createNativeQuery(query);
@@ -116,6 +131,7 @@ public class DaoSacmImp implements DaoSacm {
 
         // Ejecutar la consulta de inserción
         peticion.executeUpdate();
+    //   
     }
 
     ///////////////// GESTIÓN DE CITAS /////////////////////
@@ -139,7 +155,7 @@ public class DaoSacmImp implements DaoSacm {
     @Override
     public List<HistorialMedico> showDataHistory() {
     query = "FROM HistorialMedico";
-    return entityManager.createQuery(query, HistorialMedico.class).getResultList();
+      return entityManager.createQuery(query, HistorialMedico.class).getResultList();
     }
 
     @Override
@@ -147,4 +163,6 @@ public class DaoSacmImp implements DaoSacm {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'showDataListMedicine'");
     }
+
+
 }

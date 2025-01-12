@@ -1,7 +1,7 @@
 import { useState } from 'react'; // Importar el hook useState de React para manejar el estado
 import '../css/Registros.css'; // Importar el archivo CSS para estilizar el componente
 import { useNavigate } from 'react-router-dom';
-
+import imgSacm from '../css/SACM.png';
 
 function Registro() {
   // Definición de los estados para almacenar los datos del usuario
@@ -28,20 +28,24 @@ function Registro() {
      
     // Lógica para verificar que las contraseñas coincidan
     if (password !== confirmPassword) {
-      console.error('Las contraseñas no coinciden'); // Mensaje de error si las contraseñas no coinciden
+      alert('Las contraseñas no coinciden'); // Mensaje de error si las contraseñas no coinciden
       return; // Salir si las contraseñas no coinciden
     }
     
     try {
+    
+        
+      
+      
       // Realizar la petición al backend para registrar el usuario
-      const peticion = await fetch('http://localhost:8080/api/Registrar', {
+      const peticion = await fetch('http://localhost:8080/Api/Registrar', {
         method: 'POST', // Método de la solicitud
         headers: {
           'Content-Type': 'application/json', // Especificar que el contenido es JSON
         },
         body: JSON.stringify({ usuario,  password }), // Enviar los datos del formulario en formato JSON
       });
-  
+    
       // Verificar la respuesta del servidor
       if (peticion.ok) {
         alert("¡Registrado con exito!"); // Mensaje de bienvenida si la solicitud fue exitosa
@@ -62,9 +66,12 @@ function Registro() {
   return (
     
     <div className="registro-container"> {/* Contenedor principal del formulario de registro */}
-  
-      <h2>Registro de Usuario</h2> {/* Título del formulario */}
-      <form onSubmit={handleRegistro} className="formulario"> {/* Manejar el envío del formulario */}
+      
+      <h2 id='titulo'>Registro de Usuario</h2> {/* Título del formulario */}
+      
+      <form onSubmit={handleRegistro} className="formulario">
+         {/* Manejar el envío del formulario */}
+         <img src={imgSacm} alt="" />
         <div className="form-group"> {/* Grupo de input para el nombre */}
           <label htmlFor="nombre">Nombre</label> {/* Etiqueta del input */}
           <input
@@ -104,6 +111,7 @@ function Registro() {
         <div className="form-group"> {/* Grupo de input para confirmar la contraseña */}
           <label htmlFor="confirmPassword">Confirmar Contraseña</label> {/* Etiqueta para confirmar la contraseña */}
           <input
+
             placeholder='Confirme su contraseña' // Placeholder para el input
             type="password" // Tipo de input
             id="confirmPassword" // ID del input
@@ -112,7 +120,7 @@ function Registro() {
             required // Campo requerido
           />
         </div>
-        
+        <br />
         <button type="submit" className="btn">Registrarse</button> {/* Botón para enviar el formulario */}
       </form>
     </div>

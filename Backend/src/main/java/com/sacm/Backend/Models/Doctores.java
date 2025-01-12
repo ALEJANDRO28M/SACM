@@ -16,7 +16,7 @@ import lombok.Setter;
 @Table(name="medicos")
 public class Doctores {
     
-    @Id 
+    @Id  
     @Getter @Setter @Column(name="id")
     private int id;
 
