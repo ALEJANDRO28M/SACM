@@ -30,11 +30,11 @@ function Prueba() {
       <div className="container-menu">
         <div className="cont-menu">
           <nav>
-            <a href="#">Historial médico</a>
-            <a href="#">Bases de Datos</a>
-            <a href="#">Reportes</a>
-            <a href="#">Citas Pendientes</a>
-            <a href="#">Perfil</a>
+            <a href="http://localhost:5173/HistoryDoctor">Historial médico</a>
+            <a href="http://localhost:5173/Sacm">Bases de Datos</a>
+            <a href="http://localhost:5173/Sacm">Reportes</a>
+            <a href="http://localhost:5173/Sacm">Citas Pendientes</a>
+            <a href="http://localhost:5173/Sacm">Perfil</a>
             <a href="#">Cerrar Sesión</a>
           </nav>
           <label htmlFor="btn-menu">✖️</label>

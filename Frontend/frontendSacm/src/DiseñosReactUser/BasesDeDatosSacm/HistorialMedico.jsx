@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../../img/imagenDeFondo.jpg";
+import "../../css/HistoryDoctor.css"
 
 function HistorialMedico() {
   const [ListHistorialMedico, setListHistorial] = useState([]);
@@ -39,7 +40,9 @@ function HistorialMedico() {
   return (
 
     <div className="Tabla-Container">
+        <a href="http://localhost:5173/Sacm" className="volver_Menu_Principal">INICIO</a>
         <h2>HISTORIAL MEDICO</h2>
+        <br />
 
         <table className="tabla_Users">
             <thead>

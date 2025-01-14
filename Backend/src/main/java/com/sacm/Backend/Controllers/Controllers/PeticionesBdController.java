@@ -30,12 +30,14 @@ public class PeticionesBdController {
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+    
     @Autowired
     DaoSacm daoSacm;
 
     @GetMapping("/DataDoctor")
     public List<Doctores> listDoctoresController() {
         return daoSacm.viewDoctores();
+        
     }
 
     

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import imgSacm from '../css/SACM.png';
 
 function Registro() {
+
   // Definición de los estados para almacenar los datos del usuario
   const [usuario, setUsuario] = useState(''); // Estado para el nombre de usuario
   const [correo, setCorreo] = useState(''); // Estado para el correo electrónico
@@ -15,6 +16,7 @@ function Registro() {
     setter(event.target.value); // Actualizar el estado correspondiente
   };
 
+  
   const redireccionar = useNavigate();
   // Función para manejar el envío del formulario
   const handleRegistro = async (event) => {

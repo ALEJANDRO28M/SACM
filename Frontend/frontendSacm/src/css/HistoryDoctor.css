@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+.Tabla-Container{
+display: flex;
+flex-direction: column;
+height: 100vh; /* Hace que ocupe todo el alto de la pantalla */
+padding: 80px;
+}
+
+h2{
+    
+    color: aqua;
+    padding: 10px;
+    margin-bottom: 20px; /* Añade espacio debajo del título */
+}
+.volver_Menu_Principal{
+    position: absolute;
+    font-size: 20px;
+    text-align: left;
+    left: 8vh;
+    top: 5vh;
+    transition: all 0.3s ease;
+}
+.volver_Menu_Principal:hover{
+
+    border-bottom: 2px solid aqua;
+    padding-bottom: 5px;
+
+}
+.Tabla-Container table {
+    border-style: solid;
+    border-color: cadetblue;
+    width: 100%; /* La tabla ocupa el 100% del ancho disponible */
+    border-collapse: collapse; /* Estilo de borde más limpio */
+}
+
+tbody tr{
+    cursor: pointer;
+}
+.tabla_Users  tbody tr:hover{
+background-color: greenyellow;
+}
