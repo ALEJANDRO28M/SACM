@@ -1,0 +1,98 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+#inicio_Bds{
+    display: flex;
+    margin-bottom: 15cm;
+    align-items: flex-start;
+    color: aqua;
+    border-bottom: 2px solid transparent;
+}
+#inicio_Bds:hover{
+ transition: all 0.3s ease;
+ border-bottom: 2px solid aqua;
+ padding-bottom:5px;    
+}
+.flexBd_Container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.flexBd_Container div{
+    margin: 22px;
+    border-style: solid;
+    border-color: beige;
+    background-color: beige;
+    padding: 42px;
+    border-radius: 22px;
+}
+
+.flexBd_Container a{
+    color: black;
+}
+
+ .citas_pacientes {
+background-image: url('../css/ImgBds/imgCitasPacientes.jpg');
+background-repeat: repeat;
+background-size: cover;
+
+}
+
+.citas_pacientes:hover{
+    cursor: pointer;
+    transition: background-size 0.6s ease-in-out; /* Animación suave */
+    padding: 55px;
+    background-size: 110%; /* Aumenta el tamaño del fondo al pasar el cursor */
+}
+
+.doctores {
+    background-image: url('../css/ImgBds/Doctores.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    }
+
+    .doctores:hover{
+        cursor: pointer;
+        transition: background-size 0.6s ease-in-out; /* Animación suave */
+        padding: 55px;
+        background-size: 110%; /* Aumenta el tamaño del fondo al pasar el cursor */
+    }
+
+.historialmedico {
+    background-image: url('../css/ImgBds/HistorialMedico.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    }
+.historialmedico:hover{
+    cursor: pointer;
+    transition: background-size 0.6s ease-in-out; /* Animación suave */
+    padding: 55px;
+    background-size: 110%; /* Aumenta el tamaño del fondo al pasar el cursor */
+}
+
+.medicines {
+    background-image: url('../css/ImgBds/medicinas.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    }
+    .medicines:hover{
+        cursor: pointer;
+        transition: background-size 0.6s ease-in-out; /* Animación suave */
+        padding: 55px;
+        background-size: 110%; /* Aumenta el tamaño del fondo al pasar el cursor */
+    }
+.datosUser {
+    background-image: url('../css/ImgBds/data.jpg');
+    background-repeat: repeat;
+    background-size: cover;
+    }
+
+    .datosUser:hover{
+        cursor: pointer;
+        transition: background-size 0.6s ease-in-out; /* Animación suave */
+        padding: 55px;
+        background-size: 110%; /* Aumenta el tamaño del fondo al pasar el cursor */
+    }

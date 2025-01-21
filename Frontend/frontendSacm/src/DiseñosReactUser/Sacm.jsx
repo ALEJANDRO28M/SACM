@@ -19,7 +19,7 @@ function Prueba() {
           </div>
           <nav className="menu">
             <a href="#">Inicio</a>
-            <a href="#">Nosotros</a>
+            <a href="http://localhost:5173/Nosotros">Nosotros</a>
             <a href="#">Blog</a>
             <a href="#">Contacto</a>
           </nav>
@@ -31,7 +31,7 @@ function Prueba() {
         <div className="cont-menu">
           <nav>
             <a href="http://localhost:5173/HistoryDoctor">Historial médico</a>
-            <a href="http://localhost:5173/Sacm">Bases de Datos</a>
+            <a href="http://localhost:5173/BasesDeDatos">Bases de Datos</a>
             <a href="http://localhost:5173/Sacm">Reportes</a>
             <a href="http://localhost:5173/Sacm">Citas Pendientes</a>
             <a href="http://localhost:5173/Sacm">Perfil</a>
