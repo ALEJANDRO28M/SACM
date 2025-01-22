@@ -11,6 +11,7 @@ import DoctoresBd from './DiseñosReactUser/BasesDeDatosSacm/DoctoresBd';
 import HistorialMedico from './DiseñosReactUser/BasesDeDatosSacm/HistorialMedico';
 import SobreNosotros from './DiseñosReactUser/BasesDeDatosSacm/SobreNosotros';
 import BasesDeDatos from './DiseñosReactUser/BasesDeDatosSacm/BasesDeDatos';
+import Medicines from './DiseñosReactUser/BasesDeDatosSacm/Medicines';
 
 /*
 PARA QUE EL GESTOR DE RUTAS FUNCIONE DEBEMOS DE UTILIZAR LAS CLASES CON SU INICIAL EN MAYUSCULAS
@@ -36,6 +37,7 @@ function App() {
         <Route path="/HistoryDoctor" element={<HistorialMedico />}/>
         <Route path="/Nosotros" element={<SobreNosotros />}/> 
         <Route path="/BasesDeDatos" element={<BasesDeDatos />}/> 
+        <Route path="/Medicamentos" element={<Medicines />}/> 
         
       </Routes>
     </BrowserRouter>

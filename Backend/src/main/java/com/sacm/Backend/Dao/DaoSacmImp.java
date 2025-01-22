@@ -160,8 +160,8 @@ public boolean validarInicioSesion(String usuario, String password) {
 
     @Override
     public List<Medicamentos> showDataListMedicine() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'showDataListMedicine'");
+        query= "FROM Medicamentos";
+        return entityManager.createQuery(query, Medicamentos.class).getResultList();
     }
 
 

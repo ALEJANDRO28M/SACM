@@ -9,7 +9,7 @@ function Medicines() {
     const fetchDataMedicines = async () => {
 
         try{
-        const peticion = await fetch("http://localhost:8080/Api/DataDoctor",{
+        const peticion = await fetch("http://localhost:8080/Api/Medicines",{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
@@ -25,8 +25,6 @@ function Medicines() {
 
         } catch (error) {
             setError(error.message); //MANEJA LOS ERRORES SI OCURRE ALGO
-        } finally{
-            setLoading(false);//Marca que la carga ha terminado
         }
     };
 
@@ -53,14 +51,20 @@ function Medicines() {
                  </tr>
                 </thead>
                 <tbody>
-                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    {listMedicines.map((listaSing) => (
+                   <tr key={listaSing.id}>
+                    <td>{listaSing.id}</td>
+                    <td>{listaSing.nombre}</td>
+                    <td>{listaSing.descripcion}</td>
+                    <td>{listaSing.dosis}</td>
+                    <td>{listaSing.frecuencia}</td>
                    </tr>
+))}
                 </tbody>
             </table>
         </div>
-    )
+    );
     
 }
+
+export default Medicines;

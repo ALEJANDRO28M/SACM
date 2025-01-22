@@ -8,6 +8,7 @@ border-color: #007bff;
 position: initial;
 margin: 0%;
 padding: 0%;
+box-sizing: border-box;
 
 }
 
@@ -18,8 +19,9 @@ body {
     padding: 0;
 }
 
-.tabla-container {
-    margin: 20px auto;
+.tabla-container-dataUser {
+    
+    margin-top: 2cm;
     padding: 20px;
     border-radius: 22px;
     border-color: #ff1f1f;
@@ -36,7 +38,8 @@ h2 {
 }
 
 .tabla_Users {
-    width: 100%;
+    
+    font-size: 12px;
     border-collapse: collapse;
 }
 

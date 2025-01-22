@@ -19,7 +19,7 @@ function BasesDeDatos() {
           <a href="http://localhost:5173/HistoryDoctor">Bd_HistorialMedico</a>
         </div>
         <div className="medicines">
-          <a href="http://localhost:5173/HistoryDoctor">Bd_Medicinas</a>
+          <a href="http://localhost:5173/Medicines">Bd_Medicinas</a>
         </div>
         <div className="datosUser">
           <a href="http://localhost:5173/HistoryDoctor">Bd_datosUser</a>

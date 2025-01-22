@@ -14,7 +14,7 @@ function DatosUser() {
 
     const fetchData = async () => {
         try {
-            const peticion = await fetch('http://localhost:8080/api/Data', {
+            const peticion = await fetch('http://localhost:8080/Api/Data', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ function DatosUser() {
            </div>
          </div>
 
-         <div className="tabla-container">
+         <div className="tabla-container-dataUser">
             <h2>Listado de usuarios</h2>
         <table className="tabla_Users">
             <thead>
