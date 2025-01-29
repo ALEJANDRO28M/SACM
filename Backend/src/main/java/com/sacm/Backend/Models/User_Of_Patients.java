@@ -3,6 +3,8 @@ package com.sacm.Backend.Models;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -68,6 +70,7 @@ public class User_Of_Patients {
 
     @OneToMany(cascade=CascadeType.ALL)//ESPECIFICA QUE CADA CAMBIO QUE SE HAGA, TAMBIEN LO HARA EN CITAS
     @JoinColumn(name="Paciente_id")
+    @JsonBackReference // Esto evita la serialización infinita
     private List<Citas> citas;
     /*
      * La anotación @JoinColumn se utiliza para especificar el nombre de la columna de
@@ -114,4 +117,7 @@ public class User_Of_Patients {
     // @OneToMany @Getter @Setter @Column(name="id")
     // private List<HistorialMedico> historialMedico;
 
+
+
+    
 }

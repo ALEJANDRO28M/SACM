@@ -2,6 +2,8 @@ package com.sacm.Backend.Controllers.Controllers;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +29,8 @@ import com.sacm.Backend.Models.User_Of_Patients;
 @RequestMapping("/Api")
 public class PeticionesBdController {
     
+
+    Logger logger = LoggerFactory.getLogger(PeticionesBdController.class);
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -96,11 +100,11 @@ public class PeticionesBdController {
 
       daoSacm.registrarUserLogin(modelUserLogin);
     
-    }
+    }   
 
         /**
      * Elimina un paciente basado en el ID proporcionado.
-     * 
+     *  
      * @param id El ID del paciente a eliminar.
      */
     @DeleteMapping("/DeleteUserLogin/{id}")
@@ -124,6 +128,15 @@ public List<ModelUserLogin> dataLoginUser(){
     return daoSacm.mostrarListaUsuariosLogin(); 
 }
 
+
+
+
+
+
+
+
+
+    
 }
 
     

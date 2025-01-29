@@ -1,7 +1,10 @@
 package com.sacm.Backend.Dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -27,6 +30,10 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class DaoSacmImp implements DaoSacm {
 
+
+
+    private static final Logger logger = LoggerFactory.getLogger(DaoSacmImp.class);
+
     ///////////////// INYECCIÓN DE DEPENDENCIAS /////////////////////
 
     // EntityManager se utiliza para manejar las operaciones de persistencia en la base de datos.
@@ -46,6 +53,8 @@ public class DaoSacmImp implements DaoSacm {
      * @return Una lista de objetos {@link User_Of_Patients} que representa
      * todos los pacientes.
      */
+
+     //TRAER TODOS LOS PACIENTES DE LA BASE DE DATOS
     @SuppressWarnings("unchecked") // Suprime advertencias de tipo no verificado en el uso de generics.
     @Override
     public List<User_Of_Patients> MostrarUsers() {
@@ -53,6 +62,14 @@ public class DaoSacmImp implements DaoSacm {
         query = "FROM User_Of_Patients";
         // Ejecuta la consulta y devuelve el resultado como una lista de objetos User_Of_Patients.
         return entityManager.createQuery(query).getResultList();
+    }
+
+    //TRAER UN UNICO PACIENTE DE LA BASE DE DATOS 
+    @Override
+    public User_Of_Patients pacienteId(Integer id){
+        query = "FROM User_Of_Patients u WHERE u.id = :id";
+        User_Of_Patients paciente = (User_Of_Patients) entityManager.createQuery(query).setParameter("id",id).getSingleResult();
+        return paciente;
     }
 
     /**
@@ -139,7 +156,11 @@ public boolean validarInicioSesion(String usuario, String password) {
     @Override
     public List<Citas> viewCitas() {
          query = "FROM Citas";
-         return entityManager.createQuery(query,Citas.class).getResultList();
+         List<Citas> listCitas = new ArrayList();
+         listCitas = entityManager.createQuery(query,Citas.class).getResultList();
+         
+         return listCitas;
+         
      
     }
 

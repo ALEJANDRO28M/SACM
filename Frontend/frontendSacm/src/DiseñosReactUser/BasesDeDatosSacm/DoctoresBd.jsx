@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import '../../img/imagenDeFondo.jpg';
-
+import '../BasesDeDatosSacm/tablesacm.css'
 //INCORPORAR CORS POR TEMAS DE SEGURIDAD
 function DoctoresBd() {
   const [ListDoctor, setListDoctor] = useState([]); //MANEJAMOS EL ESTADO CON UN ARRAY VACIO
@@ -38,33 +38,35 @@ function DoctoresBd() {
 
   return (
   
-  <div className="Tabla-Container">
-    <h2>GESTION DE USUARIOS MEDICOS</h2>
-
-    <table className="tabla_Users">
+  <div className="sheet">
+     <a href="http://localhost:5173/BasesDeDatos" className="btnIni">INICIO</a>
+   <div className="tabla-container-cdhm">
+    <h2 id="title-pacientes">Bd-Doctores</h2>
+    <table className="tabla_Users-cdhm">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>NOMBRE</th>
-                <th>APELLIDO</th>
-                <th>ESPECIALIDAD</th>
-                <th>TELEFONO</th>
-                <th>EMAIL</th>
+            <tr className="tr_cdhm">
+                <th className="th_cdhm">ID</th>
+                <th className="th_cdhm">NOMBRE</th>
+                <th className="th_cdhm">APELLIDO</th>
+                <th className="th_cdhm">ESPECIALIDAD</th>
+                <th className="th_cdhm">TELEFONO</th>
+                <th className="th_cdhm">EMAIL</th>
             </tr>
         </thead>
         <tbody>
             {ListDoctor.map((medico) => (
-            <tr key={medico.id}>
-                <td>{medico.id}</td>
-                <td>{medico.nombre}</td>
-                <td>{medico.apellido}</td>
-                <td>{medico.especialidad}</td>
-                <td>{medico.telefono}</td>
-                <td>{medico.email}</td>
+            <tr key={medico.id} className="tr_cdhm-body">
+                <td className="td_cdhm">{medico.id}</td>
+                <td className="td_cdhm">{medico.nombre}</td>
+                <td className="td_cdhm">{medico.apellido}</td>
+                <td className="td_cdhm">{medico.especialidad}</td>
+                <td className="td_cdhm">{medico.telefono}</td>
+                <td className="td_cdhm">{medico.email}</td>
             </tr>
 ))}
         </tbody>
     </table>
+    </div>
   </div>
   );
 }

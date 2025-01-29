@@ -1,12 +1,15 @@
 package com.sacm.Backend.Models;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -34,6 +37,8 @@ public class Citas {
     @JoinColumn(name="Historial_id")
     private HistorialMedico historialMedico;
 
+
+
     //MANY TO ONE- MUCHAS CITAS PUEDE TENER UN DOCTOR 
     //@ManyToOne @Getter @Setter @Column(name="Doctor_id")
     //private Doctores doctor;
@@ -43,21 +48,24 @@ public class Citas {
     //@OneToMany @Getter @Setter @Column(name="Prescripciones_id")
     //private List<Prescripciones> prescripciones;
 
-    //@OneToOne @Getter @Setter @Column(name="paciente_id")
-    //private User_Of_Patients user_Of_Patients;
+    @OneToOne 
+    @JoinColumn(name = "Paciente_id")   
+    @JsonManagedReference // Esto maneja la relación en un solo lado
+    private User_Of_Patients user_Of_Patients;
 
     public Citas() {
     }
 
-    public Citas(int id, String fecha, String motivo/* , Doctores doctor*/ /*List<Prescripciones> prescripciones,
-        User_Of_Patients user_Of_Patients*/) {
+    public Citas(int id, String fecha, String motivo, HistorialMedico historialMedico,
+            User_Of_Patients user_Of_Patients) {
         this.id = id;
         this.fecha = fecha;
         this.motivo = motivo;
-       // this.doctor = doctor;
-        //this.prescripciones = prescripciones;
-        //this.user_Of_Patients = user_Of_Patients;
+        this.historialMedico = historialMedico;
+        this.user_Of_Patients = user_Of_Patients;
     }
+
+
 
 }
 
