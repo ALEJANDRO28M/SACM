@@ -20,6 +20,11 @@ public class DataPeticionSingle {
     @Autowired
     DaoSacm daoSacm;
 
+    private Integer enviarId;
+
+
+    private  User_Of_Patients paciente;
+
     Logger logger = LoggerFactory.getLogger(DataPeticionSingle.class);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,9 +38,14 @@ public class DataPeticionSingle {
 
     //MOSTRAR UNICO PACIENTE POR CITA
     @GetMapping("/citPatientId/{id}")
-    public User_Of_Patients  verPaciente_Cita(@PathVariable Integer id) {
- 
-        return daoSacm.pacienteId(id);
-    }
+    public void verPaciente_Cita(@PathVariable Integer id) {
+        enviarId = id;
+    };
 
+    @GetMapping("/MostrarPaciente")
+    public User_Of_Patients ver(){
+      logger.info("EL ID RECIBIDO EN LA SOLICITUD ES: " + enviarId);
+      User_Of_Patients trPaciente = daoSacm.pacienteId(enviarId);
+       return trPaciente;
+    };
 }

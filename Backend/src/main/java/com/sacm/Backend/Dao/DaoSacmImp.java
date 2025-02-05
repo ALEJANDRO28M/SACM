@@ -72,6 +72,7 @@ public class DaoSacmImp implements DaoSacm {
         return paciente;
     }
 
+
     /**
      * Elimina un paciente basado en su ID.
      *

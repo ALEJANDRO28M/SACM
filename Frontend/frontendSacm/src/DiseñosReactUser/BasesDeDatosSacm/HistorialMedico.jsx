@@ -19,10 +19,10 @@ function HistorialMedico() {
           },
         }
       );
-
-      if (!peticion.ok) {
-        throw new Error("Error en la solicitud");
-      }
+     if(!peticion.ok){
+      throw new error("Error en la solicitud");
+     }
+      
       const history = await peticion.json();
       setListHistorial(history);
 

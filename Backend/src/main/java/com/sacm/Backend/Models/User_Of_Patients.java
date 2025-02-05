@@ -30,11 +30,11 @@ public class User_Of_Patients {
     private int id;
 
     // Nombre del paciente. Mapeado a la columna 'nombre' en la base de datos.
-    @Getter @Setter @Column(name="nombre")
+    @Getter @Setter @Column(name="nombres")
     private String nombres;
 
     // Apellido del paciente. Mapeado a la columna 'apellido' en la base de datos.
-    @Getter @Setter @Column(name="apellido")
+    @Getter @Setter @Column(name="apellidos")
     private String apellidos;
 
     // Correo electrónico del paciente. Mapeado a la columna 'email' en la base de datos.
@@ -50,8 +50,8 @@ public class User_Of_Patients {
     private String telefono;
 
     // Documento de identidad del paciente. Mapeado a la columna 'documento_de_identidad' en la base de datos.
-    @Getter @Setter @Column(name="documento_de_identidad")
-    private String documento_De_Identidad;
+    @Getter @Setter @Column(name="cc")
+    private String cc;
 
     // Fecha de nacimiento del paciente. Mapeado a la columna 'fecha_de_nacimiento' en la base de datos.
     @Getter @Setter @Column(name="fecha_de_nacimiento")
@@ -90,20 +90,20 @@ public class User_Of_Patients {
      * @param nombres Nombre del paciente.
      * @param apellidos Apellido del paciente.
      * @param fecha_De_Nacimiento Fecha de nacimiento del paciente.
-     * @param documento_De_Identidad Documento de identidad del paciente.
+     * @param cc Documento de identidad del paciente.
      * @param telefono Número de teléfono del paciente. 
      * @param email Correo electrónico del paciente.
      * @param genero Género del paciente.
      * @param edad Edad del paciente.
      */
     public User_Of_Patients(int id, String nombres, String apellidos, LocalDate fecha_De_Nacimiento,
-            String documento_De_Identidad, String telefono, String email, String genero,
+            String cc, String telefono, String email, String genero,
             String edad) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.fecha_De_Nacimiento = fecha_De_Nacimiento;
-        this.documento_De_Identidad = documento_De_Identidad;
+        this.cc = cc;
         this.telefono = telefono;
         this.email = email;
         this.genero = genero;

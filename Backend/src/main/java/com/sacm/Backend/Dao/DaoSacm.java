@@ -72,5 +72,8 @@ public interface DaoSacm {
     public List<Medicamentos> showDataListMedicine();
 
     public User_Of_Patients pacienteId(Integer id);
+   
+
+
 
 }

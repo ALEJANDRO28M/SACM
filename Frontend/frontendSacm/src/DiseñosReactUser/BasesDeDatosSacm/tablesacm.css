@@ -8,7 +8,6 @@
     padding: 100px; /* Espaciado interno */
     padding-left:  200px; /* Espaciado interno */
     padding-right: 200px; /* Espaciado interno */
-    background-color: white; /* Fondo blanco */
     border-radius: 15px; /* Bordes redondeados */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto */
     max-width: 800px; /* Limitar el ancho */
@@ -62,6 +61,7 @@
 .tabla_Users_cdhm .tr_cdhm-body {
     border-style: solid ;
     border-color:cadetblue;
+    background-color: azure;
 }
 
 .tabla_Users_cdhm td, 
@@ -87,4 +87,15 @@ transition: background-color 0.5s;
     transition: all 0.3 ease;
 }
 
+.btn-volver{
+    position: relative;
+    margin-top: 1cm;
+    
+}
+.btn-volver:hover{
+    position: relative;
+    margin-top: 1cm;
+    background-color: white;
+    
+}
 
