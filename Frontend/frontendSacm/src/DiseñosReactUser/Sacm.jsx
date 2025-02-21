@@ -25,7 +25,7 @@ function Prueba() {
           </nav>
         </div>
       </header>
-      <div className="capa"></div>
+
       <input type="checkbox" id="btn-menu" />
       <div className="container-menu">
         <div className="cont-menu">
@@ -41,23 +41,21 @@ function Prueba() {
         </div>
       </div>
       <div className="container-body">
-        <h1>LA SALUD DE NUESTROS PACIENTES ES PRIMORDIAL</h1>
-        <br />
-        <br />
-        <h3>
+        <h1 className="textoUno">
+          LA SALUD DE NUESTROS PACIENTES ES PRIMORDIAL
+        </h1>
+        <h3 className="textoDos">
           La salud es el pilar de la vida, y en SACM estamos aquí para
           protegerla. Nos comprometemos a brindar soluciones médicas
           innovadoras, servicios confiables y un acompañamiento humano para
           garantizar tu bienestar en cada etapa de la vida. Porque cuidar de ti
           no es solo nuestra misión, es nuestra pasión.
         </h3>
+        <div>
+          
+          <img src={image1} alt="Salud 1" className="img-grid" />
+        </div>
       </div>
-      <section className="container-img">
-        <img src={image1} alt="Salud 1" />
-        <img src={image2} alt="Salud 2" />
-        <img src={image3} alt="Salud 3" />
-        <img src={image4} alt="Salud 4" />
-      </section>
     </div>
   );
 }

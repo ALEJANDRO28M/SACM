@@ -1,0 +1,87 @@
+.tabla-container-doctor {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centra r verticalmente */
+    margin: 0 auto;
+    padding: 100px; /* Espaciado interno */
+    padding-left:  200px; /* Espaciado interno */
+    padding-right: 200px; /* Espaciado interno */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto */
+    max-width: 800px; /* Limitar el ancho */
+    min-height: 300px; /* Altura mínima del contenedor */
+}
+.btnIni {
+    color: aqua;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 1cm;
+    left: 1.5cm;
+    transition: all 0.3 ease; 
+    border-bottom: 2px solid transparent; 
+    
+    
+}
+.btnIni:hover{
+    color: aqua;
+    border-bottom: 2px solid aqua;
+    border-radius: 6px;
+    padding-bottom: 5px;
+}
+#title-pacientes {
+    display: flex;
+    text-align: center;
+    position: absolute;
+    top: 16%;
+    margin-bottom: 20px; /* Espaciado entre el título y la tabla */
+    font-size: 30px;
+    font-weight: bold;
+    color: #00ffff; /* Color del texto */
+}
+
+.tabla_Users_cdhm_doctor {
+    border-collapse: collapse;
+    width: 100%; /* Ajustar el ancho de la tabla al contenedor */
+}
+
+.tabla_Users_cdhm_doctor .th_cdhm_doctor {
+    background-color: blue;
+    color: white;
+    padding: 18px;
+
+}
+.tabla_Users_cdhm_doctor .tr_cdhm_doctor {
+    border-style: solid ;
+    border-color:cadetblue;
+}
+.tabla_Users_cdhm_doctor .tr_cdhm-body_doctor {
+    border-style: solid ;
+    border-color:cadetblue;
+    background-color: azure;
+}
+
+.tabla_Users_cdhm_doctor td, 
+.tabla_Users_cdhm_doctor th {
+    padding: 12px;
+    padding-right: 95px;
+    text-align: left;
+}
+
+.tabla_Users_cdhm_doctor .tr_cdhm-body_doctor:hover {
+    
+background-color: greenyellow;    
+cursor: pointer;
+transition: background-color 0.5s;
+}
+.tabla_Users_cdhm_doctor .tr_cdhm-body_doctor .btn-ver{
+    color: black;
+
+}
+.tabla_Users_cdhm_doctor .btn-ver:hover{
+    background-color: blue;
+    border-color: blue;
+    transition: all 0.3 ease;
+}
