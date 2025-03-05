@@ -141,16 +141,18 @@ body {
 
 /*INICIO DEL CUERPO-BODY*/
 .container-body{
-  display: grid;
+  display: flexbox;
   width: 95%;
   margin: auto;
   max-width: 1500px;
   gap: 40px;
   border: 10px solid black;
   grid-template-columns: 1fr 1fr;
+ 
 }
 .container-body .textoUno{
 grid-column: 1/-1;
+font-size: 3vw;
 }
 
 .container-body .textoUno{
