@@ -8,54 +8,28 @@ import image4 from "../img/salud4.jpg";
 
 function Prueba() {
   return (
-    <div className="prueba-container">
-      <header className="header">
-        <div className="container">
-          <div className="btn-menu">
-            <label htmlFor="btn-menu">☰</label>
-          </div>
-          <div className="logo">
-            <h1>SACM</h1>
-          </div>
-          <nav className="menu">
-            <a href="#">Inicio</a>
-            <a href="http://localhost:5173/Nosotros">Nosotros</a>
-            <a href="#">Blog</a>
-            <a href="#">Contacto</a>
-          </nav>
-        </div>
-      </header>
-
-      <input type="checkbox" id="btn-menu" />
-      <div className="container-menu">
-        <div className="cont-menu">
-          <nav>
-            <a href="http://localhost:5173/HistoryDoctor">Historial médico</a>
-            <a href="http://localhost:5173/BasesDeDatos">Bases de Datos</a>
-            <a href="http://localhost:5173/Sacm">Reportes</a>
-            <a href="http://localhost:5173/Sacm">Citas Pendientes</a>
-            <a href="http://localhost:5173/Sacm">Perfil</a>
-            <a href="#">Cerrar Sesión</a>
-          </nav>
-          <label htmlFor="btn-menu">✖️</label>
-        </div>
-      </div>
-      <div className="container-body">
-        <h1 className="textoUno">
-          LA SALUD DE NUESTROS PACIENTES ES PRIMORDIAL
-        </h1>
-        <h3 className="textoDos">
-          La salud es el pilar de la vida, y en SACM estamos aquí para
-          protegerla. Nos comprometemos a brindar soluciones médicas
-          innovadoras, servicios confiables y un acompañamiento humano para
-          garantizar tu bienestar en cada etapa de la vida. Porque cuidar de ti
-          no es solo nuestra misión, es nuestra pasión.
-        </h3>
+    <div className="bodySacm-ultimate">
+      <header className="header-container-ultimate">
         <div>
-          
-          <img src={image1} alt="Salud 1" className="img-grid" />
+          <h2>LOGO</h2>
         </div>
-      </div>
+        <nav className="menu-ultimate">
+          <ul >
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Nosotros</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contacto</a></li>
+            </ul>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <div>Contenido</div>
+      </main>
+      <footer className="footer-ultimate">
+      <h3 className="textfooter">© 2025 Alejandro Forero - Todos los derechos reservados</h3>
+      </footer>
     </div>
   );
 }
