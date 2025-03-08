@@ -33,7 +33,6 @@ function App() {
         <Route path="/datos" element={<DatosUser />} />
         <Route path="/datoscitPacient" element={<CitasPacientes />} />
         {/* Asegúrate de pasar el componente correctamente como JSX */}
-        <Route path="/Sacm" element={<Sacm />}/>
         <Route path="/DoctoresBd" element={<DoctoresBd />}/>
         <Route path="/HistoryDoctor" element={<HistorialMedico />}/>
         <Route path="/Nosotros" element={<SobreNosotros />}/> 
