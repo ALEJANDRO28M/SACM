@@ -28,6 +28,32 @@ body{
     display: flex;
     justify-content: space-evenly;
 }
-.bds {
-border: 22px solid green:
+.bd-container-uno .opcionesUno{
+width: 20%;
+align-items: center;
+background-color: cadetblue;
+height: 7vh;
+background-size: cover;
+align-content: center;
 }
+.bd-container-uno .opcionesUno {
+    border: 5px solid aqua;
+    border-radius: 100px;
+    color: white;
+    text-align: center;
+}
+
+.bd-containder-dos .opcionesDos{
+    width: 20%;
+    align-items: center;
+    background-color: cadetblue;
+    height: 7vh;
+    background-size: cover;
+    align-content: center;
+    }
+    .bd-containder-dos .opcionesDos {
+        border: 5px solid aqua;
+        border-radius: 100px;
+        color: white;
+        text-align: center;
+    }
