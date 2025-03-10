@@ -6,7 +6,6 @@ import Registro from './DiseñosReactUser/Registro';
 import InicioSesion from './DiseñosReactUser/InicioDeSesion';
 import DatosUser from './DiseñosReactUser/DatosUser';
 import CitasPacientes from './DiseñosReactUser/BasesDeDatosSacm/CitasPacientes';
-import Sacm from './DiseñosReactUser/Sacm';
 import DoctoresBd from './DiseñosReactUser/BasesDeDatosSacm/DoctoresBd';
 import HistorialMedico from './DiseñosReactUser/BasesDeDatosSacm/HistorialMedico';
 import SobreNosotros from './DiseñosReactUser/BasesDeDatosSacm/SobreNosotros';
@@ -29,7 +28,6 @@ function App() {
 
         {/* Ruta para el registro de usuario */}
         <Route path="/registro" element={<Registro />} />
-
         <Route path="/datos" element={<DatosUser />} />
         <Route path="/datoscitPacient" element={<CitasPacientes />} />
         {/* Asegúrate de pasar el componente correctamente como JSX */}

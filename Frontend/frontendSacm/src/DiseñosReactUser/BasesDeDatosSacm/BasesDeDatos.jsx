@@ -8,20 +8,19 @@ function BasesDeDatos() {
     <body>
         <a href="http://localhost:5173/Sacm" id="inicio_Bds">INICIO</a>
       <section className="flexBd_Container">
-
-        <div className="citas_pacientes">
+        <div class="bds">
            <a href="http://localhost:5173/datoscitPacient">Bd_CitasPacientes</a>
         </div>
-        <div className="doctores">
+        <div class="bds">
           <a href="http://localhost:5173/DoctoresBd">Bd_Doctores</a>
         </div>
-        <div className="historialmedico">
+        <div className="bds">
           <a href="http://localhost:5173/HistoryDoctor">Bd_HistorialMedico</a>
         </div>
-        <div className="medicines">
+        <div className="bds">
           <a href="http://localhost:5173/Medicamentos">Bd_Medicinas</a>
         </div>
-        <div className="datosUser">
+        <div className="bds">
           <a href="http://localhost:5173/datos">Bd_datosUser</a>
         </div>
       </section>
