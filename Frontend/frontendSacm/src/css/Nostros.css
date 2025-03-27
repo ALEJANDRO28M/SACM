@@ -7,7 +7,8 @@
     color: aqua;
     position: absolute;
     top: 10px; /* Mueve el elemento 10px desde la parte superior */
-    text-align: center;
+    left: 50%;
+    transform: translateX(-27%);
     text-shadow: 3px 2px 4px blue;
     
     
@@ -41,6 +42,7 @@
 
 
 .in-flex{
+    
     flex: 1;
     font-family: 'Times New Roman', Times, serif;
     min-width: 400px;

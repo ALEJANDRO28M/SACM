@@ -1,4 +1,5 @@
 import { useState,useEffect } from "react";
+import '../../css/Medicamentos.Reset.css';
 
 function Medicines() {
 
@@ -62,6 +63,7 @@ function Medicines() {
 ))}
                 </tbody>
             </table>
+
         </div>
     );
     

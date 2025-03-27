@@ -52,7 +52,7 @@ function Registro() {
       if (peticion.ok) {
         alert("¡Registrado con exito!"); // Mensaje de bienvenida si la solicitud fue exitosa
         alert("¡Ya puedes iniciar Sesion!");
-        redireccionar("/sesion")
+        redireccionar("/")
 
 
       } else {

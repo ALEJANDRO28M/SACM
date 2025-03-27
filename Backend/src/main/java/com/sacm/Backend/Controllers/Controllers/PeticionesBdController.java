@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +24,9 @@ import com.sacm.Backend.Models.HistorialMedico;
 import com.sacm.Backend.Models.Medicamentos;
 import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -129,7 +133,11 @@ public List<ModelUserLogin> dataLoginUser(){
 }
 
 
-
+    @PostMapping("/cerrarSesion")
+    public ResponseEntity<String> cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().invalidate();
+        return ResponseEntity.ok("Sesión cerrada correctamente");
+    }
 
 
 

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import '../css/estiloTablaDatos.css';
 import deleteDataUser from './deleteDataUser';
 import '../css/index.css'
+import "../css/mediaQuerySacm.css"
+
 
 function DatosUser() {
     const [usuarios, setUsuarios] = useState([]); // Estado inicial como un arreglo vacío
@@ -62,38 +64,32 @@ function DatosUser() {
     // Renderizar la tabla cuando los datos estén listos
     return (
        <body>
-         <header className="header">
-           <div className="container">
-             <div className="btn-menu">
-               <label htmlFor="btn-menu">☰</label>
-             </div>
-             <div className="logo">
-               <h1>SACM</h1>
-             </div>
-             <nav className="menu">
-               <a href="#">Inicio</a>
-               <a href="#">Nosotros</a>
-               <a href="#">Blog</a>
-               <a href="#">Contacto</a>
-             </nav>
-           </div>
-         </header>
-         <div className="capa"></div>
-         <input type="checkbox" id="btn-menu" />
-         <div className="container-menu">
-           <div className="cont-menu">
-             <nav>
-               <a href="#">Portafolio</a>
-               <a href="#">Bases de Datos</a>
-               <a href="#">Reportes</a>
-               <a href="#">Citas Pendientes</a>
-               <a href="#">Perfil</a>
-               <a href="#">Cerrar Sesion</a>
-             </nav>
-             <label htmlFor="btn-menu">✖️</label>
-           </div>
-         </div>
-
+  <header class="header-container-ultimate">
+    <div class="btn-menu">
+      <label for="btn-menu" class="icon-menu">SACM</label>    </div>
+    <nav class="menu-ultimate">
+      <ul >
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </ul>
+    </nav>
+  </header>
+  <input type="checkbox" id="btn-menu" />
+  <div class="container-menu">
+    <div class="cont-menu">
+      <nav>
+        <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html">Bases de Datos</a>
+        <a href="http://localhost:5173/Sacm">Reportes</a>
+        <a href="http://localhost:5173/Sacm">Perfil</a>
+        <a href="#">Cerrar Sesión</a>
+      </nav>
+      <label for="btn-menu">✖️</label>
+    </div>
+  </div>
          <div className="tabla-container-dataUser">
             <h2>Listado de usuarios</h2>
         <table className="tabla_Users">
@@ -119,7 +115,7 @@ function DatosUser() {
             </tbody>
         </table>
         <br/>
-        <button><a href="http://localhost:5173/Sacm">Volver</a></button>
+        <button><a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html">Volver</a></button>
         </div>
        </body>
     );

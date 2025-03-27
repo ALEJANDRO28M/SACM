@@ -80,7 +80,7 @@ function CitasPacientes() {
 
   return (
     <div className="sheet">
-      <a href="http://localhost:5173/BasesDeDatos" className="btnIni">INICIO</a>
+      <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html" className="btnIni">INICIO</a>
       <div className="tabla-container-cdhm">
         <table className="tabla_Users_cdhm">
           <thead>
@@ -128,7 +128,7 @@ function CitasPacientes() {
             ))}
           </tbody>
         </table>
-        <button className="btn-volver"><a href="http://localhost:5173/BasesDeDatos">volver</a></button>
+        <button className="btn-volver"><a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html">volver</a></button>
       </div>
     </div>
   );

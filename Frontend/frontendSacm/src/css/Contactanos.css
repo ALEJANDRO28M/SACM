@@ -1,0 +1,74 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  .containerMain{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+  .containerUno{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .containerUno h1{
+    text-align: center;
+  }
+
+  /* Contenedor principal */
+  .contenedorDos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Para que sea responsivo */
+    gap: 30px;
+    padding: 20px;
+  }
+  
+  /* Cada caja blanca */
+  .caja {
+    position: relative;
+    background-color: white;
+    padding: 60px 30px 30px; /* Más espacio arriba para el ícono */
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos del ícono verde */
+  .icono {
+    position: absolute;
+    top: -30px; /* Para que sobresalga */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2ecc71; /* Verde */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos de la imagen del ícono */
+  .icono img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Diseño responsivo */
+  @media (max-width: 768px) {
+    .contenedor {
+      flex-direction: column;
+    }
+  }
+  

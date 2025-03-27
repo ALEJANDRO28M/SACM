@@ -40,7 +40,7 @@ function HistorialMedico() {
   return (
 
     <div className="Tabla-Container">
-        <a href="http://localhost:5173/BasesDeDatos" className="volver_Menu_Principal">INICIO</a>
+        <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html" className="volver_Menu_Principal">INICIO</a>
         <h2>HISTORIAL MEDICO</h2>
         <br />
 

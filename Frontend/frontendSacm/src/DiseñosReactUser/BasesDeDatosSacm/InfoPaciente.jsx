@@ -29,7 +29,7 @@ function InfoPaciente() {
 
   return (
     <div className="sheet">
-      <a href="http://localhost:5173/BasesDeDatos" className="btnIni">INICIO</a>
+      <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html" className="btnIni">INICIO</a>
       
       <div className="tabla-container-cdhm">
         <h2 id="title-pacientes">Agenda De Citas Medicas</h2>
@@ -74,7 +74,7 @@ function InfoPaciente() {
             </tbody>
           </table>
         )}
-           <button className="btn-volver"><a href="http://localhost:5173/datoscitPacient">volver</a></button>
+           <button className="btn-volver"><a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html">volver</a></button>
       </div>
     </div>
   );

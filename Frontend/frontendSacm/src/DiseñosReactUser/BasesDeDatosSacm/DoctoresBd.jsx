@@ -44,7 +44,7 @@ function DoctoresBd() {
 
   return (
     <div className="sheet">
-      <a href="http://localhost:5173/BasesDeDatos" className="btnIni">INICIO</a>
+      <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html" className="btnIni">INICIO</a>
       <div className="tabla-container-doctor">
         <h2 id="title-pacientes">Bd-Doctores</h2>
         <table className="tabla_Users_cdhm_doctor">
