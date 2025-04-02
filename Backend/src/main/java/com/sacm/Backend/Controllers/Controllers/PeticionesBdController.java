@@ -111,6 +111,7 @@ public class PeticionesBdController {
      *  
      * @param id El ID del paciente a eliminar.
      */
+    
     @DeleteMapping("/DeleteUserLogin/{id}")
     public void deleteUserLogin(@PathVariable int id) {
         // Llama al método del DAO para eliminar al paciente con el ID proporcionado

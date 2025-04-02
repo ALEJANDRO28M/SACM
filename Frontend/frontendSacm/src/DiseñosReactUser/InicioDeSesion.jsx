@@ -38,7 +38,7 @@ export default function InicioSesion() {
         
         if (resultado === true) {
           alert("¡Bienvenido!");
-          window.location.href='http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/index.html';
+          window.location.href='/index.html';
         } else {
           alert('Usuario o clave incorrectos');
         }
