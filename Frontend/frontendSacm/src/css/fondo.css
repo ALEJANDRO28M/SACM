@@ -4,32 +4,29 @@
 body {
     background: url('img/fondoPremium.jpg');
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vw;
+    padding: 0;
     margin: 0;
 }
 
-.ContenedorForm {
-    position: relative;
+.flexContainerInicio{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
 }
 
-.TituloSesion {
-    font-family: 'Roboto', sans-serif;
-    font-size: 28px;
-    color: #fff;
+.flexContainerInicio{
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
-
-.subtituloSesion {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    color: #fff;
+.recover{
+    color: black;
+    font-size: 14px;
+    text-decoration: underline;
 }
-
-/* Estilos adicionales para el contenedor del formulario */
-.ContenedorForm {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.recover:hover{
+    cursor: pointer;
+    color: cornflowerblue;
 }

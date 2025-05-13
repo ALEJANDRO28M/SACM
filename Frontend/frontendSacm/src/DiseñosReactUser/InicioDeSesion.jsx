@@ -62,7 +62,7 @@ export default function InicioSesion() {
   };
 
   return (
-    <div>
+    <div className='flexContainerInicio'>
       <h1 className="TituloSesion">BIENVENIDO A SACM</h1>
       <i className="subtituloSesion">Nunca es demasiado tarde para ser lo que podrías haber sido.</i>
       <div className="ContenedorForm">
@@ -77,7 +77,7 @@ export default function InicioSesion() {
             onChange={handleUsuarioChange}
           />
           <br /><br />
-          <a href="#" className="olvido-usuario">¿Olvidaste tu usuario?</a>
+          <a href="#" className="recover">¿Olvidaste tu usuario?</a>
           <br /><br />
           <label htmlFor="password" className="LabelsForms">PASSWORD</label>
           <input
@@ -89,7 +89,7 @@ export default function InicioSesion() {
             onChange={handlePasswordChange}
           />
           <br /><br />
-          <a href="#" className="olvido-usuario">¿Olvidaste tu contraseña?</a>
+          <a href="#" className="recover">¿Olvidaste tu contraseña?</a>
           <br /><br />
           <input
             type="checkbox"
