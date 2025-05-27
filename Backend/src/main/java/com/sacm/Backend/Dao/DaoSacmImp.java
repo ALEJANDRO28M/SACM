@@ -2,9 +2,6 @@ package com.sacm.Backend.Dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
@@ -30,9 +27,6 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class DaoSacmImp implements DaoSacm {
 
-
-
-    private static final Logger logger = LoggerFactory.getLogger(DaoSacmImp.class);
 
     ///////////////// INYECCIÓN DE DEPENDENCIAS /////////////////////
 
@@ -140,12 +134,13 @@ public boolean validarInicioSesion(String usuario, String password) {
          * reemplace correctamente.
          */
 
-        query = "INSERT INTO `userlogin` ( `usuario`, `password`) VALUES (:usuario , :password)";
+        query = "INSERT INTO `userlogin` ( `usuario`, `password`, `correo` ) VALUES (:usuario , :password , :correo)";
 
         // Crear la consulta y establecer los parámetros
         Query peticion = entityManager.createNativeQuery(query);
         peticion.setParameter("usuario", modelUserLogin.getUsuario());
         peticion.setParameter("password", modelUserLogin.getPassword());
+        peticion.setParameter("correo", modelUserLogin.getCorreo());
 
         // Ejecutar la consulta de inserción
         peticion.executeUpdate();

@@ -45,7 +45,7 @@ function Registro() {
         headers: {
           'Content-Type': 'application/json', // Especificar que el contenido es JSON
         },
-        body: JSON.stringify({ usuario,  password }), // Enviar los datos del formulario en formato JSON
+        body: JSON.stringify({ usuario,  password, correo }), // Enviar los datos del formulario en formato JSON
       });
     
       // Verificar la respuesta del servidor

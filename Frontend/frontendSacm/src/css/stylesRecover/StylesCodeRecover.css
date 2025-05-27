@@ -1,0 +1,36 @@
+.main{
+    height: 100vh;
+    width: 100vw;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.flexContainerRecover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flexContainerRecover{
+    padding: 1cm;
+    background-color: aliceblue;
+    border-style: solid;
+    border-radius: 44px;
+}
+.flexBody{
+    height: 100%;
+    width: 100%;
+}
+.imgRecoverContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#logoSacm {
+  position: relative;
+  width: 60px;
+  height: auto; /* o un valor fijo */
+  
+}

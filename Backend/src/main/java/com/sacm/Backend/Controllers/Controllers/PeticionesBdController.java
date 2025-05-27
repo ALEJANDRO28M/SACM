@@ -1,10 +1,14 @@
 package com.sacm.Backend.Controllers.Controllers;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sacm.Backend.Dao.DaoSacm;
@@ -22,6 +27,7 @@ import com.sacm.Backend.Models.Citas;
 import com.sacm.Backend.Models.Doctores;
 import com.sacm.Backend.Models.HistorialMedico;
 import com.sacm.Backend.Models.Medicamentos;
+import com.sacm.Backend.Models.ModelCode;
 import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
 
@@ -33,8 +39,6 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("/Api")
 public class PeticionesBdController {
     
-
-    Logger logger = LoggerFactory.getLogger(PeticionesBdController.class);
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -100,7 +104,7 @@ public class PeticionesBdController {
         
         System.out.println("datos:" + modelUserLogin);
         modelUserLogin.setPassword(passwordEncoder.encode(modelUserLogin.getPassword()));
-        System.out.println("enciptacion = " + modelUserLogin.getPassword());
+        System.out.println("encriptacion = " + modelUserLogin.getPassword());
 
       daoSacm.registrarUserLogin(modelUserLogin);
     
@@ -142,6 +146,45 @@ public List<ModelUserLogin> dataLoginUser(){
 
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////RECOVER OF PASSWORD///////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Autowired
+    RecoverController recoverController;
+
+    @Autowired
+    CodeInsert codeInsert;
+
+
+
+    @GetMapping("/GeneratedPasswordRecover")
+    public String generatedpassword() {
+       //GENERACION DE CODIGO DE RECUPERACION
+        String code = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
+        //SETEAMOS EL VALOR DEL MODEL
+        ModelCode modelCode = new ModelCode();
+        modelCode.setCode(code);
+        //CREAMOS EL VALOR EN LA BD CON EL METODO SAVE DE CRUDREPOSITORY
+        codeInsert.save(modelCode);
+        //RETORNAMOS EL VALOR
+        return code;
+    }
+    
+
+@GetMapping("/ValidCode")
+public ResponseEntity<?> coReci(@RequestParam String correo) {
+    Optional<ModelUserLogin> rUser = recoverController.findByCorreo(correo);
+    if (rUser.isPresent()) {
+        generatedpassword();
+        Map<String, String> response = new HashMap<>();
+        response.put("correo", rUser.get().getCorreo());
+        return ResponseEntity.ok(response); // Ahora sí es un JSON válido
+        
+    } else {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
+    }
+}
 
 
 

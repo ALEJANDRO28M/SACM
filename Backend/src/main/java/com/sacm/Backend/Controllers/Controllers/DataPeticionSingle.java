@@ -23,7 +23,6 @@ public class DataPeticionSingle {
     private Integer enviarId;
 
 
-    private  User_Of_Patients paciente;
 
     Logger logger = LoggerFactory.getLogger(DataPeticionSingle.class);
 

@@ -8,6 +8,9 @@ body {
     height: 100vh;
     margin: 0;
   }
+  .textDescript{
+    color: black;
+  }
   
   .forgot-container {
     background: white;
@@ -50,4 +53,6 @@ body {
     font-size: 14px;
     color: green;
   }
-  
+.textDescript{
+    text-decoration: none;
+  }

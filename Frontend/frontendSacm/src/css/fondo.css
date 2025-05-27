@@ -21,12 +21,12 @@ body {
     align-items: center;
     margin: auto;
 }
-.recover{
+.passworOlvidada{
     color: black;
     font-size: 14px;
     text-decoration: underline;
 }
-.recover:hover{
+.passworOlvidada:hover{
     cursor: pointer;
     color: cornflowerblue;
 }

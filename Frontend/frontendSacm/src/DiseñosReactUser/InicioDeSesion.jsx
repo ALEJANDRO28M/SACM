@@ -77,7 +77,7 @@ export default function InicioSesion() {
             onChange={handleUsuarioChange}
           />
           <br /><br />
-          <a href="#" className="recover">¿Olvidaste tu usuario?</a>
+          <a href="http://localhost:5173/RecoverPassword" className="recover">¿Olvidaste tu usuario?</a>
           <br /><br />
           <label htmlFor="password" className="LabelsForms">PASSWORD</label>
           <input
@@ -89,7 +89,7 @@ export default function InicioSesion() {
             onChange={handlePasswordChange}
           />
           <br /><br />
-          <a href="#" className="recover">¿Olvidaste tu contraseña?</a>
+          <a href="#" className="passworOlvidada">¿Olvidaste tu contraseña?</a>
           <br /><br />
           <input
             type="checkbox"
