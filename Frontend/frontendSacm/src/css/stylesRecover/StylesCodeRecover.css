@@ -1,36 +1,104 @@
-.main{
+/* Ocupa toda la pantalla */
+.main {
     height: 100vh;
     width: 100vw;
-}
-.main{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-.flexContainerRecover{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
-.flexContainerRecover{
-    padding: 1cm;
+
+/* Contenedor principal de recuperación */
+.flexContainerRecover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 40px;
     background-color: aliceblue;
-    border-style: solid;
-    border-radius: 44px;
-}
-.flexBody{
-    height: 100%;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
     width: 100%;
 }
-.imgRecoverContainer{
+
+/* Contenedor del logo y texto */
+.flexBody {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
 }
+
+/* Logo */
 #logoSacm {
-  position: relative;
-  width: 60px;
-  height: auto; /* o un valor fijo */
-  
+    position: relative;
+    width: 80px;
+    height: auto;
+    margin: auto;
+    left: 0;
 }
+
+/* Título */
+#tittleRecover {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #1a2b4c;
+}
+
+/* Texto descriptivo */
+#textRecover {
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+#formRecover {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Etiqueta */
+#formRecover label {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Campo de entrada */
+#formRecover input {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* Botón */
+#btn {
+    margin: auto;
+    padding: 10px;
+    background-color: #4a90e2;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btn:hover {
+    background-color: #357ab7;
+}
+.btnIcon{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    width: 100%;
+    
+}
+    

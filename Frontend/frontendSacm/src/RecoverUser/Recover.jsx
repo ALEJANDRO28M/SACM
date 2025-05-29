@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import "../css/stylesRecover/stylesRecover.css";
-import InsertCodeRecover from "./InsertCodeRecover";
+
 function Recover() {
   const [codeEncrypt, setCodeEncrypt] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +24,7 @@ function Recover() {
       const dataCode = await respuesta.json();
       setCodeEncrypt(dataCode); // guarda la respuesta en el estado
        console.log(codeEncrypt)
-       InsertCodeRecover(codeEncrypt);
+         window.location.href=' http://localhost:5173/InsertCode';
     } catch (error) {
      
       console.error("Error al llamar la API:", error);
@@ -47,7 +47,7 @@ function Recover() {
             placeholder="Correo electrónico"
             required
           />
-          <button type="submit">Enviar enlace</button>
+          <button type="submit" >Enviar enlace</button>
         </form>
       </div>
     </div>

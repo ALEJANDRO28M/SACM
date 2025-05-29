@@ -1,12 +1,11 @@
 package com.sacm.Backend.Controllers.Controllers;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,28 +37,25 @@ import jakarta.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/Api")
 public class PeticionesBdController {
-    
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    
     @Autowired
     DaoSacm daoSacm;
 
     @GetMapping("/DataDoctor")
     public List<Doctores> listDoctoresController() {
         return daoSacm.viewDoctores();
-        
+
     }
 
-    
     @GetMapping("/HistoryDoctor")
-    public List<HistorialMedico> showHistory(){
+    public List<HistorialMedico> showHistory() {
         return daoSacm.showDataHistory();
     }
 
     @GetMapping("/Medicines")
-    public List<Medicamentos> showListMedicines(){
+    public List<Medicamentos> showListMedicines() {
         return daoSacm.showDataListMedicine();
     }
 
@@ -80,7 +76,7 @@ public class PeticionesBdController {
 
     /**
      * Elimina un paciente basado en el ID proporcionado.
-     * 
+     *
      * @param id El ID del paciente a eliminar.
      */
     @DeleteMapping("DeleteUserPacient/{id}")
@@ -88,34 +84,33 @@ public class PeticionesBdController {
         // Llama al método del DAO para eliminar al paciente con el ID proporcionado
         daoSacm.deleteUserSacm(id);
     }
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////GESTION DE LAS CITAS DE LOS PACIENTES///////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     @GetMapping("/CitasPacientes")
-    public List<Citas> viewCitas(){
-        
+    public List<Citas> viewCitas() {
+
         return daoSacm.viewCitas();
     }
 
-      @PostMapping("/Registrar")
-    public void Registro(@RequestBody ModelUserLogin modelUserLogin){
-        
+    @PostMapping("/Registrar")
+    public void Registro(@RequestBody ModelUserLogin modelUserLogin) {
+
         System.out.println("datos:" + modelUserLogin);
         modelUserLogin.setPassword(passwordEncoder.encode(modelUserLogin.getPassword()));
         System.out.println("encriptacion = " + modelUserLogin.getPassword());
 
-      daoSacm.registrarUserLogin(modelUserLogin);
-    
-    }   
+        daoSacm.registrarUserLogin(modelUserLogin);
 
-        /**
+    }
+
+    /**
      * Elimina un paciente basado en el ID proporcionado.
-     *  
+     *
      * @param id El ID del paciente a eliminar.
      */
-    
     @DeleteMapping("/DeleteUserLogin/{id}")
     public void deleteUserLogin(@PathVariable int id) {
         // Llama al método del DAO para eliminar al paciente con el ID proporcionado
@@ -123,28 +118,25 @@ public class PeticionesBdController {
     }
 
     @GetMapping("/validarInicio/{usuario}/{password}")
-    public boolean validar(@PathVariable String usuario, @PathVariable String password){
+    public boolean validar(@PathVariable String usuario, @PathVariable String password) {
         System.out.println("usuario =  " + usuario + "password = " + password);
         boolean valida = daoSacm.validarInicioSesion(usuario, password);
         System.out.println(valida);
         return valida;
-        
+
     }
 
     @GetMapping("/Data")
-public List<ModelUserLogin> dataLoginUser(){
-  
-    return daoSacm.mostrarListaUsuariosLogin(); 
-}
+    public List<ModelUserLogin> dataLoginUser() {
 
+        return daoSacm.mostrarListaUsuariosLogin();
+    }
 
     @PostMapping("/cerrarSesion")
     public ResponseEntity<String> cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().invalidate();
         return ResponseEntity.ok("Sesión cerrada correctamente");
     }
-
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////RECOVER OF PASSWORD///////////////////////////////////////////////
@@ -156,11 +148,9 @@ public List<ModelUserLogin> dataLoginUser(){
     @Autowired
     CodeInsert codeInsert;
 
-
-
     @GetMapping("/GeneratedPasswordRecover")
-    public String generatedpassword() {
-       //GENERACION DE CODIGO DE RECUPERACION
+    public ResponseEntity<?> generatedpassword() {
+        //GENERACION DE CODIGO DE RECUPERACION
         String code = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
         //SETEAMOS EL VALOR DEL MODEL
         ModelCode modelCode = new ModelCode();
@@ -168,28 +158,25 @@ public List<ModelUserLogin> dataLoginUser(){
         //CREAMOS EL VALOR EN LA BD CON EL METODO SAVE DE CRUDREPOSITORY
         codeInsert.save(modelCode);
         //RETORNAMOS EL VALOR
-        return code;
+        HashMap<String, String> map = new HashMap();
+        map.put("CodigoDeVerificacion", code);
+        System.out.println(map);
+        return ResponseEntity.ok(map);//DEVOLVEMOS EL CODIGO DE RECUPERACION
+
     }
-    
 
-@GetMapping("/ValidCode")
-public ResponseEntity<?> coReci(@RequestParam String correo) {
-    Optional<ModelUserLogin> rUser = recoverController.findByCorreo(correo);
-    if (rUser.isPresent()) {
-        generatedpassword();
-        Map<String, String> response = new HashMap<>();
-        response.put("correo", rUser.get().getCorreo());
-        return ResponseEntity.ok(response); // Ahora sí es un JSON válido
-        
-    } else {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
+    @GetMapping("/ValidCode")
+    public ResponseEntity<?> coReci(@RequestParam String correo) {
+        Optional<ModelUserLogin> rUser = recoverController.findByCorreo(correo);
+        if (rUser.isPresent()) {
+            // generatedpassword();
+            Map<String, String> response = new HashMap<>();
+            response.put("correo", rUser.get().getCorreo());
+            return ResponseEntity.ok(response); // Ahora sí es un JSON válido
+
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
+        }
     }
+
 }
-
-
-
-    
-}
-
-    
-
