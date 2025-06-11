@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/fondo.css';
 import '../css/colores.css';
@@ -27,6 +27,13 @@ export default function InicioSesion() {
     setRecuerdame(e.target.checked);
   };
 
+  useEffect(() =>{
+    const llenarCamposInput = localStorage.getItem("keyRecuerdameUser");
+    if (llenarCamposInput) {
+      setRecuerdame(true);
+      setUsuario(llenarCamposInput);
+    }
+  })
   // Función para manejar el inicio de sesión
   async function ingresar() {
     try {
@@ -38,6 +45,10 @@ export default function InicioSesion() {
         
         if (resultado === true) {
           alert("¡Bienvenido!");
+
+          if (recuerdame) {
+            localStorage.setItem("keyRecuerdameUser", usuario );
+          }
           window.location.href='/index.html';
         } else {
           alert('Usuario o clave incorrectos');
@@ -77,7 +88,7 @@ export default function InicioSesion() {
             onChange={handleUsuarioChange}
           />
           <br /><br />
-          <a href="http://localhost:5173/RecoverPassword" className="recover">¿Olvidaste tu usuario?</a>
+          <a href="http://localhost:5173/RecoverPassword" className="usuarioOlvidado">¿Olvidaste tu usuario?</a>
           <br /><br />
           <label htmlFor="password" className="LabelsForms">PASSWORD</label>
           <input
@@ -89,7 +100,7 @@ export default function InicioSesion() {
             onChange={handlePasswordChange}
           />
           <br /><br />
-          <a href="#" className="passworOlvidada">¿Olvidaste tu contraseña?</a>
+          <a href="http://localhost:5173/RecoverPassword" className="passworOlvidada">¿Olvidaste tu contraseña?</a>
           <br /><br />
           <input
             type="checkbox"

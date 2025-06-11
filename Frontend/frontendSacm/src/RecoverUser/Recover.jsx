@@ -119,7 +119,7 @@ function Recover() {
   return (
     <div className="recover">
       <div className="forgot-container">
-        <h2 className="textDescript">¿Olvidaste tu contraseña?</h2>
+        <h2 className="textDescript">¿Olvidaste tu Usuario y/o Contrasenia?</h2>
         <p id="textRecover">
           Ingresa tu correo electrónico para enviarte un enlace de recuperación.
         </p>
@@ -179,4 +179,4 @@ export default Recover;
 // // ✅ CONCLUSIÓN:
 // // No necesitas clases ni estructuras complejas.
 // // Solo evita usar el estado (`useState`) para datos que necesitas *de inmediato* después de obtenerlos.
-// // En esos casos, usa una variable local como hicimos con 'codigoGenerado'.
+// // En esos casos, usa una variable local como hicimos con 'codigoGenerado'

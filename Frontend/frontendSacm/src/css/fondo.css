@@ -23,10 +23,16 @@ body {
 }
 .passworOlvidada{
     color: black;
-    font-size: 14px;
-    text-decoration: underline;
+
 }
 .passworOlvidada:hover{
     cursor: pointer;
     color: cornflowerblue;
+}
+.usuarioOlvidado{
+color: black;
+}
+.usuarioOlvidado:hover{
+    cursor: pointer;
+    color: cornflowerblue;    
 }
