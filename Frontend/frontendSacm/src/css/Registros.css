@@ -1,46 +1,57 @@
-.registro-container {
-  width: 100%; /* Mantiene el ancho máximo del contenedor en 400px */
-  margin: auto; /* Centra el contenedor horizontalmente */
-  padding: 50px 450px; /* Espacio interno del contenedor, manteniendo lo que pediste */
-  background-color: white; /* Color de fondo del contenedor */
-  border-radius: 22px; /* Bordes redondeados */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Alinea todo al centro del contenedor */
+
+.mainRegister{
+height: 100%;
+width: 100%;
 }
 
+.registro-container {
+  width: 70vw; /* Mantiene el ancho máximo del contenedor en 400px */
+  height: 90vh;
+  margin: auto; /* Centra el contenedor horizontalmente */
+  display: flex;
+  flex-direction: column;
+  gap: 1cm;
+  background-color: white;
+  border-radius: 62px;
+}
+.contForm{
+    display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Alinea todo al centro del contenedor */
+  justify-content: center;
+}
+img{
+position: relative ;
+margin: auto;
+height: 220px;
+width: 300px;
+border-radius: 80px;
+margin: 2cm;
+}
 
 
 
 /* Estilo para el título del formulario */
 #titulo {
+  margin-top: 1cm;
   color: darkblue;
-  position: relative ;
-  left: 100%; /* Centra el texto del título */
-  top: 16%;
-  background-size: cover;
-  margin-bottom: 20px; /* Ajuste del margen inferior para que no haya mucho espacio */
-
+  text-align: center  ;
 }
 
 /* Estilo para el formulario */
 .formulario {
  
-  width: 100%; /* El formulario ocupa el 100% del ancho del contenedor */
+ /* El formulario ocupa el 100% del ancho del contenedor */
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 15px; /* Espacio entre los campos del formulario */
 }
 
 /* Estilo para cada grupo de formulario */
 .form-group {
-  
-  position: relative;
-  width: 100%; /* El grupo ocupa todo el ancho disponible */
-  left: 100%;
-
-
+  display: flex;
+  flex-direction: column;
 }
 
 /* Estilo para las etiquetas de los campos */
@@ -53,7 +64,7 @@ label {
 
 /* Estilo para los campos de entrada */
 input {
-  width: 100%; /* El campo de entrada ocupa el ancho completo */
+  width: 80%; /* El campo de entrada ocupa el ancho completo */
   padding: 12px; /* Espacio interno */
   border: 1px solid black;
   border-radius:15px;
@@ -68,7 +79,7 @@ input:focus {
 
 /* Estilo para el botón de registro */
 .btn {
-  width: 100%; /* Botón con ancho completo */
+  width: 80%; /* Botón con ancho completo */
   padding: 10px;
   background-color: #007bff;
   color: white;
@@ -83,15 +94,41 @@ input:focus {
   background-color: #0056b3;
 }
 
-img{
-  background-size: cover;
-  border-radius: 50%;
-  top: 18%;
-  position: fixed;
-  left: 15%;
-  width: 620px;
-  height: 375px;
-  
+/* ///////////////////
+//////////////////////
+//////////////////////// */
+/* MEDIAQUERY STYLES */
+/* ///////////////////
+//////////////////////
+//////////////////////// */
 
+@media  screen and (max-width: 1300px) {
+  .imgRegisterSacm{
+    display: none;
+  }
+  .formulario {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .formulario input{
+    margin-right: 2cm;
+    margin-left: 1cm;
+  }
+}
 
+@media screen and (max-width: 450px){
+  .formulario{
+    margin: auto;
+  }
+
+  .form-group input{
+    margin: auto;
+  }
+  .btn{
+    padding: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }
