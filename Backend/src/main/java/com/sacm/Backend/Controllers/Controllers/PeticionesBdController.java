@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -178,5 +179,33 @@ public class PeticionesBdController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no encontrado");
         }
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////VALID RECOVER PASSWORD////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+     
+    @Autowired   
+    codeVeryController codeVeryController;
+
+    @GetMapping("/keyValidCode")
+    public ResponseEntity<?> reValueValid(@RequestParam String code){
+       
+       Optional<ModelCode> valid = codeVeryController.findByCode(code);
+       HashMap<String, String> map = new HashMap();
+
+       if (valid.isPresent()) {
+       map.put("keyValid", valid.get().getCode()); 
+       System.out.println("validacion exitosa " + map);
+       }
+        
+        return ResponseEntity.ok(map);
+    }
+
+    @PostMapping("/updatePassword")
+    public ResponseEntity<?> updatePassword(@RequestBody String code){
+        
+        return null;
+    } 
+ 
 
 }

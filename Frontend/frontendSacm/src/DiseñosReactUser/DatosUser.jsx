@@ -91,7 +91,7 @@ function DatosUser() {
     </div>
   </div>
          <div className="tabla-container-dataUser">
-            <h2>Listado de usuarios</h2>
+            <h2 className='listUserDataText'>Listado de usuarios</h2>
         <table className="tabla_Users">
             <thead>
                 <tr>

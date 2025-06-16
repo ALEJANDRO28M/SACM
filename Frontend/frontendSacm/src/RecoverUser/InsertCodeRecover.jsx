@@ -17,53 +17,41 @@ function InsertCodeRecover() {
   const [code, setCode] = useState("");     // Estado para guardar el código de verificación
   const [email, setEmail] = useState("");   // Estado para guardar el correo electrónico
 
-  
+  // ======================================
+  // ✍️ MANEJADOR DE INPUTS
+  // ======================================
 
-  // // useEffect se ejecuta una sola vez al montar el componente (por el array vacío [])
-  // useEffect(() => {
+  const handleInputChange = (setter) => (event) => {
+    setter(event.target.value);
+  };
 
-  //         // Guardamos el email en el estado
-  //      fetchData();                  // Llamamos a la función para obtener el código (¡OJO! Aquí hay un bug: se usa "email" que aún no se ha actualizado)
-  //     // RECUPERAMOS EL EMAIL ENVIADO DE RECOVER 
+const veryCode = async (event) => {
+  event.preventDefault();
+  try {
+    const request = await fetch(`http://localhost:8080/Api/keyValidCode?code=${code}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
 
-  // }, []); // Solo ejecuta el efecto una vez al cargar el componente
+    if (request.ok) {
+      const response = await request.json();
 
-  // // Función asincrónica para hacer la solicitud al backend y obtener el código de recuperación
-  // const fetchData = async () => {
-
-  //   try {
-  //       const emailGuardado = localStorage.getItem("email"); // Obtenemos el email guardado en el localStorage
-  //       setEmail(emailGuardado)
-  //       console.log("Email recibido:", emailGuardado); // Mostramos el email en consola para verificar
-
-  //     const request = await fetch("http://localhost:8080/Api/GeneratedPasswordRecover", {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json", // Indicamos que se espera JSON
-  //       },
-  //     });
-
-  //     // Si la solicitud es exitosa
-  //     if (request.ok) {
-  //       const response = await request.json(); // Convertimos la respuesta en JSON
-  //       console.log("codigo ", response.CodigoDeVerificacion); // Mostramos el código en consola
-  //       const codigo = response.CodigoDeVerificacion; // Guardamos el código en una variable
-  //       setCode(codigo);                            // Guardamos el código en el estado
-
-
-  //   //    await enviarCorreo(codigo, emailGuardado);          // Llamamos a la función para enviar el correo con el código
-        
-  //     } else {
-  //       alert("datos no cargados"); // Si hubo error en la solicitud
-  //     }
-  //   } catch (error) {
-  //     throw new Error("Error en la solicitud"); // Manejamos cualquier error de red o fetch
-  //   }
-  // };
+      if (response.keyValid) {
+        alert("VALIDACIÓN EXITOSA, YA PUEDES GENERAR UNA NUEVA CONTRASEÑA!");
+         window.location.href = "/ChangeCode";
+      } else {
+        alert("Código inválido. Intenta de nuevo.");
+      }
+    } else {
+      alert("Error al validar el código.");
+    }
+  } catch (error) {
+    console.error("Error en la solicitud:", error);
+    alert("Ocurrió un error al validar el código.");
+  }
+};
 
 
-
-  // Lo que se muestra visualmente en la página (HTML/JSX)
   return (
     <div className="main">
       <div className="flexContainerRecover">
@@ -75,11 +63,13 @@ function InsertCodeRecover() {
           </p>
         </div>
         <div>
-          <form action="submit" id="formRecover">
+          <form action="submit" id="formRecover" onSubmit={veryCode}>
             <label htmlFor="code">
               Se envió un correo electrónico con un código de verificación a: <strong>{email}</strong>
             </label>
-            <input type="text" id="code" placeholder="Ingresar el código" />
+            <input className="inputRecover_Insert" type="text" id="code" placeholder="Ingresar el código" 
+            value={code}
+            onChange={handleInputChange(setCode)}/>
             <div className="btnIcon">
               <button type="submit" id="btn">Siguiente</button>
               <img src="../../public/SACM.png" alt="" id="logoSacm" />

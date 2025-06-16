@@ -30,7 +30,7 @@ body {
     max-width: 800px; /* Ajuste para una mejor presentación */
 }
 
-h2 {
+.listUserDataText {
     text-align: center;
     color: #333;
     margin-bottom: 20px;

@@ -20,6 +20,17 @@ width: 100%;
   align-items: flex-start; /* Alinea todo al centro del contenedor */
   justify-content: center;
 }
+.divOneForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#linkInicioSacm {
+  margin: auto;
+}
+
+
 img{
 position: relative ;
 margin: auto;
@@ -130,5 +141,9 @@ input:focus {
     padding: 0;
     padding-top: 5px;
     padding-bottom: 5px;
+  }
+  #titulo{
+    margin-bottom: 0 ;
+    font-size: 30px;
   }
 }
