@@ -201,9 +201,9 @@ public class PeticionesBdController {
         return ResponseEntity.ok(map);
     }
 
-    @PostMapping("/updatePassword")
+    @PostMapping("/UpdatePasswordLogin")
     public ResponseEntity<?> updatePassword(@RequestBody String code){
-        
+            
         return null;
     } 
  

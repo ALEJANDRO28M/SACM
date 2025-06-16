@@ -34,7 +34,9 @@ function ChangePassword() {
     alert("¡Contraseña actualizada correctamente!");
     // Aquí puedes enviar la contraseña al backend si lo deseas
 
-    const updatePassword = async (event) =>{
+   
+  };
+   const updatePassword = async (event) =>{
      event.preventDefault();
 
      try {
@@ -53,7 +55,6 @@ function ChangePassword() {
         
      }
     }
-  };
 
   // Retornamos el JSX del formulario
   return (

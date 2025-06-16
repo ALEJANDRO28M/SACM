@@ -33,7 +33,7 @@ export default function InicioSesion() {
       setRecuerdame(true);
       setUsuario(llenarCamposInput);
     }
-  })
+  },[])// 👈 Esto evita el bucle infinito de seteo
   // Función para manejar el inicio de sesión
   async function ingresar() {
     try {

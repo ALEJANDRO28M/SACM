@@ -84,6 +84,7 @@ function Registro() {
         <div className="form-group">
           <label htmlFor="nombre">Nombre</label>
           <input
+            className="inputsRegister"
             placeholder="Ingrese su nombre"
             type="text"
             id="nombre"
@@ -96,6 +97,7 @@ function Registro() {
         <div className="form-group">
           <label htmlFor="emailRegister">Email</label>
           <input
+            className="inputsRegister"
             placeholder="Ingrese su email"
             type="emailRegister"
             id="emailRegister"
@@ -108,6 +110,7 @@ function Registro() {
         <div className="form-group">
           <label htmlFor="password">Contraseña</label>
           <input
+            className="inputsRegister"
             placeholder="Genere una contraseña"
             type="password"
             id="password"
@@ -120,6 +123,7 @@ function Registro() {
         <div className="form-group">
           <label htmlFor="confirmPassword">Confirmar Contraseña</label>
           <input
+            className="inputsRegister"
             placeholder="Confirme su contraseña"
             type="password"
             id="confirmPassword"

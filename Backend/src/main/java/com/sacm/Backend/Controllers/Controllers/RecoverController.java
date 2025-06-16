@@ -24,5 +24,9 @@ public interface RecoverController extends CrudRepository<ModelUserLogin, Intege
 @Query("select M from ModelUserLogin M where M.correo like %?1%") 
 Optional<ModelUserLogin> findByCorreo( String correo);
 
+
+
+//CODIGO PARA TRAER EL ID 
+
 }
 
