@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sacm.Backend.Models.User_Of_Patients;
-import com.sacm.Backend.Service.DaoSacm;
 import com.sacm.Backend.Service.Pacientes.PacienteService;
 
 /**

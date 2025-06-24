@@ -31,9 +31,11 @@ import com.sacm.Backend.Models.Medicamentos;
 import com.sacm.Backend.Models.ModelCode;
 import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
-import com.sacm.Backend.Service.DaoSacm;
+import com.sacm.Backend.Service.Citas.CitaService;
+import com.sacm.Backend.Service.Doctores.DoctoresServices;
+import com.sacm.Backend.Service.HistorialMedico.HistoryMedicalService;
+import com.sacm.Backend.Service.Medicamentos.MedicamentoService;
 import com.sacm.Backend.Service.Pacientes.PacienteService;
-import com.sacm.Backend.Service.UserLogin.ServiceUserLogin;
 import com.sacm.Backend.Service.UserLogin.UsuarioServiceLogin;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,24 +48,44 @@ public class PeticionesBdController {
 
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////CONTROLLER LISTA MEDICAMENTOS/////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Autowired
-    DaoSacm daoSacm;
-
-    @GetMapping("/DataDoctor")
-    public List<Doctores> listDoctoresController() {
-        return daoSacm.viewDoctores();
-
-    }
-
-    @GetMapping("/HistoryDoctor")
-    public List<HistorialMedico> showHistory() {
-        return daoSacm.showDataHistory();
-    }
+    MedicamentoService medi;
 
     @GetMapping("/Medicines")
     public List<Medicamentos> showListMedicines() {
-        return daoSacm.showDataListMedicine();
+        return medi.showListMedicines();
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////CONTROLLER LISTA HISTORIAL MEDICO/////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    @Autowired
+    HistoryMedicalService historyService;
+
+    @GetMapping("/HistoryDoctor")
+    public List<HistorialMedico> showHistory() {
+        return historyService.showHistoryService();
+    }
+        
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////CONTROLLER LISTA DE PACIENTES/////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    @Autowired
+    DoctoresServices doctoresServices;
+    
+    @GetMapping("/DataDoctor")
+    public List<Doctores> listDoctoresController() {
+     return doctoresServices.viewDoctoresService();
+    }
+    
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////GESTION DE LOS PACIENTES/////////////////////////////////////////
@@ -94,17 +116,23 @@ public class PeticionesBdController {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////GESTION DE LAS CITAS DE LOS PACIENTES///////////////////////////////////
+    //////////////////////////////////////GESTION DE LAS CITAS/////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     @Autowired
-    UsuarioServiceLogin serviceLogin;
+    CitaService citaS;
 
     @GetMapping("/CitasPacientes")
     public List<Citas> viewCitas() {
-
-        return daoSacm.viewCitas();
+        return citaS.viewCitas();
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////GESTION DE LAS CITAS DE LOS PACIENTES///////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Autowired
+    UsuarioServiceLogin serviceLogin;
 
     ////////////////////////////////METODO PARA REGISTRAR PACIENTES USERLOGIN///////////////////////////////////
     /// 

@@ -8,3 +8,4 @@ public interface CitaDao {
     
     public List<Citas> viewCitas();
 }
+
