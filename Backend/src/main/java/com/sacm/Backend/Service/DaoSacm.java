@@ -1,4 +1,4 @@
-package com.sacm.Backend.Dao;
+package com.sacm.Backend.Service;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import com.sacm.Backend.Models.Citas;
 import com.sacm.Backend.Models.Doctores;
 import com.sacm.Backend.Models.HistorialMedico;
 import com.sacm.Backend.Models.Medicamentos;
-import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
 
 /**
@@ -25,29 +24,18 @@ public interface DaoSacm {
      * 
      * @return Una lista de objetos {@link User_Of_Patients} que representa todos los pacientes.
      */
-    public List<User_Of_Patients> MostrarUsers();
+    // public List<User_Of_Patients> MostrarUsers();
     
     /**
      * Elimina un paciente basado en su ID.
      * 
      * @param id El identificador del paciente que se desea eliminar.
      */
-    public void deleteUserSacm(int id);
+    // public void deleteUserSacm(int id);
     
-    ////////////////////////////////////////////////////////////////////////
-    ///////////////// GESTIÓN DE LOS USUARIOS DE LOGIN /////////////////////
-    ////////////////////////////////////////////////////////////////////////
-
-    public List<ModelUserLogin> mostrarListaUsuariosLogin();
-
-    public void deleteUserLogin(int id);
-
-    public boolean validarInicioSesion(String usuario, String password);
-    
-    public void registrarUserLogin(ModelUserLogin modelUserLogin);
 
     ////////////////////////////////////////////////////////////////////////
-    //////////////////GESTION DE CITAS DE LOS PACIENTES/////////////////////
+    //////////////////GESTION DE CITAS DE LOS CITAS/////////////////////
     ////////////////////////////////////////////////////////////////////////
     
     public List<Citas> viewCitas();
@@ -71,7 +59,7 @@ public interface DaoSacm {
 
     public List<Medicamentos> showDataListMedicine();
 
-    public User_Of_Patients pacienteId(Integer id);
+    // public User_Of_Patients pacienteId(Integer id);
    
 
 

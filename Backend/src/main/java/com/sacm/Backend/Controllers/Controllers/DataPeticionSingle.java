@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sacm.Backend.Dao.DaoSacm;
 import com.sacm.Backend.Models.User_Of_Patients;
+import com.sacm.Backend.Service.DaoSacm;
+import com.sacm.Backend.Service.Pacientes.PacienteService;
 
 /**
  * Controlador que gestiona peticiones relacionadas con la visualización
@@ -22,7 +23,7 @@ import com.sacm.Backend.Models.User_Of_Patients;
 public class DataPeticionSingle {
 
     @Autowired
-    DaoSacm daoSacm; // DAO que gestiona la lógica de acceso a datos
+    PacienteService service; // DAO que gestiona la lógica de acceso a datos
 
     private Integer enviarId; // Variable temporal para almacenar el ID recibido
 
@@ -55,7 +56,7 @@ public class DataPeticionSingle {
     @GetMapping("/MostrarPaciente")
     public User_Of_Patients ver() {
         logger.info("EL ID RECIBIDO EN LA SOLICITUD ES: " + enviarId);
-        User_Of_Patients trPaciente = daoSacm.pacienteId(enviarId);
+        User_Of_Patients trPaciente = service.pacienteId(enviarId);
         return trPaciente;
     }
 }

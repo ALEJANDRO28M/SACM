@@ -1,14 +1,16 @@
 package com.sacm.Backend.Controllers.Controllers;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus; // ✅ Para usar el tipo Date
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sacm.Backend.Dao.DaoSacm;
 import com.sacm.Backend.Models.Citas;
 import com.sacm.Backend.Models.Doctores;
 import com.sacm.Backend.Models.HistorialMedico;
@@ -30,6 +31,10 @@ import com.sacm.Backend.Models.Medicamentos;
 import com.sacm.Backend.Models.ModelCode;
 import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
+import com.sacm.Backend.Service.DaoSacm;
+import com.sacm.Backend.Service.Pacientes.PacienteService;
+import com.sacm.Backend.Service.UserLogin.ServiceUserLogin;
+import com.sacm.Backend.Service.UserLogin.UsuarioServiceLogin;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -64,6 +69,8 @@ public class PeticionesBdController {
     ///////////////////////////////////////GESTION DE LOS PACIENTES/////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @Autowired
+    PacienteService servicePaciente;
     /**
      * Obtiene la lista de todos los pacientes.
      * 
@@ -72,7 +79,7 @@ public class PeticionesBdController {
     @GetMapping("/ListPacients")
     public List<User_Of_Patients> pacientes() {
         // Llama al método del DAO para obtener la lista de pacientes
-        return daoSacm.MostrarUsers();
+        return servicePaciente.pacientes();
     }
 
     /**
@@ -83,30 +90,44 @@ public class PeticionesBdController {
     @DeleteMapping("DeleteUserPacient/{id}")
     public void eliminarPaciente(@PathVariable int id) {
         // Llama al método del DAO para eliminar al paciente con el ID proporcionado
-        daoSacm.deleteUserSacm(id);
+      servicePaciente.eliminarPaciente(id);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////GESTION DE LAS CITAS DE LOS PACIENTES///////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    @Autowired
+    UsuarioServiceLogin serviceLogin;
+
     @GetMapping("/CitasPacientes")
     public List<Citas> viewCitas() {
 
         return daoSacm.viewCitas();
     }
 
+    ////////////////////////////////METODO PARA REGISTRAR PACIENTES USERLOGIN///////////////////////////////////
+    /// 
     @PostMapping("/Registrar")
     public void Registro(@RequestBody ModelUserLogin modelUserLogin) {
-
-        System.out.println("datos:" + modelUserLogin);
-        modelUserLogin.setPassword(passwordEncoder.encode(modelUserLogin.getPassword()));
-        System.out.println("encriptacion = " + modelUserLogin.getPassword());
-
-        daoSacm.registrarUserLogin(modelUserLogin);
-
+        serviceLogin.registrarUserLogin(modelUserLogin);
     }
+    ///
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
 
+    ///////////////////////////////METODO PARA MOSTRAR LISTA DE PACIENTES USERLOGIN///////////////////////////////////
+    /// 
+    @GetMapping("/Data")
+    public List<ModelUserLogin> dataLoginUser() {
+        return serviceLogin.mostrarListaUsuariosLogin();
+    }
+    ///
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ///////////////////////////////METODO PARA ELIMINAR PACIENTE USERLOGIN ID///////////////////////////////////
+    /// 
     /**
      * Elimina un paciente basado en el ID proporcionado.
      *
@@ -114,24 +135,22 @@ public class PeticionesBdController {
      */
     @DeleteMapping("/DeleteUserLogin/{id}")
     public void deleteUserLogin(@PathVariable int id) {
-        // Llama al método del DAO para eliminar al paciente con el ID proporcionado
-        daoSacm.deleteUserLogin(id);
+        serviceLogin.deleteUserLogin(id);
     }
+    ///
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
+
+    ///////////////////////////////METODO PARA VALIDAR INICIO DE SESION///////////////////////////////////
+    ///     
     @GetMapping("/validarInicio/{usuario}/{password}")
-    public boolean validar(@PathVariable String usuario, @PathVariable String password) {
-        System.out.println("usuario =  " + usuario + "password = " + password);
-        boolean valida = daoSacm.validarInicioSesion(usuario, password);
-        System.out.println(valida);
-        return valida;
-
+    public boolean validar(@PathVariable String usuario, @PathVariable String password) {                                        
+        boolean valida = serviceLogin.validarInicioSesion(usuario, password);
+        return valida;                      
     }
+    ///
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
-    @GetMapping("/Data")
-    public List<ModelUserLogin> dataLoginUser() {
-
-        return daoSacm.mostrarListaUsuariosLogin();
-    }
 
     @PostMapping("/cerrarSesion")
     public ResponseEntity<String> cerrarSesion(HttpServletRequest request, HttpServletResponse response) {
@@ -140,7 +159,7 @@ public class PeticionesBdController {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////RECOVER OF PASSWORD///////////////////////////////////////////////
+    //////////////////////////////////////RECOVER OF PASSWObvRD///////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Autowired
@@ -155,13 +174,35 @@ public class PeticionesBdController {
         String code = UUID.randomUUID().toString().replace("-", "").substring(0, 10);
         //SETEAMOS EL VALOR DEL MODEL
         ModelCode modelCode = new ModelCode();
-        modelCode.setCode(code);
+        
         //CREAMOS EL VALOR EN LA BD CON EL METODO SAVE DE CRUDREPOSITORY
-        codeInsert.save(modelCode);
+
+// Obtener la fecha y hora actual del sistema
+LocalDateTime ahora = LocalDateTime.now();
+
+// Sumar 10 minutos a la hora actual
+LocalDateTime expiracion = ahora.plusMinutes(1);
+
+// Convertir el LocalDateTime a java.util.Date
+Date fechaExpiracion = Date.from(expiracion.atZone(ZoneId.systemDefault()).toInstant());
+
+
+modelCode.setCode(code);
+// Establecer la fecha de expiración
+modelCode.setFechaExpiracion(fechaExpiracion); // ✅ ahora sí es del tipo correcto
+
+
+
+// Guardar el modelo con el código y la fecha de expiración en la base de datos
+codeInsert.save(modelCode);
+
         //RETORNAMOS EL VALOR
         HashMap<String, String> map = new HashMap();
         map.put("reCode", code);
         System.out.println(map);
+
+
+
         return ResponseEntity.ok(map);//DEVOLVEMOS EL CODIGO DE RECUPERACION
 
     }
@@ -187,25 +228,33 @@ public class PeticionesBdController {
     @Autowired   
     codeVeryController codeVeryController;
 
-    @GetMapping("/keyValidCode")
-    public ResponseEntity<?> reValueValid(@RequestParam String code){
-       
-       Optional<ModelCode> valid = codeVeryController.findByCode(code);
-       HashMap<String, String> map = new HashMap();
+   @GetMapping("/keyValidCode")
+public ResponseEntity<?> reValueValid(@RequestParam String code){
+    Optional<ModelCode> valid = codeVeryController.findByCode(code);
+    HashMap<String, String> map = new HashMap<>();
 
-       if (valid.isPresent()) {
-       map.put("keyValid", valid.get().getCode()); 
-       System.out.println("validacion exitosa " + map);
-       }
-        
+    if (valid.isPresent()) {
+        ModelCode modelCode = valid.get();
+        Date fechaExpiracion = modelCode.getFechaExpiracion();
+        System.out.println( "Fecha de expiracion:" + fechaExpiracion);
+        Date ahora = new Date();
+
+        if (fechaExpiracion.before(ahora)) {
+            // ❌ Código expirado: eliminar de la base de datos
+            codeInsert.delete(modelCode);
+            return ResponseEntity.status(HttpStatus.GONE).body("El código ha expirado");
+        }
+
+        // ✅ Código válido
+        map.put("keyValid", modelCode.getCode());
+        System.out.println("validación exitosa " + map);
         return ResponseEntity.ok(map);
     }
 
-    @PostMapping("/UpdatePasswordLogin")
-    public ResponseEntity<?> updatePassword(@RequestBody String code){
-            
-        return null;
-    } 
+    // ❌ Código no existe
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Código no encontrado");
+}
+
  
 
 }
