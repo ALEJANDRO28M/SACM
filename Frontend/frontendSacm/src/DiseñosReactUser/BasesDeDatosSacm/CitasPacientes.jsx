@@ -79,58 +79,86 @@ function CitasPacientes() {
   }, []);
 
   return (
-    <div className="sheet">
-      <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html" className="btnIni">INICIO</a>
-      <div className="tabla-container-cdhm">
-        <table className="tabla_Users_cdhm">
-          <thead>
-            <tr className="tr_cdhm">
-              <th className="th_cdhm">ID</th>
-              <th className="th_cdhm">PACIENTE</th>
-              <th className="th_cdhm">FECHA</th>
-              <th className="th_cdhm">MOTIVO</th>
-              <th className="th_cdhm">SITUACION</th>
+   <div className="Tabla-Container">
+      {/* Menú superior */}
+      <header className="header-container-ultimate">
+        <div className="btn-menu">
+          <label htmlFor="btn-menu" className="icon-menu">SACM</label>
+        </div>
+        <nav className="menu-ultimate">
+          <ul>
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Menú lateral */}
+      <input type="checkbox" id="btn-menu" />
+      <div className="container-menu">
+        <div className="cont-menu">
+          <nav>
+            <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.htmls">Bases de Datos</a>
+            <a href="http://localhost:5173/Sacm">Reportes</a>
+            <a href="http://localhost:5173/Sacm">Perfil</a>
+            <a href="#">Cerrar Sesión</a>
+          </nav>
+          <label htmlFor="btn-menu">✖️</label>
+        </div>
+      </div>
+
+   
+
+      {/* Título */}
+      <h2 className="tittle-citas">CITAS MÉDICAS</h2>
+      
+      {/* Tabla de citas */}
+      <div className="tabla-container-citas">
+        <table className="tabla-citas">
+          <thead className="tabla-citas-head">
+            <tr>
+              <th>ID</th>
+              <th>PACIENTE</th>
+              <th>FECHA</th>
+              <th>MOTIVO</th>
+              <th>SITUACIÓN</th>
             </tr>
           </thead>
           <tbody>
             {citPacientes.map((cita) => (
-              <tr key={cita.id} className="tr_cdhm-body">
-                <td className="td_cdhm">{cita.id}</td>
-                <td className="td_cdhm">
+              <tr key={cita.id}>
+                <td>{cita.id}</td>
+                <td>
                   <button
                     className="btn-ver"
                     onClick={() => verPaciente_id(cita.user_Of_Patients.id)}
                   >
-                    ver
+                    Ver
                   </button>
                 </td>
-                <td className="td_cdhm">{cita.fecha}</td>
-                <td className="td_cdhm">{cita.motivo}</td>
-                <td className="td_cdhm">
+                <td>{cita.fecha}</td>
+                <td>{cita.motivo}</td>
+                <td>
                   <select
                     className="seleccionar_sit_cita"
                     value={cita.estadoCita}
                     onChange={(e) => handleEstadoChange(cita.id, e.target.value)}
                     style={{ backgroundColor: getColor(cita.estadoCita) }}
                   >
-                    <option className="completada" value="completada">
-                      Completada
-                    </option>
-                    <option className="pendiente" value="pendiente">
-                      Pendiente
-                    </option>
-                    <option className="cancelada" value="cancelada">
-                      Cancelada
-                    </option>
+                    <option value="completada">Completada</option>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="cancelada">Cancelada</option>
                   </select>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <button className="btn-volver"><a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html">volver</a></button>
       </div>
     </div>
+  
   );
 }
 

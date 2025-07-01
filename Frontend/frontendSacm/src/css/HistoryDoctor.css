@@ -1,48 +1,147 @@
-*{
-    padding: 0;
-    margin: 0;
-    font-family: 'Courier New', Courier, monospace;
+/* ======== CONTENEDOR PRINCIPAL ======== */
+.Tabla-Container {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
 }
 
-
-
-.Tabla-Container{
-display: flex;
-flex-direction: column;
-height: 100vh; /* Hace que ocupe todo el alto de la pantalla */
-padding: 80px;
+/* ======== MENÚ SUPERIOR ======== */
+.header-container-ultimate {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
 }
 
-h2{
-    
-    color: aqua;
-    padding: 10px;
-    margin-bottom: 20px; /* Añade espacio debajo del título */
-}
-.volver_Menu_Principal{
-    position: absolute;
-    font-size: 20px;
-    text-align: left;
-    left: 8vh;
-    top: 5vh;
-    transition: all 0.3s ease;
-}
-.volver_Menu_Principal:hover{
-
-    border-bottom: 2px solid aqua;
-    padding-bottom: 5px;
-
-}
-.Tabla-Container table {
-    border-style: solid;
-    border-color: cadetblue;
-    width: 100%; /* La tabla ocupa el 100% del ancho disponible */
-    border-collapse: collapse; /* Estilo de borde más limpio */
+.menu-ultimate ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
 }
 
-tbody tr{
-    cursor: pointer;
+.menu-ultimate ul li a {
+  color: aqua;
+  text-decoration: none;
+  font-weight: bold;
 }
-.tabla_Users  tbody tr:hover{
-background-color: greenyellow;
+
+/* ======== MENÚ LATERAL ======== */
+#btn-menu {
+  display: none;
+}
+
+.container-menu {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transition: all 500ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#btn-menu:checked ~ .container-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cont-menu {
+  max-width: 250px;
+  background: #1c1c1c;
+  height: 100vh;
+  transition: all 500ms ease;
+  transform: translateX(-100%);
+}
+
+#btn-menu:checked ~ .container-menu .cont-menu {
+  transform: translateX(0%);
+}
+
+.cont-menu nav {
+  transform: translateY(15%);
+}
+
+.cont-menu nav a {
+  display: block;
+  padding: 20px;
+  color: aqua;
+  text-decoration: none;
+  border-left: 5px solid transparent;
+  transition: all 400ms ease;
+}
+
+.cont-menu nav a:hover {
+  border-left: 5px solid aqua;
+  background: #1f1f1f;
+}
+
+.cont-menu label {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.icon-menu {
+  color: aqua;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ======== BOTÓN VOLVER ======== */
+.volver_Menu_Principal {
+  display: inline-block;
+  margin: 20px 0;
+  background-color: aqua;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.tittlehistorial {
+  text-align: center;
+  margin-top: 20px;
+
+}
+/* ======== TABLA HISTORIAL ======== */
+.tabla_Users {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tabla_Users th,
+.tabla_Users td {
+  border: 1px solid aqua;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.tabla_Users th {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* ======== RESPONSIVE ======== */
+@media screen and (max-width: 750px) {
+  .header-container-ultimate {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .menu-ultimate ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
 }

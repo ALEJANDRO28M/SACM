@@ -1,101 +1,91 @@
-.tabla-container-cdhm {
-    box-sizing: border-box;
-    display: flex;
+
+
+/* ======== TÍTULO DE CITAS ======== */
+.tittle-citas {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 28px;
+  color: aqua;
+  margin-bottom: 20px;
+}
+
+/* ======== CONTENEDOR DE LA TABLA DE CITAS ======== */
+.tabla-container-citas {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+}
+
+/* ======== TABLA CITAS ======== */
+.tabla-citas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tabla-citas th,
+.tabla-citas td {
+  border: 1px solid aqua;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.tabla-citas th {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* ======== BOTÓN VER PACIENTE ======== */
+.btn-ver {
+  background-color: aqua;
+  color: black;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-ver:hover {
+  background-color: #00d0d0;
+}
+
+/* ======== SELECTOR DE ESTADO DE CITA ======== */
+.estado-select {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 255, 255, 0.3); /* si no usas estilo dinámico */
+}
+
+/* ======== RESPONSIVE ======== */
+@media screen and (max-width: 750px) {
+  .header-container-ultimate {
     flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    justify-content: center; /* Centra r verticalmente */
-    margin: 0 auto;
-    padding: 100px; /* Espaciado interno */
-    padding-left:  200px; /* Espaciado interno */
-    padding-right: 200px; /* Espaciado interno */
-    border-radius: 15px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto */
-    max-width: 800px; /* Limitar el ancho */
-    min-height: 300px; /* Altura mínima del contenedor */
-}
-
-.btnIni {
-    color: aqua;
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 1cm;
-    left: 1.5cm;
-    transition: all 0.3 ease; 
-    border-bottom: 2px solid transparent; 
-    
-    
-}
-.btnIni:hover{
-    color: aqua;
-    border-bottom: 2px solid aqua;
-    border-radius: 6px;
-    padding-bottom: 5px;
-}
-#title-pacientes {
-    display: flex;
+    gap: 15px;
     text-align: center;
-    position: absolute;
-    top: 16%;
-    margin-bottom: 20px; /* Espaciado entre el título y la tabla */
-    font-size: 30px;
-    font-weight: bold;
-    color: #00ffff; /* Color del texto */
-}
+  }
 
-.tabla_Users_cdhm {
-    border-collapse: collapse;
-    width: 100%; /* Ajustar el ancho de la tabla al contenedor */
-}
+  .menu-ultimate ul {
+    flex-direction: column;
+    gap: 10px;
+  }
 
-.tabla_Users_cdhm .th_cdhm {
-    background-color: blue;
-    color: white;
-    padding: 18px;
+  .tittle-citas {
+    font-size: 24px;
+  }
 
+  .tabla-citas th,
+  .tabla-citas td {
+    font-size: 12px;
+    padding: 8px;
+  }
 }
-.tabla_Users_cdhm .tr_cdhm {
-    border-style: solid ;
-    border-color:cadetblue;
-}
-.tabla_Users_cdhm .tr_cdhm-body {
-    border-style: solid ;
-    border-color:cadetblue;
-    background-color: azure;
-}
-
-.tabla_Users_cdhm td, 
-.tabla_Users_cdhm th {
-    padding: 12px;
-    padding-right: 95px;
-    text-align: left;
-}
-
-.tabla_Users_cdhm .tr_cdhm-body:hover {
-    
-background-color: greenyellow;    
-cursor: pointer;
-transition: background-color 0.5s;
-}
-.tabla_Users_cdhm .tr_cdhm-body .btn-ver{
-    color: black;
-
-}
-.tabla_Users_cdhm .btn-ver:hover{
-    background-color: blue;
-    border-color: blue;
-    transition: all 0.3 ease;
-}
-
-.btn-volver{
-    position: relative;
-    margin-top: 1cm;
-    
-}
-.btn-volver:hover{
-    position: relative;
-    margin-top: 1cm;
-    background-color: white;
-    
-}
-
