@@ -35,18 +35,50 @@ function DoctoresBd() {
   }, []);
 
   if (loading) {
-    return <div className="sheet">Cargando...</div>;
+    return <div className="Tabla-Container">Cargando...</div>;
   }
 
   if (error) {
-    return <div className="sheet">Error: {error}</div>;
+    return <div className="Tabla-Container">Error: {error}</div>;
   }
 
   return (
-    <div className="sheet">
-      <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html" className="btnIni">INICIO</a>
+    <div className="Tabla-Container">
+       {/* Menú superior */}
+      <header className="header-container-ultimate">
+        <div className="btn-menu">
+          <label htmlFor="btn-menu" className="icon-menu">SACM</label>
+        </div>
+        <nav className="menu-ultimate">
+          <ul>
+            <li><a href="/index.html">Inicio</a></li>
+            <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      {/* Menú lateral */}
+      <input type="checkbox" id="btn-menu" />
+      <div className="container-menu">
+        <div className="cont-menu">
+          <nav>
+            <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.htmls">Bases de Datos</a>
+            <a href="http://localhost:5173/Sacm">Reportes</a>
+            <a href="http://localhost:5173/Sacm">Perfil</a>
+            <a href="#">Cerrar Sesión</a>
+          </nav>
+          <label htmlFor="btn-menu">✖️</label>
+        </div>
+      </div>
+
+   
+
+      {/* Título */}
+      <h2 className="tittle-Doctores">DOCTORES</h2>
+
       <div className="tabla-container-doctor">
-        <h2 id="title-pacientes">Bd-Doctores</h2>
         <table className="tabla_Users_cdhm_doctor">
           <thead>
             <tr className="tr_cdhm_doctor">

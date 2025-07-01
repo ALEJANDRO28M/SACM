@@ -14,3 +14,60 @@
 .footer-ultimate{
     text-align: center;
 }
+
+/* ======== TÍTULO DE MEDICAMENTOS ======== */
+.tittle-medicamentos {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 28px;
+  color: aqua;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ======== CONTENEDOR TABLA MEDICAMENTOS ======== */
+.tabla-container-medicamentos {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+}
+
+/* ======== TABLA DE MEDICAMENTOS ======== */
+.tabla-medicamentos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.th-medicamentos,
+.td-medicamentos {
+  border: 1px solid aqua;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.th-medicamentos {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+.tr-body-medicamentos:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+/* ======== RESPONSIVE ======== */
+@media screen and (max-width: 750px) {
+  .tittle-medicamentos {
+    font-size: 24px;
+  }
+
+  .th-medicamentos,
+  .td-medicamentos {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

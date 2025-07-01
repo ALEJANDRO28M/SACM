@@ -1,125 +1,80 @@
-
-.menu {
-display:flex;
-justify-content: flex-start;
-align-items: flex-start;
-border-style: groove;
-border-color: #007bff;
-position: initial;
-margin: 0%;
-padding: 0%;
-box-sizing: border-box;
-
+/* ======== CONTENEDOR GENERAL DE USUARIOS ======== */
+.contenedor-usuarios {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  color: white;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
+/* ======== TÍTULO PRINCIPAL ======== */
+.titulo-usuarios {
+  text-align: center;
+  font-size: 28px;
+  color: aqua;
+  margin: 20px 0;
 }
 
-.tabla-container-dataUser {
-    
-    margin-top: 2cm;
-    padding: 20px;
-    border-radius: 22px;
-    border-color: #ff1f1f;
-    background-color: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 800px; /* Ajuste para una mejor presentación */
+/* ======== CONTENEDOR DE LA TABLA ======== */
+.tabla-usuarios-container {
+  overflow-x: auto;
+  margin-top: 10px;
 }
 
-.listUserDataText {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2em; /* Tamaño de fuente grande */
+/* ======== TABLA DE USUARIOS ======== */
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.tabla_Users {
-    
+.fila-cabecera-usuarios {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+.celda-cabecera-usuarios,
+.celda-dato-usuarios {
+  border: 1px solid aqua;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.fila-dato-usuarios:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+/* ======== BOTÓN ELIMINAR ======== */
+.btn-eliminar-usuario {
+  background-color: crimson;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-eliminar-usuario:hover {
+  background-color: darkred;
+}
+
+/* ======== RESPONSIVE ======== */
+@media screen and (max-width: 750px) {
+  .titulo-usuarios {
+    font-size: 22px;
+  }
+
+  .celda-cabecera-usuarios,
+  .celda-dato-usuarios {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .btn-eliminar-usuario {
+    padding: 5px 10px;
     font-size: 12px;
-    border-collapse: collapse;
-}
-
-.tabla_Users thead {
-    background-color: #007bff;
-    color: white;
-    
-}
-
-.tabla_Users th,
-.tabla_Users td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    transition: background-color 0.3s; /* Suaviza la transición */
-}
-
-
-.tabla_Users tbody tr {
-    transition: background-color 0.3s; /* Suaviza la transición */
-}
-
-.tabla_Users tbody tr:hover {
-    background-color: #e9ecef; /* Color al pasar el mouse */
-}
-
-.tabla_Users tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Color alternativo para filas pares */
-}
-
-.tabla_Users tbody tr:nth-child(odd) {
-    background-color: #ffffff; /* Color alternativo para filas impares */
-}
-
-.tabla_Users th {
-    border: 1px solid #ddd;
-    text-align: center;
-    font-weight: bold; /* Aumentar el peso de la fuente */
-}
-
-.error {
-    color: red;
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.loading {
-    text-align: center;
-    font-size: 1.5em; 
-    color: #007bff; /* Color azul para el texto de carga */
-}
-
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    .tabla_Users th,
-    .tabla_Users td {
-        padding: 10px; /* Ajustar padding en pantallas pequeñas */
-        font-size: 0.9em; /* Disminuir tamaño de fuente en móviles */
-    }
-
-    h2 {
-        font-size: 1.8em; /* Ajustar tamaño del título en móviles */
-    }
-}
-button {
-    background-color: #ff4c4c; /* Color de fondo rojo */
-    color: rgb(32, 54, 199); /* Color de texto blanco */
-    border: none; /* Sin borde */
-    padding: 10px 15px; /* Espaciado interno */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al pasar el ratón */
-}
-
-button:hover {
-    background-color: #ff1f1f; /* Cambia el color al pasar el ratón */
-}
-
-main{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100vh;
+  }
 }
