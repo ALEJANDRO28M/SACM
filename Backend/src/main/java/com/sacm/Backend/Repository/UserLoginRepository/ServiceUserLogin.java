@@ -1,4 +1,4 @@
-package com.sacm.Backend.Service.UserLogin;
+package com.sacm.Backend.Repository.UserLoginRepository;
 
 import java.util.List;
 import com.sacm.Backend.Models.ModelUserLogin;

@@ -1,4 +1,4 @@
-package com.sacm.Backend.Service.Pacientes;
+package com.sacm.Backend.Repository.PacientesRepository;
 
 import java.util.List;
 
@@ -27,7 +27,6 @@ public interface PacienteDao {
     ///
     ///
     ///////////////////////// VALIDAR USUARIO LOGIN ///////////////////////////
-
     /////////////////////////////////////////////////////////////////////////////     
 
 }

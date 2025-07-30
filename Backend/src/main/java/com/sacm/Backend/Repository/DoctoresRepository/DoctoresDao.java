@@ -1,4 +1,4 @@
-package com.sacm.Backend.Service.Doctores;
+package com.sacm.Backend.Repository.DoctoresRepository;
 
 import java.util.List;
 

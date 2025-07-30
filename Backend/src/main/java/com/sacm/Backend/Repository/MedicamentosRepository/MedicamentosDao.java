@@ -1,4 +1,4 @@
-package com.sacm.Backend.Service.Medicamentos;
+package com.sacm.Backend.Repository.MedicamentosRepository;
 
 import java.util.List;
 

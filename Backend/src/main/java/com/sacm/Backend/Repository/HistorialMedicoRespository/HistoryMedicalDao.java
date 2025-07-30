@@ -1,4 +1,4 @@
-package com.sacm.Backend.Service.HistorialMedico;
+package com.sacm.Backend.Repository.HistorialMedicoRespository;
 
 import java.util.List;
 

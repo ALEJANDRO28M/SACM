@@ -1,6 +1,5 @@
-package com.sacm.Backend.Service.Pacientes;
+package com.sacm.Backend.Repository.PacientesRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
