@@ -15,7 +15,7 @@ public class Prescripciones {
     @Id 
      @Getter @Setter @Column(name="id")
     private int id;
-
+    
     @Basic @Getter @Setter @Column(name="dosis")
     private String dosis;
 
