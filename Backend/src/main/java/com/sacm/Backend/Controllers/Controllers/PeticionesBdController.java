@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import com.sacm.Backend.Documentation.MedicinesDoc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus; // ✅ Para usar el tipo Date
 import org.springframework.http.ResponseEntity;
@@ -58,6 +59,7 @@ public class PeticionesBdController {
     MedicamentoService medi;
 
     @GetMapping("/Medicines")
+    @MedicinesDoc
     public List<Medicamentos> showListMedicines() {
         return medi.showListMedicines();
     }
