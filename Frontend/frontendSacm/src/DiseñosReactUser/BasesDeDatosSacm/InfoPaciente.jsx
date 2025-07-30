@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import "../../css/Pacienteinfo.css"
 function InfoPaciente() {
   const [paciente, setPaciente] = useState([]);
   const [error, setError] = useState(null);
@@ -28,54 +28,87 @@ function InfoPaciente() {
   }, []);
 
   return (
-    <div className="sheet">
-      <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html" className="btnIni">INICIO</a>
-      
-      <div className="tabla-container-cdhm">
-        <h2 id="title-pacientes">Agenda De Citas Medicas</h2>
-        
-        {error ? (
-          <p style={{ color: "red" }}>Error: {error}</p>
-        ) : (
-          <table className="tabla_Users_cdhm">
-            <thead>
-              <tr className="tr_cdhm">
-                <th className="th_cdhm">ID</th>
-                <th className="th_cdhm">NOMBRE</th>
-                <th className="th_cdhm">APELLIDO</th>
-                <th className="th_cdhm">EMAIL</th>
-                <th className="th_cdhm">EDAD</th>
-                <th className="th_cdhm">TELEFONO</th>
-                <th className="th_cdhm">CC</th>
-                <th className="th_cdhm">FECHA DE NACIMIENTO</th>
-                <th className="th_cdhm">GENERO</th>
+    <div className="Tabla-Container">
+  {/* Menú superior */}
+  <header className="header-container-ultimate">
+    <div className="btn-menu">
+      <label htmlFor="btn-menu" className="icon-menu">SACM</label>
+    </div>
+    <nav className="menu-ultimate">
+      <ul>
+        <li><a href="/index.html">Inicio</a></li>
+        <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  {/* Menú lateral */}
+  <input type="checkbox" id="btn-menu" />
+  <div className="container-menu">
+    <div className="cont-menu">
+      <nav>
+        <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html">Bases de Datos</a>
+        <a href="http://localhost:5173/Sacm">Reportes</a>
+        <a href="http://localhost:5173/Sacm">Perfil</a>
+        <a href="#">Cerrar Sesión</a>
+      </nav>
+      <label htmlFor="btn-menu">✖️</label>
+    </div>
+  </div>
+
+  {/* Título principal */}
+  <h2 className="titulo-pacientes">PACIENTES</h2>
+
+  <div className="tabla-container-pacientes">
+    <h2 className="subtitulo-pacientes">Agenda de Citas Médicas</h2>
+
+    {error ? (
+      <p className="mensaje-error">Error: {error}</p>
+    ) : (
+      <table className="tabla-pacientes">
+        <thead>
+          <tr className="fila-cabecera-pacientes">
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>EMAIL</th>
+            <th>EDAD</th>
+            <th>TELÉFONO</th>
+            <th>CC</th>
+            <th>FECHA DE NACIMIENTO</th>
+            <th>GÉNERO</th>
+          </tr>
+        </thead>
+        <tbody>
+          {paciente.length > 0 ? (
+            paciente.map((pacie) => (
+              <tr key={pacie.id} className="fila-dato-pacientes">
+                <td>{pacie.id}</td>
+                <td>{pacie.nombres}</td>
+                <td>{pacie.apellidos}</td>
+                <td>{pacie.email}</td>
+                <td>{pacie.edad}</td>
+                <td>{pacie.telefono}</td>
+                <td>{pacie.cc}</td>
+                <td>{pacie.fecha_De_Nacimiento}</td>
+                <td>{pacie.genero}</td>
               </tr>
-            </thead>
-            <tbody>
-              {paciente.length > 0 ? (
-                paciente.map((pacie) => (
-                  <tr key={pacie.id} className="tr_cdhm-body">
-                    <td className="td_cdhm">{pacie.id}</td>
-                    <td className="td_cdhm">{pacie.nombres}</td>
-                    <td className="td_cdhm">{pacie.apellidos}</td>
-                    <td className="td_cdhm">{pacie.email}</td>
-                    <td className="td_cdhm">{pacie.edad}</td>
-                    <td className="td_cdhm">{pacie.telefono}</td>
-                    <td className="td_cdhm">{pacie.cc}</td>
-                    <td className="td_cdhm">{pacie.fecha_De_Nacimiento}</td>
-                    <td className="td_cdhm">{pacie.genero}</td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="9" className="td_cdhm">No hay datos disponibles</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        )}
-           <button className="btn-volver"><a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html">volver</a></button>
-      </div>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="9" className="sin-datos-pacientes">No hay datos disponibles</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    )}
+
+    <button className="btn-volver-pacientes">
+      <a href="http://localhost:5173/datoscitPacient" className="btn-Tables-Volver">Volver</a>
+    </button>
+  </div>
     </div>
   );
 }

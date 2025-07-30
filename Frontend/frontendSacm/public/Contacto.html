@@ -4,9 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/Contactanos.css">
+        <link rel="stylesheet" href="../src/css/index.css">
+         <link rel="stylesheet" href="../src/css/mediaQuerySacm.css">
     <title>Contacto</title>
 </head>
 <body>
+ <script>
+    function logout() {
+        fetch('http://localhost:8080/Api/cerrarSesion', {
+            method: 'POST',
+            credentials: 'include'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Sesión cerrada correctamente');
+                window.location.href = '/login'; // Redirige a la página de login
+            } else {
+                alert('Error al cerrar sesión');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  </script>
+  <header class="header-container-ultimate">
+    <div class="btn-menu">
+      <label for="btn-menu" class="icon-menu">SACM</label>    </div>
+    <nav class="menu-ultimate">
+      <ul >
+        <ul>
+          <li><a href="http://localhost:5173/index.html">Inicio</a></li>
+          <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="/Contacto.html">Contacto</a></li>
+        </ul>
+    
+    </nav>
+  </header>
+  <input type="checkbox" id="btn-menu" />
+  <div class="container-menu">
+    <div class="cont-menu">
+      <nav>
+        <a href="/BasesSacm.html">Bases de Datos</a>
+        <a href="http://localhost:5173/Sacm">Reportes</a>
+        <a href="http://localhost:5173/Sacm">Perfil</a>
+        <a onclick="logout()" href="#">Cerrar Sesión</a>
+      </nav>
+      <label for="btn-menu">✖️</label>
+    </div>
+  </div>
+
+      </div>
     <div class="containerMain">
     <div class="containerUno">
         <article>
@@ -40,6 +87,7 @@
           <p>+912 3 567 8987<br>+912 5 252 3336</p>
         </div>
       </div>
+      
     </div>
 </body>
 </html>

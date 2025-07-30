@@ -2,11 +2,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 .title_Nosotros{
     color: aqua;
     position: absolute;
-    top: 10px; /* Mueve el elemento 10px desde la parte superior */
+    top: 130px; /* Mueve el elemento 10px desde la parte superior */
     left: 50%;
     transform: translateX(-27%);
     text-shadow: 3px 2px 4px blue;
@@ -46,14 +47,14 @@
     flex: 1;
     font-family: 'Times New Roman', Times, serif;
     min-width: 400px;
-    margin-top: 5cm;
+    margin-top: 0;
 }
 .in-flex:first-child{
     flex: 2;
     padding: 25px;
     background-color: black;
     margin: 20px;
-    margin-top: 5cm;
+    margin-top: 0.5cm;
     border-radius: 22px;
     font-size: 18px;
     background-image: url('../img/salud4.jpg');
@@ -116,4 +117,24 @@ font-size: 13px;
 
 #flex-tres h3{
     color: aqua;
+}
+@media screen and (max-width: 880px) {
+  .home {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .in-flex,
+  .in-flex:first-child {
+    width: 90%;
+    min-width: unset;
+  }
+
+  .title_Nosotros {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-top: 20px;
+    min-width: unset;
+  }
 }

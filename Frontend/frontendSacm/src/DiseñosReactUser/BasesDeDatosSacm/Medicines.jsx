@@ -96,6 +96,9 @@ function Medicines() {
       ))}
     </tbody>
   </table>
+        <button className="btn-volver-pacientes">
+        <a href="http://localhost:5173/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
+      </button>
 </div>
 
         </div>
