@@ -2,9 +2,9 @@ package com.sacm.Backend.Service.Pacientes;
 
 import java.util.List;
 
+import com.sacm.Backend.Repository.PacientesRepository.PacienteDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.sacm.Backend.Models.User_Of_Patients;
 
