@@ -1,4 +1,4 @@
-package com.sacm.Backend.Service.Citas;
+package com.sacm.Backend.Repository.CitaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +25,15 @@ public class CitaDaoImp implements CitaDao{
     ////////////////////////////////////////////////////////////////////////    
     @Override
     public List<Citas> viewCitas() {
-         query = "FROM Citas";
-         List<Citas> listCitas = new ArrayList();
-         listCitas = entityManager.createQuery(query,Citas.class).getResultList();
-         return listCitas;
+        try {
+            query = "FROM Citas";
+            List<Citas> listCitas = new ArrayList();
+            listCitas = entityManager.createQuery(query, Citas.class).getResultList();
+            return listCitas;
+        } catch (Exception e) {
+
+        }
+        return List.of();
     }
     
 }

@@ -1,4 +1,4 @@
-package com.sacm.Backend.Service.Citas;
+package com.sacm.Backend.Repository.CitaRepository;
 
 import java.util.List;
 
