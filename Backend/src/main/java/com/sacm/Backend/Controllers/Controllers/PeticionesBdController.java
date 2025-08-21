@@ -32,7 +32,7 @@ import com.sacm.Backend.Models.Medicamentos;
 import com.sacm.Backend.Models.ModelCode;
 import com.sacm.Backend.Models.ModelUserLogin;
 import com.sacm.Backend.Models.User_Of_Patients;
-import com.sacm.Backend.Service.Citas.CitaService;
+import com.sacm.Backend.Service.Citas.ACitaService;
 import com.sacm.Backend.Service.Doctores.DoctoresServices;
 import com.sacm.Backend.Service.HistorialMedico.HistoryMedicalService;
 import com.sacm.Backend.Service.Medicamentos.MedicamentoService;
@@ -121,13 +121,13 @@ public class PeticionesBdController {
     //////////////////////////////////////GESTION DE LAS CITAS/////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    @Autowired
+   /* @Autowired
     CitaService citaS;
 
     @GetMapping("/CitasPacientes")
     public List<Citas> viewCitas() {
         return citaS.viewCitas();
-    }
+    } */
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////GESTION DE LAS CITAS DE LOS PACIENTES///////////////////////////////////

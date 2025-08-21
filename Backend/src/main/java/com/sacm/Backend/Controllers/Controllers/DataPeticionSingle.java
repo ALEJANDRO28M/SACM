@@ -42,6 +42,7 @@ public class DataPeticionSingle {
      */
     @GetMapping("/citPatientId/{id}")
     public void verPaciente_Cita(@PathVariable Integer id) {
+
         enviarId = id;
     }
 
