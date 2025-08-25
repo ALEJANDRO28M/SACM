@@ -1,4 +1,4 @@
-package com.sacm.Backend.Exception;
+package com.sacm.Backend.Case.Shared.Exceptions;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Schema(description = "Estructura estandar para respuestas de error")
+@Schema(description = "Estructura estándar para respuestas de error")
 public class ErrorResponse {
     @Schema(description = "Código de estado HTTP", example = "500")
     private int statusCode;
@@ -33,8 +33,12 @@ public class ErrorResponse {
      * @param details    Technical details about the error
      * @param path       URI path where the error occurred
      */
+    public ErrorResponse(int statusCode,
+                         String message,
+                         String errorCode,
+                         String details,
+                         String path) {
 
-    public ErrorResponse(int statusCode, String message, String errorCode, String details, String path) {
         this.statusCode = statusCode;
         this.message = message;
         this.errorCode = errorCode;
