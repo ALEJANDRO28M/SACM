@@ -31,12 +31,12 @@ public class CitaService
 
     @Override
     public Boolean DeleteCita(Long id) {
-        return null;
+        return citaRepository_outPort.delete(id);
     }
 
     @Override
-    public Citas findByIdCita(Citas citas) {
-        return null;
+    public Citas findByIdCita(Long id) {
+        return citaRepository_outPort.findById(id);
     }
 
     @Override

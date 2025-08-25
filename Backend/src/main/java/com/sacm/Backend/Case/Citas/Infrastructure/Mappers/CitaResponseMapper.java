@@ -12,9 +12,9 @@ public class CitaResponseMapper {
                 .map(cita -> new CitaResponse(
                         cita.id(),
                         cita.fecha(),
-                        cita.motivo(),
+                        cita.motivo()/*,
                         cita.historialMedico(),
-                        cita.user()
+                        cita.user()*/
                 ))
                 .toList();
     }

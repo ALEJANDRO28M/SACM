@@ -50,7 +50,7 @@ function CitasPacientes() {
   };
 
   const verPaciente_id = async (id) => {
-
+console.log(id);  
     try {
       const response = await fetch(
         `http://localhost:8080/ApiData/citPatientId/${id}`
@@ -157,7 +157,7 @@ function CitasPacientes() {
           </tbody>
         </table>
             <button className="btn-volver-pacientes">
-      <a href="http://localhost:5173/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
+      <a href="/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
     </button>
       </div>
     </div>

@@ -36,9 +36,9 @@ public class CitaController {
 
     @PostMapping("/create")
     public CitaResponse createCita(@RequestBody CitaRequest citaRequest) {
-        final Citas citas = new Citas(citaRequest.id(),citaRequest.fecha(), citaRequest.motivo(), citaRequest.historialMedico(),citaRequest.user());
+        final Citas citas = new Citas(citaRequest.id(),citaRequest.fecha(), citaRequest.motivo()/*, citaRequest.historialMedico(),citaRequest.user()*/);
         final Citas response = createCitaCase.CreateCita(citas);
-        return new CitaResponse(response.id(),response.fecha(),response.motivo(),response.historialMedico(),response.user());
+        return new CitaResponse(response.id(),response.fecha(),response.motivo()/*,response.historialMedico(),response.user()*/);
     }
 
 

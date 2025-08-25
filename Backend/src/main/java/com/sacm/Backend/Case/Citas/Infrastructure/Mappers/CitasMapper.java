@@ -6,6 +6,7 @@ import com.sacm.Backend.Case.Citas.Infrastructure.persistence.Entities.CitasEnti
 import java.util.List;
 
 public class CitasMapper {
+
     /*
     * Aqui estamos mapeando 2 clases entre si
     * FLUJO = De entidad a domain
@@ -13,22 +14,22 @@ public class CitasMapper {
     * */
 
     public static CitasEntitys toEntity(Citas domain) {
-        return new CitasEntitys(
-                domain.id(),
-                domain.fecha(),
-                domain.motivo(),
-                domain.historialMedico(),
-                domain.user()
-        );
+   return new  CitasEntitys(
+           domain.id(),
+           domain.fecha(),
+           domain.motivo()
+/*           domain.historialMedico(),
+           domain.user()*/
+   );
     }
 
     public static Citas toDomain(CitasEntitys entity) {
         return new Citas(
                 entity.getId(),
                 entity.getFecha(),
-                entity.getMotivo(),
-                entity.getHistorialMedico(),
-                entity.getUser_Of_Patients()
+                entity.getMotivo()
+/*                entity.getHistorialMedico(),
+                entity.getUser_Of_Patients()*/
         );
     }
 
@@ -36,9 +37,9 @@ public class CitasMapper {
       return  entity.stream().map(citasEntitys -> new Citas(
                 citasEntitys.getId(),
                 citasEntitys.getFecha(),
-                citasEntitys.getMotivo(),
+                citasEntitys.getMotivo()/*,
                 citasEntitys.getHistorialMedico(),
-                citasEntitys.getUser_Of_Patients()
+                citasEntitys.getUser_Of_Patients()*/
         )).toList();
 
     }

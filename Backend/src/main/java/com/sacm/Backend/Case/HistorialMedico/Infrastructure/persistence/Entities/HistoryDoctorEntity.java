@@ -1,21 +1,16 @@
-package com.sacm.Backend.Models;
+package com.sacm.Backend.Case.HistorialMedico.Infrastructure.persistence.Entities;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
-@Table(name="historialesmedicos")
+@Entity(name = "historialesmedicos")
+public class HistoryDoctorEntity {
 
-public class HistorialMedico {
-
-    @Id  @Getter @Setter @Column(name="id")
+    @Id
+    @Getter
+    @Setter
+    @Column(name="id")
     private int id;
 
 
@@ -38,21 +33,19 @@ public class HistorialMedico {
 
     //@ManyToOne @Getter @Setter @Column(name="Doctor_id")
     //private Doctores doctor;
-    
 
-    public HistorialMedico() {
+
+    public HistoryDoctorEntity() {
     }
 
-    public HistorialMedico(int id, String fecha, String diagnostico, String tratamiento/*List<Citas> citas, Doctores doctor*/ ) {
+    public HistoryDoctorEntity(int id, String fecha, String diagnostico, String tratamiento/*List<Citas> citas, Doctores doctor*/ ) {
         this.id = id;
         this.fecha = fecha;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
-       // this.citas = citas;
-       // this.doctor = doctor;
+        // this.citas = citas;
+        // this.doctor = doctor;
     }
 
-    
-    
-    
+
 }
