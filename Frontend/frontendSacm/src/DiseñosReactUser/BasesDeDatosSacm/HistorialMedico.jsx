@@ -1,45 +1,49 @@
 import { useState, useEffect } from "react";
-import "../../img/imagenDeFondo.jpg";
-import "../../css/HistoryDoctor.css"
+import "../../css/HistoryDoctor.css";
 
 function HistorialMedico() {
-  const [ListHistorialMedico, setListHistorial] = useState([]);
+  const [listHistorialMedico, setListHistorial] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const fetchDataHistory = async () => {
+  useEffect(() => {
+    const controller = new AbortController();
 
-    try {
-
-      const peticion = await fetch(
-
-        "http://localhost:8080/Api/HistoryDoctor",
-        {
+    const fetchDataHistory = async () => {
+      try {
+        const response = await fetch("http://localhost:8080/Api/HistoryDoctor", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error("Error en la solicitud");
         }
-      );
-     if(!peticion.ok){
-      throw new error("Error en la solicitud");
-     }
-      
-      const history = await peticion.json();
-      setListHistorial(history);
 
-    } catch (error) {
-        setError(error.message);
-    }finally{
-        setLoading(false); //MARCA QUE LA CARGA HA TERMINADO 
-    }
-  };
+        const history = await response.json();
+        setListHistorial(history);
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          setError(error.message);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  useEffect(()=>{
     fetchDataHistory();
-  },[]);
+
+    return () => controller.abort(); // cancelar fetch al desmontar
+  }, []);
+
+  if (loading) return <p>Cargando historial...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
-
- <div className="Tabla-Container">
+    <div className="Tabla-Container">
       <header className="header-container-ultimate">
         <div className="btn-menu">
           <label htmlFor="btn-menu" className="icon-menu">SACM</label>
@@ -48,7 +52,7 @@ function HistorialMedico() {
         <nav className="menu-ultimate">
           <ul>
             <li><a href="/index.html">Inicio</a></li>
-            <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
+            <li><a href="/Nosotros">Nosotros</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Contacto</a></li>
           </ul>
@@ -59,9 +63,9 @@ function HistorialMedico() {
       <div className="container-menu">
         <div className="cont-menu">
           <nav>
-            <a href="http://127.0.0.1:5500/frontendSacm/src/DiseñosReactUser/BasesSacm.htmls">Bases de Datos</a>
-            <a href="http://localhost:5173/Sacm">Reportes</a>
-            <a href="http://localhost:5173/Sacm">Perfil</a>
+            <a href="/BasesSacm">Bases de Datos</a>
+            <a href="/Sacm">Reportes</a>
+            <a href="/Sacm">Perfil</a>
             <a href="#">Cerrar Sesión</a>
           </nav>
           <label htmlFor="btn-menu">✖️</label>
@@ -80,20 +84,28 @@ function HistorialMedico() {
           </tr>
         </thead>
         <tbody>
-          {ListHistorialMedico.map((HistorialMedico) => (
-            <tr key={HistorialMedico.id}>
-              <td>{HistorialMedico.id}</td>
-              <td>{HistorialMedico.fecha}</td>
-              <td>{HistorialMedico.diagnostico}</td>
-              <td>{HistorialMedico.tratamiento}</td>
+          {listHistorialMedico.length === 0 ? (
+            <tr>
+              <td colSpan="4">No hay historial disponible</td>
             </tr>
-          ))}
+          ) : (
+            listHistorialMedico.map((historial) => (
+              <tr key={historial.id}>
+                <td>{historial.id}</td>
+                <td>{new Date(historial.fecha).toLocaleDateString()}</td>
+                <td>{historial.diagnostico}</td>
+                <td>{historial.tratamiento}</td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
-          <button className="btn-volver-pacientes">
-      <a href="http://localhost:5173/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
-    </button>
+
+      <button className="btn-volver-pacientes">
+        <a href="/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
+      </button>
     </div>
   );
 }
+
 export default HistorialMedico;
