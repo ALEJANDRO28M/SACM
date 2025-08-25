@@ -1,3 +1,4 @@
+/*
 package com.sacm.Backend.Models;
 
 import java.time.LocalDate;
@@ -16,10 +17,12 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+*/
 /**
  * Representa un paciente en el sistema. Esta entidad se mapea a la tabla 'pacientes'
  * en la base de datos.
- */
+ *//*
+
 @Entity
 @Table(name="user_of_patient")
 public class User_Of_Patients {
@@ -72,10 +75,12 @@ public class User_Of_Patients {
     @JoinColumn(name="Paciente_id")
     @JsonBackReference // Esto evita la serialización infinita
     private List<Citas> citas;
-    /*
+    */
+/*
      * La anotación @JoinColumn se utiliza para especificar el nombre de la columna de
      *  clave foránea que se creará en la tabla de la entidad "muchos" (en este caso, Citas).
-     */
+     *//*
+
 
 
 
@@ -83,7 +88,8 @@ public class User_Of_Patients {
     public User_Of_Patients() {
     }
 
-    /**
+    */
+/**
      * Constructor con todos los atributos para inicializar una nueva instancia de User_Of_Patients.
      * 
      * @param id Identificador único del paciente.
@@ -95,7 +101,8 @@ public class User_Of_Patients {
      * @param email Correo electrónico del paciente.
      * @param genero Género del paciente.
      * @param edad Edad del paciente.
-     */
+     *//*
+
     public User_Of_Patients(int id, String nombres, String apellidos, LocalDate fecha_De_Nacimiento,
             String cc, String telefono, String email, String genero,
             String edad) {
@@ -121,3 +128,4 @@ public class User_Of_Patients {
 
     
 }
+*/

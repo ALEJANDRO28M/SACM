@@ -25,17 +25,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sacm.Backend.Models.Citas;
-import com.sacm.Backend.Models.Doctores;
-import com.sacm.Backend.Models.HistorialMedico;
-import com.sacm.Backend.Models.Medicamentos;
+
 import com.sacm.Backend.Models.ModelCode;
 import com.sacm.Backend.Models.ModelUserLogin;
-import com.sacm.Backend.Models.User_Of_Patients;
-import com.sacm.Backend.Service.Citas.ACitaService;
-import com.sacm.Backend.Service.Doctores.DoctoresServices;
+
+/*import com.sacm.Backend.Service.Citas.ACitaService;*/
+/*import com.sacm.Backend.Service.Doctores.DoctoresServices;
 import com.sacm.Backend.Service.HistorialMedico.HistoryMedicalService;
-import com.sacm.Backend.Service.Medicamentos.MedicamentoService;
+import com.sacm.Backend.Service.Medicamentos.MedicamentoService;*/
+/*
 import com.sacm.Backend.Service.Pacientes.PacienteService;
 import com.sacm.Backend.Service.UserLogin.UsuarioServiceLogin;
 
@@ -71,7 +69,7 @@ public class PeticionesBdController {
     @Autowired
     HistoryMedicalService historyService;
 
-    @GetMapping("/HistoryDoctor")
+    @GetMapping("/22")
     public List<HistorialMedico> showHistory() {
         return historyService.showHistoryService();
     }
@@ -95,22 +93,28 @@ public class PeticionesBdController {
 
     @Autowired
     PacienteService servicePaciente;
-    /**
+    */
+/**
      * Obtiene la lista de todos los pacientes.
      * 
      * @return Una lista de objetos User_Of_Patients.
-     */
-    @GetMapping("/ListPacients")
+     *//*
+
+*/
+/*    @GetMapping("/ListPacients")
     public List<User_Of_Patients> pacientes() {
         // Llama al método del DAO para obtener la lista de pacientes
         return servicePaciente.pacientes();
-    }
+    }*//*
 
-    /**
+
+    */
+/**
      * Elimina un paciente basado en el ID proporcionado.
      *
      * @param id El ID del paciente a eliminar.
-     */
+     *//*
+
     @DeleteMapping("DeleteUserPacient/{id}")
     public void eliminarPaciente(@PathVariable int id) {
         // Llama al método del DAO para eliminar al paciente con el ID proporcionado
@@ -121,13 +125,15 @@ public class PeticionesBdController {
     //////////////////////////////////////GESTION DE LAS CITAS/////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-   /* @Autowired
+   */
+/* @Autowired
     CitaService citaS;
 
     @GetMapping("/CitasPacientes")
     public List<Citas> viewCitas() {
         return citaS.viewCitas();
-    } */
+    } *//*
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////GESTION DE LAS CITAS DE LOS PACIENTES///////////////////////////////////
@@ -148,21 +154,27 @@ public class PeticionesBdController {
 
     ///////////////////////////////METODO PARA MOSTRAR LISTA DE PACIENTES USERLOGIN///////////////////////////////////
     /// 
-    @GetMapping("/Data")
+   */
+/* @GetMapping("/Data")
     public List<ModelUserLogin> dataLoginUser() {
         return serviceLogin.mostrarListaUsuariosLogin();
     }
+    *//*
+
+
     ///
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     ///////////////////////////////METODO PARA ELIMINAR PACIENTE USERLOGIN ID///////////////////////////////////
     /// 
-    /**
+    */
+/**
      * Elimina un paciente basado en el ID proporcionado.
      *
      * @param id El ID del paciente a eliminar.
-     */
+     *//*
+
     @DeleteMapping("/DeleteUserLogin/{id}")
     public void deleteUserLogin(@PathVariable int id) {
         serviceLogin.deleteUserLogin(id);
@@ -288,3 +300,4 @@ public ResponseEntity<?> reValueValid(@RequestParam String code){
  
 
 }
+*/

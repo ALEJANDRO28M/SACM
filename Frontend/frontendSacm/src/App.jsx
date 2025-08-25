@@ -23,6 +23,8 @@ DE LA CLASE A UTILIZAR
 // Componente funcional para manejar las rutas
 function App() {
   return (
+
+
     <BrowserRouter>
       <Routes>
         {/* Ruta para la página de inicio de sesión */}
@@ -43,6 +45,8 @@ function App() {
         <Route path="/InsertCode" element={<InsertCodeRecover />}/>             
       </Routes>
     </BrowserRouter>
+
+
   );
 }
 
