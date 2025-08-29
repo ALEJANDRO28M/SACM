@@ -18,4 +18,13 @@ public class CitaResponseMapper {
                 ))
                 .toList();
     }
+    //MAPEAR DE CITA A RESPONSEMAPPER
+
+    public static CitaResponse citaToResponseDtoMapper(Citas cita) {
+        return new CitaResponse(
+                cita.id(),
+                cita.fecha(),
+                cita.motivo()
+        );
+    }
 }
