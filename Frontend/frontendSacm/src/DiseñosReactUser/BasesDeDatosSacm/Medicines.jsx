@@ -10,7 +10,7 @@ function Medicines() {
     const fetchDataMedicines = async () => {
 
         try{
-        const peticion = await fetch("http://localhost:8080/Api/Medicines",{
+        const peticion = await fetch("http://localhost:8080/Api/findAllMedicines",{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",

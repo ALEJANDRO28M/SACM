@@ -22,7 +22,7 @@ function CitasPacientes() {
 
   const fetchDataPacient = async () => {
     try {
-      const peticion = await fetch("http://localhost:8080/Api/CitasPacientes", {
+      const peticion = await fetch("http://localhost:8080/Api/CityPatient", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
