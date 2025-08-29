@@ -46,16 +46,15 @@ public class CitaAdapter implements CitaRepository_OutPort {
 
     @Override
     public Citas findById(Long id) {
-        Citas response = springDateCitasRepository.findById(id)
+        return  springDateCitasRepository.findById(id)
                 .map(CitasMapper::toDomain)
                 .orElseThrow(() -> new RuntimeException("Citas no encontrada"));
-        return response;
+
     }
 
     @Override
     public List<Citas> findAll() {
        final List<CitasEntitys> savedEntity  =  springDateCitasRepository.findAll();
-       List<Citas> response =  CitasMapper.toListCitas(savedEntity);
-       return response;
+       return CitasMapper.toListCitas(savedEntity);
     }
 }
