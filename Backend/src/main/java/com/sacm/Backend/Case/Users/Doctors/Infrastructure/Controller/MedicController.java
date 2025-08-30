@@ -20,6 +20,7 @@ public class MedicController {
     MedicService  medicService;
 
     //MAPEOS NECESARIO MEDICREQUESTMAPPER Y MEDICRESPONSEMAPPER
+
     @GetMapping("/DataDoctor")
     public List<DoctorResponse> findAllMedic() {
         return DoctorToResponseMapper.medicoToListDoctor(medicService.findAllMedico());
