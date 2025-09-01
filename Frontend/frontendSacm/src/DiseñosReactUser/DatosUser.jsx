@@ -13,7 +13,7 @@ function DatosUser() {
 
   const fetchData = async () => {
     try {
-      const peticion = await fetch('http://localhost:8080/Api/Data', {
+      const peticion = await fetch('http://localhost:8080/Api/findAllUserLogin', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ function DatosUser() {
             {usuarios.map((usuario) => (
               <tr key={usuario.id} className="fila-dato-usuarios">
                 <td className="celda-dato-usuarios">{usuario.id}</td>
-                <td className="celda-dato-usuarios">{usuario.usuario}</td>
+                <td className="celda-dato-usuarios">{usuario.user}</td>
                 <td className="celda-dato-usuarios">{usuario.password}</td>
                 <td className="celda-dato-usuarios">
                   <button
