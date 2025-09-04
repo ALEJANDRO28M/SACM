@@ -45,11 +45,12 @@ function Registro() {
 
     try {
       // Hacer una solicitud POST al backend para registrar al usuario
-      const peticion = await fetch("http://localhost:8080/Api/Registrar", {
+      const peticion = await fetch("http://localhost:8080/Api/CreateUserLogin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Indicar que los datos se envían en formato JSON
         },
+        
         body: JSON.stringify({ usuario, password, correo }), // Enviar los datos del formulario al backend
       });
 
