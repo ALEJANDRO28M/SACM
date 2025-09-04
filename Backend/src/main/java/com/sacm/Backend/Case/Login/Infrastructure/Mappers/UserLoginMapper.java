@@ -25,11 +25,11 @@ public class UserLoginMapper {
         );
     }
 
-    public static UserLoginEntity toEntity(UserLogin user) {
+    public static UserLoginEntity toEntity(UserLogin user,String encoded) {
         return new UserLoginEntity(
                 user.id(),
                 user.user(),
-                user.password(),
+                encoded,
                 user.email()
         );
     }

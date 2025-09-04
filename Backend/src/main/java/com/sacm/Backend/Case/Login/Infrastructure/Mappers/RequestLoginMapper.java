@@ -7,9 +7,9 @@ public class RequestLoginMapper {
     public static UserLogin toDomain(RequestUserLogin request) {
         return new UserLogin(
                 request.id(),
-                request.user(),
+                request.usuario(),
                 request.password(),
-                request.email()
+                request.correo()
         );
     }
 }
