@@ -6,7 +6,10 @@ import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
 import com.sacm.Backend.Case.Login.Infrastructure.Mappers.UserLoginMapper;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities.UserLoginEntity;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Repositories.SpringDataLogin;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sacm.Backend.Common.Exception.EmptyResultDataAccessException;
+import com.sacm.Backend.Common.Exception.InternalServerException;
+import com.sacm.Backend.Common.Exception.MethodArgumentNotValidException;
+import com.sacm.Backend.Common.Exception.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,23 +29,27 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
 
     @Override
     public List<UserLogin> findAll() {
-         return UserLoginMapper.toDomain(crud.findAll());
+        try {
+            return UserLoginMapper.toDomain(crud.findAll());
+        } catch (RuntimeException e) {
+                throw new InternalServerException("Error Persistence Content");
+        }
     }
 
     @Override
     public UserLogin findById(Long id) {
         return crud.findById(id).map(UserLoginMapper::toDomain)
-                .orElseThrow(() -> new RuntimeException("User no found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User no found"));
     }
 
     @Override
-    public Boolean deleteById(Long id) {
-        if (crud.existsById(id)){
-            crud.deleteById(id);
-            return true;
-        }else{
-            return false;
-        }
+        public Boolean deleteById(Long id) {
+       try {
+         crud.deleteById(id);
+         return true;
+       } catch (Exception e) {
+         throw new EmptyResultDataAccessException("ID NO ENCONTRADO");
+       }
     }
 
     @Override
@@ -54,23 +61,23 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
             return UserLoginMapper.toDomain(crud.save(entity)) ;
 
             }catch (Exception e){
-             throw  new RuntimeException("NO SE PUDO CREAR",e);
-
+             throw  new MethodArgumentNotValidException("FALLO EN LAS VALIDACIONES DEL DTO A CONSULTAR!");
         }
 
     }
 
     @Override
     public UserLogin update(UserLogin user) {
-        try {
 
+        try {
             String encoded = security.encode(user.password());
             UserLoginEntity entity = UserLoginMapper.toEntity(user, encoded);
             return UserLoginMapper.toDomain(crud.save(entity)) ;
 
         }catch (Exception e){
-            throw  new RuntimeException("NO SE PUDO EDITAR",e);
-
+            throw  new MethodArgumentNotValidException("FALLO EN LAS VALIDACIONES DEL DTO A CONSULTAR!");
         }
+
     }
+
 }

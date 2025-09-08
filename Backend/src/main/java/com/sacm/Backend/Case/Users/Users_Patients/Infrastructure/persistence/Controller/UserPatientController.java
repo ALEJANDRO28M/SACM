@@ -2,8 +2,6 @@ package com.sacm.Backend.Case.Users.Users_Patients.Infrastructure.persistence.Co
 
 import com.sacm.Backend.Case.Users.Users_Patients.Application.Service.UserPatient_Service;
 import com.sacm.Backend.Case.Users.Users_Patients.Domain.User;
-import com.sacm.Backend.Case.Users.Users_Patients.Infrastructure.persistence.Adapter.Dto.UserPatientDto;
-import com.sacm.Backend.Models.ModelUserLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

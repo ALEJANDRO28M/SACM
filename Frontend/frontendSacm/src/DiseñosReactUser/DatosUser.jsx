@@ -25,7 +25,7 @@ function DatosUser() {
       }
 
       const users = await peticion.json();
-      setUsuarios(users);
+      setUsuarios(users.data);
     } catch (error) {
       setError(error.message);
     } finally {

@@ -8,7 +8,9 @@ import com.sacm.Backend.Case.Login.Infrastructure.Controller.Dto.ResponseUserLog
 import com.sacm.Backend.Case.Login.Infrastructure.Mappers.RequestLoginMapper;
 import com.sacm.Backend.Case.Login.Infrastructure.Mappers.ResponseLoginMapper;
 import com.sacm.Backend.Case.Login.Infrastructure.Mappers.UserEncodePasswordMapper;
+import com.sacm.Backend.Common.Dto.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,27 +23,27 @@ public class UserLoginController {
     @Autowired
     UserServiceCase crud;
 
-    @Autowired
-    SecurityService security;
-
     @GetMapping("/findAllUserLogin")
-    public List<ResponseUserLogin> findAllUserLogin() {
-      return ResponseLoginMapper.toResponse(crud.findAll());
+    public ResponseEntity<?> findAllUserLogin() {
+        List<ResponseUserLogin> response = ResponseLoginMapper.toResponse(crud.findAll());
+      return ResponseEntity.ok(ApiResult.success(response,"Users brought correctly!"));
     }
 
     @DeleteMapping("/DeleteUserLogin/{id}")
-    public Boolean deleteUserLogin(@PathVariable Long id) {
-        return crud.deleteUserLogin(id);
+    public ResponseEntity<?> deleteUserLogin(@PathVariable Long id) {
+        return ResponseEntity.ok(ApiResult.success(crud.deleteUserLogin(id),"User Deleted!"));
     }
 
 
     @PostMapping("/CreateUserLogin")
-    public ResponseUserLogin createUserLogin(@RequestBody RequestUserLogin request) {
-           return ResponseLoginMapper.toResponse(crud.create(RequestLoginMapper.toDomain(request)));
+    public ResponseEntity<?> createUserLogin(@RequestBody RequestUserLogin request) {
+        ResponseUserLogin response = ResponseLoginMapper.toResponse(crud.create(RequestLoginMapper.toDomain(request)));
+        return ResponseEntity.ok(ApiResult.success(response,"User create Successfully!"));
     }
 
     @PostMapping("/UpdateUserLogin")
-    public ResponseUserLogin updateUserLogin(@RequestBody RequestUserLogin request) {
-        return ResponseLoginMapper.toResponse(crud.create(RequestLoginMapper.toDomain(request)));
+    public ResponseEntity<?> updateUserLogin(@RequestBody RequestUserLogin request) {
+        ResponseUserLogin response = ResponseLoginMapper.toResponse(crud.create(RequestLoginMapper.toDomain(request)));
+        return ResponseEntity.ok(ApiResult.success(response,"User modified!"));
     }
 }
