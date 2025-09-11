@@ -53,8 +53,8 @@ import java.lang.annotation.*;
                         {
                         "statusCode": 500,
                         "message": "Error Persistence Content",
-                        "errorCode": "500 Error",
-                        "details": "Error inesperado al traer los datos ",
+                        "errorCode": "500 INTERNAL_SERVER_ERROR",
+                        "details": "Error inesperado en la capa de persistencia",
                         "path": "Api/findAllUserLogin"
                         }
                         """
