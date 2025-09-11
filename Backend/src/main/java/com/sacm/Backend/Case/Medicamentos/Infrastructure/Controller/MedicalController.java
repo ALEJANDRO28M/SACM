@@ -2,13 +2,14 @@ package com.sacm.Backend.Case.Medicamentos.Infrastructure.Controller;
 
 import com.sacm.Backend.Case.Medicamentos.Application.Service.MedicamentService;
 import com.sacm.Backend.Case.Medicamentos.Infrastructure.Controller.Dto.MedicalRequest;
-import com.sacm.Backend.Case.Medicamentos.Infrastructure.Controller.Dto.MedicalResponseDto;
+import com.sacm.Backend.Case.Medicamentos.Infrastructure.Documentation.*;
 import com.sacm.Backend.Case.Medicamentos.Infrastructure.Mappers.MedicalResponseMapperDto;
 import com.sacm.Backend.Case.Medicamentos.Infrastructure.Mappers.RequestToMedicalMapper;
+import com.sacm.Backend.Common.Dto.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -18,38 +19,52 @@ public class MedicalController {
     @Autowired
     MedicamentService service;
 
-
+    @FindAllMedicalDoc
     @GetMapping("/findAllMedicines")
-    public List<MedicalResponseDto> FindAllMedicines() {
-        return MedicalResponseMapperDto.listMedicamentos(service.findAll());
+    public ResponseEntity<?> findAllMedicines() {
+        return ResponseEntity.ok(
+                ApiResult.success(
+                        MedicalResponseMapperDto.listMedicamentos(service.findAll()),
+                        "Medicamentos obtenidos correctamente"
+                )
+        );
     }
 
+    @FindByIdMedicalDoc
     @GetMapping("/findMedicine/{id}")
-    public MedicalResponseDto findByIdMedicine(@PathVariable Long id){
-        return MedicalResponseMapperDto.toResponseDto(service.findById(id));
+    public ResponseEntity<?> findByIdMedicine(@PathVariable Long id) {
+        return ResponseEntity.ok(
+                ApiResult.success(
+                        MedicalResponseMapperDto.toResponseDto(service.findById(id)),
+                        "Medicamento encontrado correctamente"
+                )
+        );
     }
 
+    @CreateMedicalDoc
     @PostMapping("/newMedicine")
-    public MedicalResponseDto create(@RequestBody MedicalRequest request){
-        return MedicalResponseMapperDto.toResponseDto(service.create(RequestToMedicalMapper.toMedical(request)));
+    public ResponseEntity<?> create(@RequestBody MedicalRequest request) {
+        service.create(RequestToMedicalMapper.toMedical(request));
+        return ResponseEntity.ok(
+                ApiResult.success("Medicamento creado correctamente")
+        );
     }
 
+    @DeleteMedicalDoc
     @PostMapping("/deleteMedicine/{id}")
-    public Boolean delete(@PathVariable Long id){
-        return service.delete(id);
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        boolean result = service.delete(id);
+        return ResponseEntity.ok(
+                ApiResult.success(result ? "Medicamento eliminado correctamente" : "No se pudo eliminar el medicamento")
+        );
     }
 
+    @UpdateMedicalDoc
     @PostMapping("/updateMedicine")
-    public MedicalResponseDto update(@RequestBody MedicalRequest request){
-        return MedicalResponseMapperDto.toResponseDto(service.create(RequestToMedicalMapper.toMedical(request)));
+    public ResponseEntity<?> update(@RequestBody MedicalRequest request) {
+        service.create(RequestToMedicalMapper.toMedical(request));
+        return ResponseEntity.ok(
+                ApiResult.success("Medicamento actualizado correctamente")
+        );
     }
-
-
-
-
-
-
-
-
-
 }
