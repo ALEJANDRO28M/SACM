@@ -1,15 +1,14 @@
 package com.sacm.Backend.Case.Users.Doctors.Infrastructure.Controller;
 
 import com.sacm.Backend.Case.Users.Doctors.Application.Service.MedicService;
-import com.sacm.Backend.Case.Users.Doctors.Domain.Models.Medico;
 import com.sacm.Backend.Case.Users.Doctors.Infrastructure.Controller.Dto.DoctorRequest;
-import com.sacm.Backend.Case.Users.Doctors.Infrastructure.Controller.Dto.DoctorResponse;
+import com.sacm.Backend.Case.Users.Doctors.Infrastructure.Documentation.*;
 import com.sacm.Backend.Case.Users.Doctors.Infrastructure.Mappers.DoctorToResponseMapper;
 import com.sacm.Backend.Case.Users.Doctors.Infrastructure.Mappers.RequestToMedicMapper;
+import com.sacm.Backend.Common.Dto.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
@@ -17,35 +16,64 @@ import java.util.List;
 public class MedicController {
 
     @Autowired
-    MedicService  medicService;
+    MedicService medicService;
 
-    //MAPEOS NECESARIO MEDICREQUESTMAPPER Y MEDICRESPONSEMAPPER
-
+    @FindAllDoctorsDoc
     @GetMapping("/DataDoctor")
-    public List<DoctorResponse> findAllMedic() {
-        return DoctorToResponseMapper.medicoToListDoctor(medicService.findAllMedico());
+    public ResponseEntity<?> findAllMedic() {
+        return ResponseEntity.ok(
+                ApiResult.success(
+                        DoctorToResponseMapper.medicoToListDoctor(
+                                medicService.findAllMedico()
+                        ),
+                        "Listado de doctores obtenido correctamente"
+                )
+        );
     }
 
+    @FindByIdDoctorsDoc
     @GetMapping("/findDoctorById/{id}")
-    public DoctorResponse findDoctorById(@PathVariable Long id){
-        return DoctorToResponseMapper.medicoToDoctorResponse(medicService.findMedicoById(id));
+    public ResponseEntity<?> findDoctorById(@PathVariable Long id) {
+        return ResponseEntity.ok(
+                ApiResult.success(
+                        DoctorToResponseMapper.medicoToDoctorResponse(
+                                medicService.findMedicoById(id)
+                        ),
+                        "Doctor encontrado correctamente"
+                )
+        );
     }
 
+    @CreateDoctorDoc
     @PostMapping("/CreateDoctor")
-    public DoctorResponse createDoctor(@RequestBody DoctorRequest doctorRequest){
-        final Medico saved = medicService.create(RequestToMedicMapper.toMedico(doctorRequest));
-        return DoctorToResponseMapper.medicoToDoctorResponse(saved);
+    public ResponseEntity<?> createDoctor(@RequestBody DoctorRequest doctorRequest) {
+        return ResponseEntity.ok(
+                ApiResult.success(
+                        DoctorToResponseMapper.medicoToDoctorResponse(
+                                medicService.create(
+                                        RequestToMedicMapper.toMedico(doctorRequest)
+                                )
+                        ),
+                        "Doctor creado exitosamente"
+                )
+        );
     }
 
+    @UpdateDoctorsDoc
     @PostMapping("/UpdateDoctor")
-    public DoctorResponse updateDoctor(@RequestBody DoctorRequest doctorRequest){
-        final Medico saved = medicService.updateMedic(RequestToMedicMapper.toMedico(doctorRequest));
-        return DoctorToResponseMapper.medicoToDoctorResponse(saved);
+    public ResponseEntity<?> updateDoctor(@RequestBody DoctorRequest doctorRequest) {
+        medicService.updateMedic(RequestToMedicMapper.toMedico(doctorRequest));
+        return ResponseEntity.ok(
+                ApiResult.success("Doctor actualizado correctamente")
+        );
     }
 
+    @DeleteDoctorDoc
     @DeleteMapping("/DeleteDoctor/{id}")
-    public Boolean deleteDoctor(@PathVariable Long id){
-        return medicService.deleteMedicUser(id);
+    public ResponseEntity<?> deleteDoctor(@PathVariable Long id) {
+        medicService.deleteMedicUser(id);
+        return ResponseEntity.ok(
+                ApiResult.success("Doctor eliminado correctamente")
+        );
     }
-
 }
