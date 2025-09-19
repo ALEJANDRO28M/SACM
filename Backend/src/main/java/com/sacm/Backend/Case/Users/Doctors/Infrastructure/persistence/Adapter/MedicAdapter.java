@@ -77,14 +77,14 @@ public class MedicAdapter implements MedicRepositoryOutPort {
      * @return true si fue eliminado, false si no existía
      */
     @Override
-    public Boolean deleteMedico(Long id) {
-       try{
-           crud.deleteById(id);
-           return true;
-       }catch (Exception ex){
-           throw new EmptyResultDataAccessException("ID NO ENCONTRADO");
-       }
+    public boolean deleteMedico(Long id) {
+        if (!crud.existsById(id)) {
+            throw new EmptyResultDataAccessException("ID NO ENCONTRADO");
+        }
+        crud.deleteById(id);
+        return true;
     }
+
 
     /**
      * Consulta todos los doctores registrados.
@@ -112,6 +112,6 @@ public class MedicAdapter implements MedicRepositoryOutPort {
     public Medico findMedicoById(Long id) {
         return crud.findById(id)
                 .map(MedicMapper::toDomain)
-                .orElseThrow(() -> new ResourceNotFoundException("Medico Not Found"));
+                .orElseThrow(() -> new ResourceNotFoundException("No se encontró un usuario con el ID proporcionado"));
     }
 }

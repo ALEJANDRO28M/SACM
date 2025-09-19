@@ -29,7 +29,7 @@ public class MedicService
     }
 
     @Override
-    public Boolean deleteMedicUser(Long id) {
+    public boolean deleteMedicUser(Long id) {
         return outPort.deleteMedico(id);
     }
 

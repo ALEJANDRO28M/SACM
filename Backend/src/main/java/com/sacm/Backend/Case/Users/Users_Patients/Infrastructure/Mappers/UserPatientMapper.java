@@ -24,4 +24,34 @@ public class UserPatientMapper {
                         userPatient.getCitas()
                 )).toList();
     }
+
+    public static User toUser(UserEntity user) {
+        return new User(
+                user.getId(),
+                user.getNombres(),
+                user.getApellidos(),
+                user.getEmail(),
+                user.getEdad(),
+                user.getTelefono(),
+                user.getCc(),
+                user.getFecha_De_Nacimiento(),
+                user.getGenero(),
+                user.getCitas()
+        );
+    }
+
+    public static UserEntity toEntity(User user) {
+        return new  UserEntity(
+                user.id(),
+                user.nombres(),
+                user.apellidos(),
+                user.email(),
+                user.edad(),
+                user.telefono(),
+                user.cc(),
+                user.fecha_Nacimiento(),
+                user.genero(),
+                user.citas()
+        );
+    }
 }

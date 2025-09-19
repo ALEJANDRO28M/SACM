@@ -26,7 +26,8 @@ public class CitaRequestMapper {
         return new Citas(
                 citaRequest.id(),
                 citaRequest.fecha(),
-                citaRequest.motivo()
+                citaRequest.motivo(),
+                citaRequest.user()
 /*          citaRequest.historialMedico(),
             citaRequest.user() */
         );

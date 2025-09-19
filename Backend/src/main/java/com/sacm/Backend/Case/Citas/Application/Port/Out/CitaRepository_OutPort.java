@@ -7,7 +7,7 @@ import java.util.List;
 public interface CitaRepository_OutPort {
 
     Citas create(Citas citas);
-    Boolean delete(Long id);
+    boolean delete(Long id);
     Citas update(Citas citas);
     Citas findById(Long id);
     List<Citas> findAll();

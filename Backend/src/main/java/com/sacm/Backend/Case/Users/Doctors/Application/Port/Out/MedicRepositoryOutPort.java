@@ -8,7 +8,7 @@ public interface MedicRepositoryOutPort {
 
     Medico createMedico(Medico medico);
     Medico updateMedico(Medico medico);
-    Boolean deleteMedico(Long id);
+    boolean deleteMedico(Long id);
     List<Medico> findAllMedico();
     Medico findMedicoById(Long id);
 

@@ -30,7 +30,7 @@ public class CitaService
     }
 
     @Override
-    public Boolean DeleteCita(Long id) {
+    public boolean DeleteCita(Long id) {
         return citaRepository_outPort.delete(id);
     }
 

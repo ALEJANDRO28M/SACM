@@ -4,6 +4,10 @@ import com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities.UserLogin
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface SpringDataLogin extends JpaRepository<UserLoginEntity,Long> {
+    boolean existsByuser(String user);
+    Optional<UserLoginEntity> findByuser(String user);
 }

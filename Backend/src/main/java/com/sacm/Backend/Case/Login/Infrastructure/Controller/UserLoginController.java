@@ -53,4 +53,10 @@ public class UserLoginController {
     public ResponseEntity<?> findById(@PathVariable Long id) {
         return ResponseEntity.ok(ApiResult.success(ResponseLoginMapper.toResponse(crud.findById(id)),"Usuario encontrado"));
     }
+    @PostMapping("/validarInicio")
+    public Boolean login(@RequestBody RequestUserLogin request) {
+           return crud.loginUser(RequestLoginMapper.toDomain(request));
+    }
+    //QUEDAMOS EN QUE HUBO UN PROBLEMA AL REALIZAR LA SOLICITUD EL ADAPTER ESTA BIEN LO QUE NO ESTA BIEN ES QUE NO PUED
+    //INICIAR SESION, VALIDAR CON UN IF EN ADAPTER SI LA VALIDACION DEL PASSWORD FUE CORRECTA
 }

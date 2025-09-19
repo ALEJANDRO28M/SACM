@@ -6,13 +6,11 @@ import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
 import com.sacm.Backend.Case.Login.Infrastructure.Mappers.UserLoginMapper;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities.UserLoginEntity;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Repositories.SpringDataLogin;
-import com.sacm.Backend.Common.Exception.EmptyResultDataAccessException;
-import com.sacm.Backend.Common.Exception.InternalServerException;
-import com.sacm.Backend.Common.Exception.MethodArgumentNotValidException;
-import com.sacm.Backend.Common.Exception.ResourceNotFoundException;
+import com.sacm.Backend.Common.Exception.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Adaptador de persistencia que implementa el puerto de salida {@link UserLoginRepositoryOutPort}.
@@ -110,12 +108,27 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
      */
     @Override
     public UserLogin update(UserLogin user) {
-        try {
+
+        if (crud.existsByuser(user.user()) && crud.existsById(user.id())) {
             String encoded = security.encode(user.password());
             UserLoginEntity entity = UserLoginMapper.toEntity(user, encoded);
             return UserLoginMapper.toDomain(crud.save(entity));
-        } catch (Exception e) {
-            throw new MethodArgumentNotValidException("FALLO EN LAS VALIDACIONES DEL DTO A CONSULTAR!");
+        }
+        throw new ResourceNotFoundException("User no encontrado");
+
+    }
+
+    @Override
+        public boolean LoginUser(UserLogin login) {
+            try {
+                Optional<UserLoginEntity> user = crud.findByuser(login.user());
+                if (user.isPresent()) {
+                    String password = user.get().getPassword();
+                    return security.matches(login.password(), password);
+                }
+                return false;
+            } catch (RuntimeException e) {
+                throw new UserLoginInvalidException("Password false");
+            }
         }
     }
-}

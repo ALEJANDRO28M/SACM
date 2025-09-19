@@ -93,21 +93,19 @@ public class UserEntity {
      * @param genero Género del paciente.
      * @param edad Edad del paciente.
      */
-    public UserEntity(long id, String nombres, String apellidos, LocalDate fecha_De_Nacimiento,
-                            String cc, String telefono, String email, String genero,
-                            String edad) {
+    public UserEntity(Long id, String nombres, String apellidos, String email, String edad, String telefono, String cc, LocalDate fecha_De_Nacimiento, String genero, List<CitasEntitys> citas) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.fecha_De_Nacimiento = fecha_De_Nacimiento;
-        this.cc = cc;
-        this.telefono = telefono;
         this.email = email;
-        this.genero = genero;
         this.edad = edad;
+        this.telefono = telefono;
+        this.cc = cc;
+        this.fecha_De_Nacimiento = fecha_De_Nacimiento;
+        this.genero = genero;
+        this.citas = citas;
     }
-
-    // RELACIONES ENTRE CLASES-MODELOS (comentado por ahora)
+// RELACIONES ENTRE CLASES-MODELOS (comentado por ahora)
     // @OneToMany @Getter @Setter @Column(name="id")
     // private List<Citas> citas;
 

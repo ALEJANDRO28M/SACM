@@ -29,7 +29,8 @@ public class CitaResponseMapper {
                 .map(cita -> new CitaResponse(
                         cita.id(),
                         cita.fecha(),
-                        cita.motivo()
+                        cita.motivo(),
+                        cita.user()
 /*                      cita.historialMedico(),
                         cita.user() */
                 ))
@@ -46,7 +47,8 @@ public class CitaResponseMapper {
         return new CitaResponse(
                 cita.id(),
                 cita.fecha(),
-                cita.motivo()
+                cita.motivo(),
+                cita.user()
         );
     }
 }

@@ -29,7 +29,8 @@ public class CitasMapper {
         return new CitasEntitys(
                 domain.id(),
                 domain.fecha(),
-                domain.motivo()
+                domain.motivo(),
+                domain.user()
 /*          domain.historialMedico(),
             domain.user() */
         );
@@ -45,7 +46,8 @@ public class CitasMapper {
         return new Citas(
                 entity.getId(),
                 entity.getFecha(),
-                entity.getMotivo()
+                entity.getMotivo(),
+                entity.getUser()
 /*          entity.getHistorialMedico(),
             entity.getUser_Of_Patients() */
         );
@@ -62,7 +64,8 @@ public class CitasMapper {
                 .map(citasEntitys -> new Citas(
                         citasEntitys.getId(),
                         citasEntitys.getFecha(),
-                        citasEntitys.getMotivo()
+                        citasEntitys.getMotivo(),
+                        citasEntitys.getUser()
 /*              citasEntitys.getHistorialMedico(),
                 citasEntitys.getUser_Of_Patients() */
                 ))

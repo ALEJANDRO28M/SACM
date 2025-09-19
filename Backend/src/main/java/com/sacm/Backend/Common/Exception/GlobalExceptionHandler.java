@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 "BAD_REQUEST",
-                 ex.toString(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.CONFLICT.value(),
                 ex.getMessage(),
                 "CONFLICT_EXCEPTION",
-                ex.getLocalizedMessage(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 "FILE_UPLOAD_ERROR",
-                ex.getLocalizedMessage(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.FORBIDDEN.value(),
                 ex.getMessage(),
                 "FORBIDDEN",
-                ex.getLocalizedMessage(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
@@ -64,7 +64,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 ex.getMessage(),
                 "INTERNAL_SERVER_ERROR",
-                ex.getLocalizedMessage(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
@@ -76,7 +76,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 "NOT_FOUND",
-                ex.getLocalizedMessage(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
@@ -88,7 +88,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.UNAUTHORIZED.value(),
                 ex.getMessage(),
                 "UNAUTHORIZED",
-                ex.getLocalizedMessage(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
@@ -100,7 +100,7 @@ public class GlobalExceptionHandler {
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 "NOT_FOUND",
-                ex.getLocalizedMessage(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
@@ -111,10 +111,33 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 "BAD_REQUEST",
-                ex.getLocalizedMessage(),
+                ex.getClass().getSimpleName(),
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+
+    @ExceptionHandler(CustomValidationException.class)
+    ResponseEntity<ErrorResponse> handlerCustomValidationException(CustomValidationException ex, HttpServletRequest request) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                "BAD_REQUEST",
+                ex.getClass().getSimpleName(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+    }
+    @ExceptionHandler(UserLoginInvalidException.class)
+    ResponseEntity<ErrorResponse> handlerUserLoginInvalidException(UserLoginInvalidException ex, HttpServletRequest request) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.UNAUTHORIZED.value(),
+                ex.getMessage(),
+                "Unauthorized",
+                ex.getClass().getSimpleName(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
 
 }

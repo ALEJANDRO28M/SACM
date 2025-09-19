@@ -5,6 +5,7 @@ import com.sacm.Backend.Case.Medicamentos.Domain.Models.Medicamentos;
 import com.sacm.Backend.Case.Medicamentos.Infrastructure.Mappers.MedicalMapper;
 import com.sacm.Backend.Case.Medicamentos.Infrastructure.persistence.Entities.MedicalEntity;
 import com.sacm.Backend.Case.Medicamentos.Infrastructure.persistence.Repositories.SpringDataMedicalRepository;
+import com.sacm.Backend.Common.Exception.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -90,12 +91,11 @@ public class MedicalAdapter implements MedicalRepositoryOutPort {
      * @return true si fue eliminado, false si no existía
      */
     @Override
-    public Boolean delete(Long id) {
-        if (crud.existsById(id)) {
-            crud.deleteById(id);
-            return true;
-        } else {
-            return false;
+    public boolean delete(Long id) {
+        if (!crud.existsById(id)) {
+            throw new EmptyResultDataAccessException("ID NO ENCONTRADO");
         }
+       crud.deleteById(id);
+       return true;
     }
 }

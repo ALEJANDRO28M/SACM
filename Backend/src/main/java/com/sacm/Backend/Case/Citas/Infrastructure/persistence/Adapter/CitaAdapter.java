@@ -65,13 +65,11 @@ public class CitaAdapter implements CitaRepository_OutPort {
      * @throws EmptyResultDataAccessException si el ID no existe en la base de datos
      */
     @Override
-    public Boolean delete(Long id) {
-        try {
-            springDateCitasRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
+    public boolean delete(Long id) {
+        if (!springDateCitasRepository.existsById(id)) {
             throw new EmptyResultDataAccessException("ID NO ENCONTRADO");
         }
+        return  springDateCitasRepository.existsById(id);
     }
 
     /**

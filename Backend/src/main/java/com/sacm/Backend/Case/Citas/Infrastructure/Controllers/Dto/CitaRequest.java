@@ -1,5 +1,7 @@
 package com.sacm.Backend.Case.Citas.Infrastructure.Controllers.Dto;
 
+
+import com.sacm.Backend.Case.Users.Users_Patients.Infrastructure.persistence.Entities.UserEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
@@ -26,7 +28,10 @@ public record CitaRequest(
                 description = "Motivo o descripción breve de la cita médica",
                 example = "Consulta general por dolor abdominal"
         )
-        String motivo
+        String motivo,
+
+        @Schema(description = "Usuario/paciente que tiene la cita")
+        UserEntity user
 
 /*
     @Schema(description = "Historial médico asociado a la cita")

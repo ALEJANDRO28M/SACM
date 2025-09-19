@@ -11,7 +11,7 @@ public interface MedicalRepositoryOutPort {
     List<Medicamentos> findAll();
     Medicamentos findById(Long id);
     Medicamentos update(Medicamentos medicine);
-    Boolean delete(Long id);
+    boolean delete(Long id);
 
 
 
