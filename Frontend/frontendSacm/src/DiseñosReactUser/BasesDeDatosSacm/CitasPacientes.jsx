@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import "../../img/imagenDeFondo.jpg";
 import "../BasesDeDatosSacm/tablesacm.css";
+import { useNavigate } from 'react-router-dom';
+
 
 function CitasPacientes() {
+  
   const [citPacientes, setCitPacientes] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const getColor = (estado) => {
     switch (estado.toLowerCase()) {
@@ -36,7 +40,7 @@ function CitasPacientes() {
       const users = await peticion.json();
       
       // Agregar estado inicial a cada cita
-      const citasConEstado = users.map((cita) => ({
+      const citasConEstado = users.data.map((cita) => ({
         ...cita,
         estadoCita: cita.situacion || "pendiente", // Asigna el estado inicial
       }));
@@ -50,20 +54,24 @@ function CitasPacientes() {
   };
 
   const verPaciente_id = async (id) => {
-console.log(id);  
-    try {
+      
+      console.log(id);
+
+      
+      navigate(`/Paciente/${id}`)
+ /*   try {
       const response = await fetch(
-        `http://localhost:8080/ApiData/citPatientId/${id}`
+        `http://localhost:8080/Api/FindByIdUserPatient/${id}`
       );
 
       if (!response.ok) {
         throw new Error("Error al obtener el paciente del backend");
       }
-
-      window.location.href = "http://localhost:5173/Paciente";
-    } catch (error) {
+*/
+   //   window.location.href = "http://localhost:5173/Paciente";
+   /* } catch (error) {
       console.error("Error:", error);
-    }
+    }*/
   };
 
   const handleEstadoChange = (id, nuevoEstado) => {
@@ -133,7 +141,7 @@ console.log(id);
                 <td>
                   <button
                     className="btn-ver"
-                    onClick={() => verPaciente_id(cita.user_Of_Patients.id)}
+                    onClick={() => verPaciente_id(cita.user.id)}
                   >
                     Ver
                   </button>

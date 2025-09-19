@@ -21,7 +21,7 @@ function DoctoresBd() {
       }
 
       const doctores = await peticion.json();
-      setListDoctor(doctores);
+      setListDoctor(doctores.data);
     } catch (error) {
       setError(error.message);
     } finally {

@@ -22,7 +22,7 @@ function Medicines() {
     }
 
     const dataMedicine = await peticion.json();
-    setListMedicines(dataMedicine);
+    setListMedicines(dataMedicine.data);
 
         } catch (error) {
             setError(error.message); //MANEJA LOS ERRORES SI OCURRE ALGO

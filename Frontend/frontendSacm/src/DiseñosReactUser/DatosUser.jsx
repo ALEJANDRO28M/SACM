@@ -104,7 +104,7 @@ function DatosUser() {
               <tr key={usuario.id} className="fila-dato-usuarios">
                 <td className="celda-dato-usuarios">{usuario.id}</td>
                 <td className="celda-dato-usuarios">{usuario.user}</td>
-                <td className="celda-dato-usuarios">{usuario.password}</td>
+                <td className="celda-dato-usuarios">{usuario.token}</td>
                 <td className="celda-dato-usuarios">
                   <button
                     className="btn-eliminar-usuario"

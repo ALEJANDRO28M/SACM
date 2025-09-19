@@ -39,7 +39,7 @@ function App() {
         <Route path="/HistoryDoctor" element={<HistorialMedico />}/>
         <Route path="/Nosotros" element={<SobreNosotros />}/> 
         <Route path="/Medicamentos" element={<Medicines />}/> 
-        <Route path="/Paciente" element={<InfoPaciente />}/> 
+        <Route path="/Paciente/:id" element={<InfoPaciente />}/> 
         <Route path="/RecoverPassword" element={<Recover />}/> 
         <Route path="/ChangeCode" element={<ChangePassword />}/> 
         <Route path="/InsertCode" element={<InsertCodeRecover />}/>             

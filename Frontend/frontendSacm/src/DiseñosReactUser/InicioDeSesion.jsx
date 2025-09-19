@@ -37,8 +37,15 @@ export default function InicioSesion() {
   // Función para manejar el inicio de sesión
   async function ingresar() {
     try {
-   
-      const peticion = await fetch(`http://localhost:8080/Api/validarInicio/${usuario}/${password}`);
+      // Hacer una solicitud POST al backend para iniciar sesion
+      const peticion = await fetch("http://localhost:8080/Api/validarInicio", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Indicar que los datos se envían en formato JSON
+        },
+        
+        body: JSON.stringify({ usuario, password}), // Enviar los datos del formulario al backend
+      });
       
       if (peticion.ok) {
         const resultado = await peticion.json();
