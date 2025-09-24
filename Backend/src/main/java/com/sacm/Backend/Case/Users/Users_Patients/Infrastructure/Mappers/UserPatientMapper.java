@@ -54,4 +54,14 @@ public class UserPatientMapper {
                 user.citas()
         );
     }
+
+    public static UserEntity updateEntity(User user, UserEntity userEntity) {
+      userEntity.setNombres(user.nombres());
+      userEntity.setApellidos(user.apellidos());
+      userEntity.setEmail(user.email());
+      userEntity.setEdad(user.edad());
+      userEntity.setTelefono(user.telefono());
+      userEntity.setCc(user.cc());
+      return userEntity;
+    }
 }

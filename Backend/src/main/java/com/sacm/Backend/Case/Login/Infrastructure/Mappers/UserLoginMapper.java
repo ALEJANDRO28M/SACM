@@ -57,4 +57,10 @@ public class UserLoginMapper {
                 user.email()
         );
     }
+    public static UserLoginEntity updateEntity(UserLogin user, UserLoginEntity entity) {
+        entity.setUser(user.user());
+        entity.setPassword(entity.getPassword());
+        entity.setEmail(entity.getEmail());
+        return entity;
+    }
 }
