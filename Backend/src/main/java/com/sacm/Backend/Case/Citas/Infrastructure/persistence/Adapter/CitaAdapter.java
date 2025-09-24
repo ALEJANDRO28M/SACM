@@ -12,6 +12,8 @@ import com.sacm.Backend.Common.Exception.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 /**
  * Adaptador de persistencia para la entidad {@link Citas}, implementando el puerto de salida {@link CitaRepository_OutPort}.
  *
@@ -81,15 +83,15 @@ public class CitaAdapter implements CitaRepository_OutPort {
      */
     @Override
     public Citas update(Citas citas) {
-        try {
-            CitasEntitys savedUpdate = CitasMapper.toEntity(citas);
-            CitasEntitys responseUpdate = springDateCitasRepository.save(savedUpdate);
-            return CitasMapper.toDomain(responseUpdate);
-        } catch (Exception e) {
-            throw new MethodArgumentNotValidException("FALLO EN LAS VALIDACIONES DEL DTO A CONSULTAR!");
-        }
-    }
 
+         Optional<CitasEntitys> existing = springDateCitasRepository.findById(citas.id());
+         if (existing.isEmpty()){
+             throw new ResourceNotFoundException("Cita no encontrada, no se encontro la cita a actualizar");
+         }
+         final CitasEntitys updateEntity = existing.get();
+         updateEntity.setUser(citas.user());
+         return CitasMapper.toDomain(springDateCitasRepository.save(existing.get()));
+    }
     /**
      * Busca una cita por su ID.
      *

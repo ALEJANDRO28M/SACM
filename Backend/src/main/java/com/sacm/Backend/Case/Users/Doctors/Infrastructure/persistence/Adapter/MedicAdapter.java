@@ -12,6 +12,7 @@ import com.sacm.Backend.Common.Exception.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Adaptador de persistencia que implementa el puerto de salida {@link MedicRepositoryOutPort}
@@ -62,12 +63,19 @@ public class MedicAdapter implements MedicRepositoryOutPort {
      */
     @Override
     public Medico updateMedico(Medico medico) {
-        try {
-            MedicEntity save = crud.save(MedicMapper.toEntity(medico));
-            return MedicMapper.toDomain(save);
-        } catch (Exception e) {
-            throw new MethodArgumentNotValidException("FALLO EN LAS VALIDACIONES DEL DTO A CONSULTAR!");
+
+        Optional<MedicEntity> existing = crud.findById(medico.id());
+
+        if (existing.isEmpty()) {
+            throw new ResourceNotFoundException("User not found!, no se encontro el usuario a actualizar");
         }
+
+        final MedicEntity updateEntity = existing.get();
+        updateEntity.setNombre(medico.nombre());
+        updateEntity.setApellido(medico.apellido());
+        updateEntity.setEmail(medico.email());
+
+      return MedicMapper.toDomain(crud.save(existing.get()));
     }
 
     /**

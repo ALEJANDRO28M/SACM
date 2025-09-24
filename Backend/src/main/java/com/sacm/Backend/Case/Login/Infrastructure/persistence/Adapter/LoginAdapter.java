@@ -6,7 +6,9 @@ import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
 import com.sacm.Backend.Case.Login.Infrastructure.Mappers.UserLoginMapper;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities.UserLoginEntity;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Repositories.SpringDataLogin;
+import com.sacm.Backend.Case.Users.Users_Patients.Domain.User;
 import com.sacm.Backend.Common.Exception.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.Optional;
  * aplicar codificación de contraseñas con {@link SecurityService},
  * y mapear entre entidades y modelos de dominio usando {@link UserLoginMapper}.
  */
+@Slf4j
 @Repository
 public class LoginAdapter implements UserLoginRepositoryOutPort {
 
@@ -109,19 +112,23 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
     @Override
     public UserLogin update(UserLogin user) {
 
-        if (crud.existsByuser(user.user()) && crud.existsById(user.id())) {
-            String encoded = security.encode(user.password());
-            UserLoginEntity entity = UserLoginMapper.toEntity(user, encoded);
-            return UserLoginMapper.toDomain(crud.save(entity));
-        }
-        throw new ResourceNotFoundException("User no encontrado");
+        Optional<UserLoginEntity> existenteOpt = crud.findById(user.id());
 
+        if (existenteOpt.isEmpty()) {
+            throw new ResourceNotFoundException("User not found, No se encontró el usuario a actualizar");
+        }
+        return UserLoginMapper.toDomain(
+                crud.save(
+                        UserLoginMapper.updateEntity(
+                                user, existenteOpt.get()
+                        )));
     }
+
 
     @Override
         public boolean LoginUser(UserLogin login) {
             try {
-                Optional<UserLoginEntity> user = crud.findByuser(login.user());
+                Optional<UserLoginEntity> user = crud.findByUser(login.user());
                 if (user.isPresent()) {
                     String password = user.get().getPassword();
                     return security.matches(login.password(), password);
@@ -131,4 +138,6 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
                 throw new UserLoginInvalidException("Password false");
             }
         }
-    }
+        }
+
+
