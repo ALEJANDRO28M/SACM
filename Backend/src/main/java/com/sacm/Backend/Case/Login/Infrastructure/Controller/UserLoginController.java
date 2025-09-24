@@ -44,7 +44,7 @@ public class UserLoginController {
     @UpdateUserLoginDoc
     @PostMapping("/UpdateUserLogin")
     public ResponseEntity<?> updateUserLogin(@RequestBody RequestUserLogin request) {
-        ResponseUserLogin response = ResponseLoginMapper.toResponse(crud.create(RequestLoginMapper.toDomain(request)));
+        ResponseUserLogin response = ResponseLoginMapper.toResponse(crud.update(RequestLoginMapper.toDomain(request)));
         return ResponseEntity.ok(ApiResult.success(response,"User modified!"));
     }
 

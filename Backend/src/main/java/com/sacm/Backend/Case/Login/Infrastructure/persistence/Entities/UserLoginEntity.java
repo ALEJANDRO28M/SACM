@@ -11,8 +11,8 @@ public class UserLoginEntity {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
 
     @Column(name = "usuario")
@@ -26,7 +26,7 @@ public class UserLoginEntity {
     }
 
     public UserLoginEntity(Long id, String user, String password, String email) {
-        Id = id;
+        this.id = id;
         this.user = user;
         this.password = password;
         this.email = email;

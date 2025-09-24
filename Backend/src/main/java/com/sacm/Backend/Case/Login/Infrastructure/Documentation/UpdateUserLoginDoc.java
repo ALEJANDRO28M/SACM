@@ -66,7 +66,7 @@ import java.lang.annotation.*;
                       "statusCode": 404,
                       "message": "User not found!",
                       "errorCode": "404 NOT_FOUND",
-                      "details": "No se encontró el usuario a actualizar",
+                      "details": "ResourceNotFoundException",
                       "path": "Api/UpdateUserLogin"
                     }
                     """
