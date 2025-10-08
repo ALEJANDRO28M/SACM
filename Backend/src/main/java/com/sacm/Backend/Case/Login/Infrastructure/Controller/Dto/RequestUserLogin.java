@@ -1,5 +1,6 @@
 package com.sacm.Backend.Case.Login.Infrastructure.Controller.Dto;
 
+import com.sacm.Backend.Case.Users.Doctors.Infrastructure.persistence.Entities.MedicEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Objeto de transferencia de datos para el inicio de sesión de un usuario registrado en el sistema")
@@ -27,5 +28,7 @@ public record RequestUserLogin(
                 description = "Correo electrónico asociado al usuario. Debe tener formato válido.",
                 example = "alejandro@example.com"
         )
-        String correo
+        String correo,
+
+        MedicEntity doctor
 ) {}

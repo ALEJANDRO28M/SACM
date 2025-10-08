@@ -29,9 +29,11 @@ public class DoctorToResponseMapper {
                 medico.id(),
                 medico.nombre(),
                 medico.apellido(),
+                medico.edad(),
                 medico.especialidad(),
                 medico.telefono(),
-                medico.email()
+                medico.email(),
+                medico.description()
         );
     }
 
@@ -47,9 +49,11 @@ public class DoctorToResponseMapper {
                         medic.id(),
                         medic.nombre(),
                         medic.apellido(),
+                        medic.edad(),
                         medic.especialidad(),
                         medic.telefono(),
-                        medic.email()
+                        medic.email(),
+                        medic.description()
                 ))
                 .toList();
     }

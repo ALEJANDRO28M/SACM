@@ -22,7 +22,8 @@ public class UserLoginMapper {
                 entity.getId(),
                 entity.getUser(),
                 entity.getPassword(),
-                entity.getEmail()
+                entity.getEmail(),
+                entity.getDoctor()
         )).toList();
     }
 
@@ -37,7 +38,8 @@ public class UserLoginMapper {
                 entity.getId(),
                 entity.getUser(),
                 entity.getPassword(),
-                entity.getEmail()
+                entity.getEmail(),
+                entity.getDoctor()
         );
     }
 
@@ -54,7 +56,8 @@ public class UserLoginMapper {
                 user.id(),
                 user.user(),
                 encoded,
-                user.email()
+                user.email(),
+                user.doctor()
         );
     }
     public static UserLoginEntity updateEntity(UserLogin user, UserLoginEntity entity) {

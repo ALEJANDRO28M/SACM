@@ -33,6 +33,8 @@ public record DoctorResponse(
         )
         String apellido,
 
+        int edad,
+
         @Schema(
                 description = "Especialidad médica del doctor",
                 example = "Cardiología"
@@ -49,5 +51,6 @@ public record DoctorResponse(
                 description = "Correo electrónico profesional del doctor",
                 example = "carlos.ramirez@hospital.com"
         )
-        String email
+        String email,
+        String description
 ) {}

@@ -30,9 +30,11 @@ public class MedicMapper {
                 medico.id(),
                 medico.nombre(),
                 medico.apellido(),
+                medico.edad(),
                 medico.especialidad(),
                 medico.telefono(),
-                medico.email()
+                medico.email(),
+                medico.description()
         );
     }
 
@@ -47,9 +49,11 @@ public class MedicMapper {
                 medicEntity.getId(),
                 medicEntity.getNombre(),
                 medicEntity.getApellido(),
+                medicEntity.getEdad(),
                 medicEntity.getEspecialidad(),
                 medicEntity.getTelefono(),
-                medicEntity.getEmail()
+                medicEntity.getEmail(),
+                medicEntity.getDescription()
         );
     }
 
@@ -65,9 +69,11 @@ public class MedicMapper {
                         entity.getId(),
                         entity.getNombre(),
                         entity.getApellido(),
+                        entity.getEdad(),
                         entity.getEspecialidad(),
                         entity.getTelefono(),
-                        entity.getEmail()
+                        entity.getEmail(),
+                        entity.getDescription()
                 ))
                 .toList();
     }

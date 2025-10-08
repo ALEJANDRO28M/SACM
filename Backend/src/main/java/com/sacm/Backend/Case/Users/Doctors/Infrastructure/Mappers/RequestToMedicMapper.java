@@ -27,9 +27,11 @@ public class RequestToMedicMapper {
                 doctorRequest.id(),
                 doctorRequest.nombre(),
                 doctorRequest.apellido(),
+                doctorRequest.edad(),
                 doctorRequest.especialidad(),
                 doctorRequest.telefono(),
-                doctorRequest.email()
+                doctorRequest.email(),
+                doctorRequest.description()
         );
     }
 }
