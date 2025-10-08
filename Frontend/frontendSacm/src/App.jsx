@@ -14,6 +14,7 @@ import InfoPaciente from './DiseñosReactUser/BasesDeDatosSacm/InfoPaciente';
 import Recover from './RecoverUser/Recover';
 import InsertCodeRecover from './RecoverUser/InsertCodeRecover';
 import ChangePassword from './RecoverUser/changePassword';
+import Perfil from './DiseñosReactUser/Perfil';
 
 /*
 PARA QUE EL GESTOR DE RUTAS FUNCIONE DEBEMOS DE UTILIZAR LAS CLASES CON SU INICIAL EN MAYUSCULAS
@@ -42,7 +43,9 @@ function App() {
         <Route path="/Paciente/:id" element={<InfoPaciente />}/> 
         <Route path="/RecoverPassword" element={<Recover />}/> 
         <Route path="/ChangeCode" element={<ChangePassword />}/> 
-        <Route path="/InsertCode" element={<InsertCodeRecover />}/>             
+        <Route path="/InsertCode" element={<InsertCodeRecover />}/>
+        <Route path="/PerfilUser" element ={<Perfil/>}/>
+        
       </Routes>
     </BrowserRouter>
 
