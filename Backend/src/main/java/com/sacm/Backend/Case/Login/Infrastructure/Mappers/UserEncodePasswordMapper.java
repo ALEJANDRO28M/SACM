@@ -22,7 +22,8 @@ public class UserEncodePasswordMapper {
                 request.id(),
                 request.usuario(),
                 request.password(),
-                request.correo()
+                request.correo(),
+                request.doctor()
         );
     }
 }
