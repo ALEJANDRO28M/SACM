@@ -5,6 +5,11 @@ function HistorialMedico() {
   const [listHistorialMedico, setListHistorial] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 3;
+  const totalPages = Math.ceil(listHistorialMedico.length / pageSize);
+  const indiceStart = (currentPage - 1) * pageSize;
+  const dataView = listHistorialMedico.slice(indiceStart, indiceStart + pageSize);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -53,8 +58,8 @@ function HistorialMedico() {
           <ul>
             <li><a href="/index.html">Inicio</a></li>
             <li><a href="/Nosotros">Nosotros</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="/Blog.html">Blog</a></li>
+            <li><a href="/Contacto.html">Contacto</a></li>
           </ul>
         </nav>
       </header>
@@ -63,7 +68,7 @@ function HistorialMedico() {
       <div className="container-menu">
         <div className="cont-menu">
           <nav>
-            <a href="/BasesSacm">Bases de Datos</a>
+            <a href="/BasesSacm.html">Bases de Datos</a>
             <a href="/Sacm">Reportes</a>
             <a href="/Sacm">Perfil</a>
             <a href="#">Cerrar Sesión</a>
@@ -89,7 +94,7 @@ function HistorialMedico() {
               <td colSpan="4">No hay historial disponible</td>
             </tr>
           ) : (
-            listHistorialMedico.map((historial) => (
+            dataView.map((historial) => (
               <tr key={historial.id}>
                 <td>{historial.id}</td>
                 <td>{new Date(historial.fecha).toLocaleDateString()}</td>
@@ -100,7 +105,17 @@ function HistorialMedico() {
           )}
         </tbody>
       </table>
-
+      <div className="ContainerPaginaded">
+        <label className='numberPage' id='labelPagened'>{"Pagina: " + currentPage}</label>
+            <div className='pagesContainer'>
+        <button className='pages' id='back' onClick={() => { if (currentPage >= 2) {
+        setCurrentPage(currentPage -1);          
+        } }}>back</button>
+                <button className='pages' id='next' onClick={() => { if (currentPage <= totalPages) {
+        setCurrentPage(currentPage + 1);          
+        } }}>next</button>
+        </div>
+        </div>
       <button className="btn-volver-pacientes">
         <a href="/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
       </button>

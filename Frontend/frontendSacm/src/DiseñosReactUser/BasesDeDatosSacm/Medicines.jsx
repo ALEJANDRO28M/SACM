@@ -3,9 +3,12 @@ import '../../css/Medicamentos.Reset.css';
 
 function Medicines() {
 
-
     const[listMedicines,setListMedicines] = useState([]);
-
+    const [currentPage,setCurrentPage] = useState(1);
+    const pageSize = 2;
+    const totalPages = Math.ceil(listMedicines.length / pageSize);
+    const indiceStart = (currentPage-1)*pageSize; 
+    const dataView = listMedicines.slice(indiceStart,indiceStart + pageSize);
 
     const fetchDataMedicines = async () => {
 
@@ -34,7 +37,6 @@ function Medicines() {
         fetchDataMedicines();
     },[]);// El array vacío asegura que la llamada se haga solo una vez al montar el componente
 
-    
 
     return(
 
@@ -47,21 +49,20 @@ function Medicines() {
         <nav className="menu-ultimate">
           <ul>
             <li><a href="/index.html">Inicio</a></li>
-            <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="/Nosotros">Nosotros</a></li>
+            <li><a href="/Blog.html">Blog</a></li>
+            <li><a href="/Contacto.html">Contacto</a></li>
           </ul>
         </nav>
       </header>
-
       {/* Menú lateral */}
       <input type="checkbox" id="btn-menu" />
       <div className="container-menu">
         <div className="cont-menu">
           <nav>
-            <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.htmls">Bases de Datos</a>
-            <a href="http://localhost:5173/Sacm">Reportes</a>
-            <a href="http://localhost:5173/Sacm">Perfil</a>
+            <a href="/BasesSacm.html">Bases de Datos</a>
+            <a href="/Sacm">Reportes</a>
+            <a href="/Sacm">Perfil</a>
             <a href="#">Cerrar Sesión</a>
           </nav>
           <label htmlFor="btn-menu">✖️</label>
@@ -85,7 +86,7 @@ function Medicines() {
       </tr>
     </thead>
     <tbody>
-      {listMedicines.map((listaSing) => (
+      {dataView.map((listaSing) => (
         <tr key={listaSing.id} className="tr-body-medicamentos">
           <td className="td-medicamentos">{listaSing.id}</td>
           <td className="td-medicamentos">{listaSing.nombre}</td>
@@ -96,11 +97,21 @@ function Medicines() {
       ))}
     </tbody>
   </table>
+  <div className="ContainerPaginaded">
+            <label className='numberPage' id='labelPagened'>{"Pagina: " + currentPage}</label>
+        <div className='pagesContainer'>
+        <button className='pages' id='back' onClick={() => { if (currentPage >= 2) {
+        setCurrentPage(currentPage -1);          
+        } }}>back</button>
+        <button className='pages' id='next' onClick={() => { if (currentPage <= totalPages) {
+        setCurrentPage(currentPage + 1);          
+        } }}>next</button>
+        </div>
+        </div>
         <button className="btn-volver-pacientes">
         <a href="http://localhost:5173/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
       </button>
 </div>
-
         </div>
     );
     

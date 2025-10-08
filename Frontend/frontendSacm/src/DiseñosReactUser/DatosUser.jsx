@@ -3,12 +3,22 @@ import '../css/estiloTablaDatos.css';
 import deleteDataUser from './deleteDataUser';
 
 function DatosUser() {
+
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+   
+  const pageSize = 2;
+  const totalPaginas = Math.ceil(usuarios.length / pageSize);
+  const indiceStart = ( currentPage - 1 ) * pageSize;
 
+  const dataView = usuarios.slice( indiceStart, indiceStart + pageSize );
+
+  
   useEffect(() => {
     fetchData();
+    console.log("Total de paginas : "  + totalPaginas);
   }, []);
 
   const fetchData = async () => {
@@ -66,8 +76,8 @@ function DatosUser() {
           <ul>
             <li><a href="/index.html">Inicio</a></li>
             <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="http://localhost:5173/Blog.html">Blog</a></li>
+            <li><a href="http://localhost:5173/Contacto.html">Contacto</a></li>
           </ul>
         </nav>
       </header>
@@ -100,7 +110,7 @@ function DatosUser() {
             </tr>
           </thead>
           <tbody>
-            {usuarios.map((usuario) => (
+            {dataView.map((usuario) => (
               <tr key={usuario.id} className="fila-dato-usuarios">
                 <td className="celda-dato-usuarios">{usuario.id}</td>
                 <td className="celda-dato-usuarios">{usuario.user}</td>
@@ -117,7 +127,18 @@ function DatosUser() {
             ))}
           </tbody>
         </table>
-            <button className="btn-volver-pacientes">
+        <div className="ContainerPaginaded">
+        <label className='numberPage' id='labelPagened'>{"Pagina: " + currentPage}</label>
+        <div className='pagesContainer'>
+        <button className='pages' id='back' onClick={() => { if (currentPage >= 2) {
+        setCurrentPage(currentPage -1);          
+        } }}>back</button>
+                <button className='pages' id='next' onClick={() => { if (currentPage <= totalPaginas) {
+        setCurrentPage(currentPage + 1);          
+        } }}>next</button>
+        </div>
+        </div>
+            <button className="btn-volver-pacientes" id='backBtn'>
       <a href="http://localhost:5173/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
     </button>
       </div>

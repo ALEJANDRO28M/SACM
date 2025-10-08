@@ -6,6 +6,11 @@ function DoctoresBd() {
   const [listDoctor, setListDoctor] = useState([]); // Estado para la lista de doctores
   const [error, setError] = useState(null); // Estado para manejar errores
   const [loading, setLoading] = useState(true); // Estado para manejar la carga
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 2;
+  const totalPages = Math.ceil(listDoctor.length / pageSize);
+  const indiceStart = (currentPage - 1) * pageSize;
+  const dataView = listDoctor.slice(indiceStart,indiceStart + pageSize);
 
   const fetchDataDoctor = async () => {
     try {
@@ -52,9 +57,9 @@ function DoctoresBd() {
         <nav className="menu-ultimate">
           <ul>
             <li><a href="/index.html">Inicio</a></li>
-            <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="/Nosotros">Nosotros</a></li>
+            <li><a href="/Blog.html">Blog</a></li>
+            <li><a href="/Contacto.html">Contacto</a></li>
           </ul>
         </nav>
       </header>
@@ -64,9 +69,9 @@ function DoctoresBd() {
       <div className="container-menu">
         <div className="cont-menu">
           <nav>
-            <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.htmls">Bases de Datos</a>
-            <a href="http://localhost:5173/Sacm">Reportes</a>
-            <a href="http://localhost:5173/Sacm">Perfil</a>
+            <a href="/BasesSacm.html">Bases de Datos</a>
+            <a href="/Sacm">Reportes</a>
+            <a href="/Sacm">Perfil</a>
             <a href="#">Cerrar Sesión</a>
           </nav>
           <label htmlFor="btn-menu">✖️</label>
@@ -91,7 +96,7 @@ function DoctoresBd() {
             </tr>
           </thead>
           <tbody>
-            {listDoctor.map((medico) => (
+            {dataView.map((medico) => ( 
               <tr key={medico.id} className="tr_cdhm-body_doctor">
                 <td className="td_cdhm_doctor">{medico.id}</td>
                 <td className="td_cdhm_doctor">{medico.nombre}</td>
@@ -103,6 +108,17 @@ function DoctoresBd() {
             ))}
           </tbody>
         </table>
+        <div className="ContainerPaginaded">
+           <label className='numberPage' id='labelPagened'>{"Pagina: " + currentPage}</label>
+        <div className='pagesContainer'>
+        <button className='pages' id='back' onClick={() => { if (currentPage >= 2) {
+        setCurrentPage(currentPage -1);          
+        } }}>back</button>
+                <button className='pages' id='next' onClick={() => { if (currentPage <= totalPages) {
+        setCurrentPage(currentPage + 1);          
+        } }}>next</button>
+        </div>
+        </div>
             <button className="btn-volver-pacientes">
       <a href="/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
     </button>

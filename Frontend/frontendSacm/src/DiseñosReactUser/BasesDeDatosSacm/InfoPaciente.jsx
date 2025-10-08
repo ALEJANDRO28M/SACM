@@ -6,6 +6,11 @@ function InfoPaciente() {
   const [paciente, setPaciente] = useState([]);
   const [error, setError] = useState(null);
   const { id } = useParams(); // Extrae el ID desde la URL
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 2;
+  const totalPages = Math.ceil(paciente.length / pageSize);
+  const indiceStart = (currentPage -1) * pageSize;
+  const dataView = paciente.slice(indiceStart, indiceStart + pageSize);
 
   useEffect(() => {
     const obtenerPaciente = async () => {
@@ -90,7 +95,7 @@ function InfoPaciente() {
             </thead>
             <tbody>
               {paciente.length > 0 ? (
-                paciente.map((pacie) => (
+                dataView.map((pacie) => (
                   <tr key={pacie.id} className="fila-dato-pacientes">
                     <td>{pacie.id}</td>
                     <td>{pacie.nombres}</td>
@@ -111,7 +116,14 @@ function InfoPaciente() {
             </tbody>
           </table>
         )}
-
+        <div className='pagesContainer'>
+        <button className='pages' id='back' onClick={() => { if (currentPage >= 2) {
+        setCurrentPage(currentPage -1);          
+        } }}>back</button>
+                <button className='pages' id='next' onClick={() => { if (currentPage <= totalPages) {
+        setCurrentPage(currentPage + 1);          
+        } }}>next</button>
+        </div>
         <button className="btn-volver-pacientes">
           <a href="http://localhost:5173/datoscitPacient" className="btn-Tables-Volver">Volver</a>
         </button>

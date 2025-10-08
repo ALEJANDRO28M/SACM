@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import '../css/fondo.css';
 import '../css/colores.css';
 
@@ -44,19 +44,20 @@ export default function InicioSesion() {
           "Content-Type": "application/json", // Indicar que los datos se envían en formato JSON
         },
         
-        body: JSON.stringify({ usuario, password}), // Enviar los datos del formulario al backend
+        body: JSON.stringify({usuario, password}), // Enviar los datos del formulario al backend
       });
       
       if (peticion.ok) {
         const resultado = await peticion.json();
-        
-        if (resultado === true) {
+        console.log(resultado);
+        if (resultado) {
+           localStorage.setItem("doctor", JSON.stringify(resultado.data));
           alert("¡Bienvenido!");
 
           if (recuerdame) {
             localStorage.setItem("keyRecuerdameUser", usuario );
           }
-          window.location.href='/index.html';
+        window.location.href='/index.html'; 
         } else {
           alert('Usuario o clave incorrectos');
         }
