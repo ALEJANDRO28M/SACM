@@ -11,7 +11,9 @@ import com.sacm.Backend.Common.Exception.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -126,17 +128,24 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
 
 
     @Override
-        public boolean LoginUser(UserLogin login) {
-            try {
-                Optional<UserLoginEntity> user = crud.findByUser(login.user());
-                if (user.isPresent()) {
-                    String password = user.get().getPassword();
-                    return security.matches(login.password(), password);
-                }
-                return false;
-            } catch (RuntimeException e) {
-                throw new UserLoginInvalidException("Password false");
+        public Map<String,Object> LoginUser(UserLogin login) {
+        try {
+            Optional<UserLoginEntity> user = crud.findByUser(login.user());
+            if (user.isPresent()) {
+                String password = user.get().getPassword();
+                security.matches(login.password(), password);
+
+                Map<String, Object> map = new HashMap<>();
+                System.out.println("Este es el doctor: " + user.get().getDoctor());////////////
+                map.put("doctor", user.get().getDoctor());
+                return map;
+
+            } else {
+                throw new UserLoginInvalidException("Usuario no encontrado");
             }
+        } catch (RuntimeException e) {
+            throw new UserLoginInvalidException("Password incorrecta");
+        }
         }
         }
 

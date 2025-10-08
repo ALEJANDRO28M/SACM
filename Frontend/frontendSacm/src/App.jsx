@@ -15,6 +15,7 @@ import Recover from './RecoverUser/Recover';
 import InsertCodeRecover from './RecoverUser/InsertCodeRecover';
 import ChangePassword from './RecoverUser/changePassword';
 import Perfil from './DiseñosReactUser/Perfil';
+import BlogSacm from './DiseñosReactUser/BlogSacm';
 
 /*
 PARA QUE EL GESTOR DE RUTAS FUNCIONE DEBEMOS DE UTILIZAR LAS CLASES CON SU INICIAL EN MAYUSCULAS
@@ -45,7 +46,7 @@ function App() {
         <Route path="/ChangeCode" element={<ChangePassword />}/> 
         <Route path="/InsertCode" element={<InsertCodeRecover />}/>
         <Route path="/PerfilUser" element ={<Perfil/>}/>
-        
+        <Route path='/BlogPerfect' element={<BlogSacm/>} />
       </Routes>
     </BrowserRouter>
 

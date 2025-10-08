@@ -76,7 +76,7 @@ function DatosUser() {
           <ul>
             <li><a href="/index.html">Inicio</a></li>
             <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
-            <li><a href="http://localhost:5173/Blog.html">Blog</a></li>
+            <li><a href="/BlogPerfect">Blog</a></li>
             <li><a href="http://localhost:5173/Contacto.html">Contacto</a></li>
           </ul>
         </nav>
@@ -89,7 +89,7 @@ function DatosUser() {
           <nav>
             <a href="/BasesSacm.html">Bases de Datos</a>
             <a href="http://localhost:5173/Sacm">Reportes</a>
-            <a href="http://localhost:5173/Sacm">Perfil</a>
+            <a href="/PerfilUser">Perfil</a>
             <a href="#">Cerrar Sesión</a>
           </nav>
           <label htmlFor="btn-menu">✖️</label>
@@ -141,6 +141,7 @@ function DatosUser() {
             <button className="btn-volver-pacientes" id='backBtn'>
       <a href="http://localhost:5173/BasesSacm.html" className="btn-Tables-Volver">Volver</a>
     </button>
+        {   /*<ModalLogin/> */}
       </div>
     </div>
   );

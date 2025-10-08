@@ -6,6 +6,7 @@ import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserServiceCase  implements
@@ -43,7 +44,7 @@ public class UserServiceCase  implements
     }
 
     @Override
-    public boolean loginUser(UserLogin login) {
+    public Map<String,Object> loginUser(UserLogin login) {
       return  crud.LoginUser(login);
     }
 }

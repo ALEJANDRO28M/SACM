@@ -1,15 +1,10 @@
 package com.sacm.Backend.Case.Citas.Infrastructure.Controllers;
-
 import com.sacm.Backend.Case.Citas.Application.Service.CitaService;
-
 import com.sacm.Backend.Case.Citas.Infrastructure.Controllers.Dto.CitaRequest;
-
 import com.sacm.Backend.Case.Citas.Infrastructure.Controllers.Dto.CitaResponse;
 import com.sacm.Backend.Case.Citas.Infrastructure.Documentation.*;
 import com.sacm.Backend.Case.Citas.Infrastructure.Mappers.CitaRequestMapper;
 import com.sacm.Backend.Case.Citas.Infrastructure.Mappers.CitaResponseMapper;
-
-
 import com.sacm.Backend.Common.Dto.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -73,6 +68,7 @@ public class appointmentController {
      * @param id identificador único de la cita
      * @return cita encontrada en formato {@link CitaResponse}, envuelta en {@link ApiResult}
      */
+    
     @FindByIdCitaDoc
     @GetMapping("/CityFindById/{id}")
     public ResponseEntity<?> viewCityById(@PathVariable long id) {
@@ -105,6 +101,8 @@ public class appointmentController {
      * @param id identificador único de la cita
      * @return mensaje de éxito envuelto en {@link ApiResult}
      */
+
+
     @DeleteCitaDoc
     @DeleteMapping("/CityDeleteById/{id}")
     public ResponseEntity<?> deleteCityById(@PathVariable Long id) {

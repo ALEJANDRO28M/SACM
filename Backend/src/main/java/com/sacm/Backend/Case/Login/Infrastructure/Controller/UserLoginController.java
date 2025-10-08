@@ -31,7 +31,7 @@ public class UserLoginController {
     @DeleteUserLoginDoc
     @DeleteMapping("/DeleteUserLogin/{id}")
     public ResponseEntity<?> deleteUserLogin(@PathVariable Long id) {
-        return ResponseEntity.ok(ApiResult.success(crud.deleteUserLogin(id),"w"));
+        return ResponseEntity.ok(ApiResult.success(crud.deleteUserLogin(id),"User Delete!"));
     }
 
     @CreateUserLoginDoc
@@ -53,10 +53,15 @@ public class UserLoginController {
     public ResponseEntity<?> findById(@PathVariable Long id) {
         return ResponseEntity.ok(ApiResult.success(ResponseLoginMapper.toResponse(crud.findById(id)),"Usuario encontrado"));
     }
+
     @PostMapping("/validarInicio")
-    public Boolean login(@RequestBody RequestUserLogin request) {
-           return crud.loginUser(RequestLoginMapper.toDomain(request));
+    public ResponseEntity<?> login(@RequestBody RequestUserLogin request) {
+          return ResponseEntity.ok(
+                  ApiResult.success(
+                          crud.loginUser(
+                                  RequestLoginMapper.toDomain(request)
+                          ),
+                          "doctor encontrado"));
     }
-    //QUEDAMOS EN QUE HUBO UN PROBLEMA AL REALIZAR LA SOLICITUD EL ADAPTER ESTA BIEN LO QUE NO ESTA BIEN ES QUE NO PUED
-    //INICIAR SESION, VALIDAR CON UN IF EN ADAPTER SI LA VALIDACION DEL PASSWORD FUE CORRECTA
+
 }

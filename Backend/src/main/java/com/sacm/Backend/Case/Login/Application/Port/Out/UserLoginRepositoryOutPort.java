@@ -1,10 +1,11 @@
 package com.sacm.Backend.Case.Login.Application.Port.Out;
 
 import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
-import com.sacm.Backend.Case.Users.Users_Patients.Domain.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
+
 @Repository
 public interface UserLoginRepositoryOutPort {
     List<UserLogin> findAll();
@@ -12,5 +13,5 @@ public interface UserLoginRepositoryOutPort {
     Boolean deleteById(Long id);
     UserLogin create(UserLogin user);
     UserLogin update(UserLogin user);
-    boolean LoginUser(UserLogin login);
+    Map<String,Object> LoginUser(UserLogin login);
 }

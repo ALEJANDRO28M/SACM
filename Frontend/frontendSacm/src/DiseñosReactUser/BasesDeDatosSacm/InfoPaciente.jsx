@@ -49,9 +49,9 @@ function InfoPaciente() {
         <nav className="menu-ultimate">
           <ul>
             <li><a href="/index.html">Inicio</a></li>
-            <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="/Nosotros">Nosotros</a></li>
+            <li><a href="/BlogPerfect">Blog</a></li>
+            <li><a href="/Contacto.html">Contacto</a></li>
           </ul>
         </nav>
       </header>
@@ -63,7 +63,7 @@ function InfoPaciente() {
           <nav>
             <a href="http://127.0.0.1:5500/frontendSacm/src/Dise%C3%B1osReactUser/BasesSacm.html">Bases de Datos</a>
             <a href="http://localhost:5173/Sacm">Reportes</a>
-            <a href="http://localhost:5173/Sacm">Perfil</a>
+            <a href="/PerfilUser">Perfil</a>
             <a href="#">Cerrar Sesión</a>
           </nav>
           <label htmlFor="btn-menu">✖️</label>

@@ -104,7 +104,7 @@ function CitasPacientes() {
           <ul>
             <li><a href="/index.html">Inicio</a></li>
             <li><a href="/Nosotros">Nosotros</a></li>
-            <li><a href="/Blog.html">Blog</a></li>
+            <li><a href="/BlogPerfect">Blog</a></li>
             <li><a href="/Contacto.html">Contacto</a></li>
           </ul>
         </nav>
@@ -117,7 +117,7 @@ function CitasPacientes() {
           <nav>
             <a href="/BasesSacm.html">Bases de Datos</a>
             <a href="/Sacm">Reportes</a>
-            <a href="/Sacm">Perfil</a>
+            <a href="/PerfilUser">Perfil</a>
             <a href="#">Cerrar Sesión</a>
           </nav>
           <label htmlFor="btn-menu">✖️</label>
