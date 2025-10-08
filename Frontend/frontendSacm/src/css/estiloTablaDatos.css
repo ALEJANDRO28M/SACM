@@ -15,6 +15,8 @@
   margin: 20px 0;
 }
 
+
+
 /* ======== CONTENEDOR DE LA TABLA ======== */
 .tabla-usuarios-container {
   overflow-x: auto;
@@ -77,4 +79,49 @@
     padding: 5px 10px;
     font-size: 12px;
   }
+}
+
+/* ======== DESING PAGINACION ======== */
+
+.ContainerPaginaded{
+  display: flex;
+  justify-content:center;
+}
+
+
+.ContainerPaginaded #labelPagened{
+margin-right: auto;
+}
+
+.numberPage{
+  color: antiquewhite;
+}
+.pagesContainer{
+  width: 40%;
+  display: flex;
+  gap: 50px;
+}
+
+.pages{
+  width: 100%;
+  height: 30px;
+  padding: 0%;
+  
+}
+#next{
+  background-color:forestgreen;
+}
+#back{
+  background-color: red;
+}
+.tabla-usuarios-container {
+  display: flex;
+  flex-direction: column;
+  /* ocupa toda la altura de la pantalla */
+}
+
+#backBtn{
+  margin-top: 5cm;
+  width: 40%;
+  align-self: center;
 }
