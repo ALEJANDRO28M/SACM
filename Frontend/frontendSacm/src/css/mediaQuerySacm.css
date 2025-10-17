@@ -30,10 +30,6 @@
     }
 }
 
-/* ===================== */
-/*  FLEX-ORDER SECCIÓN  */
-/* ===================== */
-
 /* En pantallas grandes: invierte el orden de los elementos (último a primero) */
 #flex-order {
     flex-direction: row-reverse;

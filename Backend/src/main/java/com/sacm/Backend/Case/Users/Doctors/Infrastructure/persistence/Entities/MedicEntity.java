@@ -26,7 +26,7 @@ public class MedicEntity {
     private String telefono;
     @Column(name = "email")
     private String email;
-    @Column(name = "description")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     public MedicEntity() {
