@@ -60,12 +60,16 @@ public class MedicController {
     }
 
     @UpdateDoctorsDoc
-    @PostMapping("/UpdateDoctor")
+        @PostMapping("/UpdateDoctor")
     public ResponseEntity<?> updateDoctor(@RequestBody DoctorRequest doctorRequest) {
-        medicService.updateMedic(RequestToMedicMapper.toMedico(doctorRequest));
-        return ResponseEntity.ok(
-                ApiResult.success("Doctor actualizado correctamente")
-        );
+        System.out.println("Doctor update: " + doctorRequest.id());
+        return ResponseEntity.ok(ApiResult.success(
+              DoctorToResponseMapper.medicoToDoctorResponse(
+                      medicService.updateMedic(
+                              RequestToMedicMapper.toMedico(
+                                      doctorRequest
+                              ))),
+                "Doctor actualizado correctamente"));
     }
 
     @DeleteDoctorDoc

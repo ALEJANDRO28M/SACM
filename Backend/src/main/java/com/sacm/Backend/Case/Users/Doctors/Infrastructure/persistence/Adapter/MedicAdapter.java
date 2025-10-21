@@ -74,8 +74,10 @@ public class MedicAdapter implements MedicRepositoryOutPort {
         updateEntity.setNombre(medico.nombre());
         updateEntity.setApellido(medico.apellido());
         updateEntity.setEmail(medico.email());
+        updateEntity.setEspecialidad(medico.especialidad());
+        updateEntity.setTelefono(medico.telefono());
 
-      return MedicMapper.toDomain(crud.save(existing.get()));
+      return MedicMapper.toDomain(crud.save(updateEntity));
     }
 
     /**
