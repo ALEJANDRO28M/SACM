@@ -57,7 +57,7 @@ export default function InicioSesion() {
           if (recuerdame) {
             localStorage.setItem("keyRecuerdameUser", usuario );
           }
-        window.location.href='/index.html'; 
+        window.location.href='/index.html';
         } else {
           alert('Usuario o clave incorrectos');
         }

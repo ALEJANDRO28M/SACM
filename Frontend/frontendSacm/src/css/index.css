@@ -13,6 +13,7 @@ body{
   height: 100%;
 
 }
+
 .header-container-ultimate{
 display: flex;
 flex-direction: row;
@@ -37,7 +38,7 @@ font-size: 18px;
 .logo{
   color: aqua;
 }
-main{
+.indexMain{
   padding: 40px;
   flex-grow: 1;
 }
