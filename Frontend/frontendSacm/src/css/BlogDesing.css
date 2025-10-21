@@ -1,0 +1,118 @@
+.containerbodyblog {
+    display: flex;
+    flex-direction: column;
+}
+
+#titleBlog {
+    margin-top: 0;
+    text-align: center;
+    color: aquamarine;
+}
+
+.containerbodyblog {
+    gap: 0.10cm;
+    margin-top: 20px;
+}
+
+
+.imgSectionBlog {
+    position: static;
+    width: 100%;
+    min-height: 150px;
+    display: block;
+    object-fit: cover; /* opcional para recorte elegante */
+    border-radius: 30px;
+    margin: auto;
+}
+
+.viewBlogContent {
+    padding: 10px;
+    all: unset;
+    cursor: pointer;
+    color: brown;
+    text-decoration-line: underline; /* o el color que prefieras */
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+button:hover {
+    color: white;
+}
+
+.textoExtra {
+    color: black;
+    padding: 5%;
+    text-align: center;
+    height: 100%;
+
+
+}
+
+.parraf {
+    color: black;
+    margin-top: 0;
+    padding: 25px;
+    padding-bottom: 0;
+}
+
+.btnBlogAbrir {
+    background: none;
+    border-top: 1px solid #4a4a4a;
+    border-bottom: 1px solid #4a4a4a;
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.btnBlogAbrir:hover{
+    background:darkgrey;
+}
+
+/* new Design blog */
+
+.sectioninformationblog {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1cm;
+    margin-top: 20px;
+}
+
+.sections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #00d0d0;
+    border-radius: 100px;
+    flex: 1 1 30%;
+    min-width: 280px;
+    max-width: 33%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* ===================== */
+/*      MEDIA QUERY      */
+/* ===================== */
+
+
+@media screen and (max-width: 1000px) {
+    .sectioninformationblog {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .sections {
+        width: 100%;
+        max-width: none;
+    }
+
+    .imgSectionBlog {
+        width: 100%;
+        display: block;
+        min-height: 200px;
+    }
+}
+
+
