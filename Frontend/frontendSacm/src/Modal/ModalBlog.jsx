@@ -46,7 +46,6 @@ const ContenedorModal = styled.div`
     background: #fff;
     border-radius: 5px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
     @media screen and (max-width: 500px) {
         min-height: 400px;
     }
