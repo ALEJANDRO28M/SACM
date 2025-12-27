@@ -34,13 +34,6 @@ public class UserLoginController {
         return ResponseEntity.ok(ApiResult.success(crud.deleteUserLogin(id),"User Delete!"));
     }
 
-    @CreateUserLoginDoc
-    @PostMapping("/CreateUserLogin")
-    public ResponseEntity<?> createUserLogin(@RequestBody RequestUserLogin request) {
-        ResponseUserLogin response = ResponseLoginMapper.toResponse(crud.create(RequestLoginMapper.toDomain(request)));
-        return ResponseEntity.ok(ApiResult.success(response,"User create Successfully!"));
-    }
-
     @UpdateUserLoginDoc
     @PostMapping("/UpdateUserLogin")
     public ResponseEntity<?> updateUserLogin(@RequestBody RequestUserLogin request) {
@@ -52,16 +45,6 @@ public class UserLoginController {
     @GetMapping("/FindById/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id) {
         return ResponseEntity.ok(ApiResult.success(ResponseLoginMapper.toResponse(crud.findById(id)),"Usuario encontrado"));
-    }
-
-    @PostMapping("/validarInicio")
-    public ResponseEntity<?> login(@RequestBody RequestUserLogin request) {
-          return ResponseEntity.ok(
-                  ApiResult.success(
-                          crud.loginUser(
-                                  RequestLoginMapper.toDomain(request)
-                          ),
-                          "doctor encontrado"));
     }
 
 }

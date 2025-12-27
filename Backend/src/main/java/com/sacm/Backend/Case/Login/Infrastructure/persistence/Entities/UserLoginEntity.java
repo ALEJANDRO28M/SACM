@@ -3,18 +3,17 @@ package com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Repositories.SpringDataLogin;
 import com.sacm.Backend.Case.Users.Doctors.Infrastructure.persistence.Entities.MedicEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Table(name = "userlogin") @Getter @Setter
+@Data @NoArgsConstructor @AllArgsConstructor
+@Table(name = "userlogin")
 public class UserLoginEntity {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
 
     @Column(name = "usuario")
     private String user;
@@ -24,18 +23,11 @@ public class UserLoginEntity {
     private String email;
 
     @OneToOne
+    @JoinColumn(name = "role_id")
+    RoleEntity role;
+
+    @OneToOne
     @JoinColumn(name = "doctor_id")
     MedicEntity doctor;
 
-
-    public UserLoginEntity() {
-    }
-
-    public UserLoginEntity(Long id, String user, String password, String email,MedicEntity doctor) {
-        this.id = id;
-        this.user = user;
-        this.password = password;
-        this.email = email;
-        this.doctor = doctor;
-    }
 }

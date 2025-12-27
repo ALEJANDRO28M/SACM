@@ -1,6 +1,7 @@
 package com.sacm.Backend.Case.Login.Application.Port.Out;
 
 import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface UserLoginRepositoryOutPort {
     Boolean deleteById(Long id);
     UserLogin create(UserLogin user);
     UserLogin update(UserLogin user);
-    Map<String,Object> LoginUser(UserLogin login);
+    Map<String,Object>LoginUser(UserLogin login);
 }
