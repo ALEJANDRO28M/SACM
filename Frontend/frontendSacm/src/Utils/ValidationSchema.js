@@ -18,6 +18,6 @@ export const registroSchema = yup.object({
     .oneOf([yup.ref("password"), null], "Las contraseñas deben coincidir")
     .required("Debe confirmar la contraseña"),
     
-  usuario: yup.string().required("El nombre es obligatorio"),
+  name: yup.string().required("El nombre es obligatorio"),
   role: yup.string().required("Debe seleccionar un rol"),
 });
