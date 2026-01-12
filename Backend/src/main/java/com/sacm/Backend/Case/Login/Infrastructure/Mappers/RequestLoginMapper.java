@@ -22,9 +22,10 @@ public class RequestLoginMapper {
 
         return new UserLogin(
                 request.id(),
-                request.usuario(),
+                request.name(),
                 request.password(),
-                request.correo(),
+                request.email(),
+                request.role(),
                 request.doctor()
         );
     }

@@ -20,9 +20,10 @@ public class UserEncodePasswordMapper {
     public static UserLogin toDomain(RequestUserLogin request) {
         return new UserLogin(
                 request.id(),
-                request.usuario(),
+                request.name(),
                 request.password(),
-                request.correo(),
+                request.email(),
+                request.role(),
                 request.doctor()
         );
     }

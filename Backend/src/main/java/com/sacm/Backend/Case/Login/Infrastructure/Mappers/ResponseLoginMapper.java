@@ -20,7 +20,7 @@ public class ResponseLoginMapper {
     public static List<ResponseUserLogin> toResponse(List<UserLogin> listUser){
         return listUser.stream().map(user -> new ResponseUserLogin(
                 user.id(),
-                user.user(),
+                user.name(),
                 user.password(),
                 user.email()
         )).toList();
@@ -35,7 +35,7 @@ public class ResponseLoginMapper {
     public static ResponseUserLogin toResponse(UserLogin request) {
         return new ResponseUserLogin(
                 request.id(),
-                request.user(),
+                request.name(),
                 request.password(),
                 request.email()
         );

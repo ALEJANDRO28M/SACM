@@ -3,6 +3,7 @@ package com.sacm.Backend.Case.Login.Application.Service;
 import com.sacm.Backend.Case.Login.Application.Port.In.*;
 import com.sacm.Backend.Case.Login.Application.Port.Out.UserLoginRepositoryOutPort;
 import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class UserServiceCase  implements
     }
 
     @Override
-    public UserLogin create(UserLogin user) {
+    public ResponseEntity<?> create(UserLogin user) {
         return crud.create(user);
     }
 

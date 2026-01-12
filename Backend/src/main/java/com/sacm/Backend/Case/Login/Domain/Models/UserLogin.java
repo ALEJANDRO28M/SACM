@@ -4,9 +4,10 @@ import com.sacm.Backend.Case.Users.Doctors.Infrastructure.persistence.Entities.M
 
 public record UserLogin(
         Long id,
-        String user,
+        String name,
         String password,
         String email,
+        String role,//
         MedicEntity doctor
         ) {
 }

@@ -66,6 +66,7 @@ img {
 .form-group {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 /* Estilo para las etiquetas de los campos */
@@ -145,4 +146,9 @@ input:focus {
     margin-bottom: 0;
     font-size: 30px;
   }
+}
+#emailRegister{
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 15px;
 }

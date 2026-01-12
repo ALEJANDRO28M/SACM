@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Importar componentes
-import Registro from './DiseñosReactUser/Registro';
 import InicioSesion from './DiseñosReactUser/InicioDeSesion';
 import DatosUser from './DiseñosReactUser/DatosUser';
 import CitasPacientes from './DiseñosReactUser/BasesDeDatosSacm/CitasPacientes';
@@ -16,6 +15,7 @@ import InsertCodeRecover from './RecoverUser/InsertCodeRecover';
 import ChangePassword from './RecoverUser/changePassword';
 import Perfil from './DiseñosReactUser/Perfil';
 import BlogSacm from './DiseñosReactUser/BlogSacm';
+import Registro from "./DiseñosReactUser/Registro.jsx";
 
 /*
 PARA QUE EL GESTOR DE RUTAS FUNCIONE DEBEMOS DE UTILIZAR LAS CLASES CON SU INICIAL EN MAYUSCULAS
@@ -33,7 +33,6 @@ function App() {
         <Route index path="/" element={<InicioSesion />} />
 
         {/* Ruta para el registro de usuario */}
-        <Route path="/registro" element={<Registro />} />
         <Route path="/datos" element={<DatosUser />} />
         <Route path="/datoscitPacient" element={<CitasPacientes />} />
         {/* Asegúrate de pasar el componente correctamente como JSX */}
@@ -47,6 +46,7 @@ function App() {
         <Route path="/InsertCode" element={<InsertCodeRecover />}/>
         <Route path="/PerfilUser" element ={<Perfil/>}/>
         <Route path='/BlogPerfect' element={<BlogSacm/>} />
+        <Route path='/Registro' element={<Registro/>}/>
       </Routes>
     </BrowserRouter>
 

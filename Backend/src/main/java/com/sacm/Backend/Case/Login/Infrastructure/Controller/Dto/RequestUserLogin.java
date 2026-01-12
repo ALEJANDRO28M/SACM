@@ -16,7 +16,7 @@ public record RequestUserLogin(
                 description = "Nombre de usuario utilizado para autenticación. Debe ser único y contener entre 4 y 20 caracteres alfanuméricos.",
                 example = "alejandro.dev"
         )
-        String usuario,
+        String name,
 
         @Schema(
                 description = "Contraseña del usuario en texto plano. Se recomienda encriptarla antes de persistir.",
@@ -28,7 +28,9 @@ public record RequestUserLogin(
                 description = "Correo electrónico asociado al usuario. Debe tener formato válido.",
                 example = "alejandro@example.com"
         )
-        String correo,
+        String email,
+
+        String role,
 
         MedicEntity doctor
 ) {}

@@ -22,7 +22,7 @@ public class UserLoginEntity {
     @Column(name = "correo")
     private String email;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "role_id")
     RoleEntity role;
 

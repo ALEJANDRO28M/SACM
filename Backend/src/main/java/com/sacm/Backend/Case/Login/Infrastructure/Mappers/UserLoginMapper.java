@@ -1,6 +1,8 @@
 package com.sacm.Backend.Case.Login.Infrastructure.Mappers;
 
+import com.sacm.Backend.Case.Login.Domain.Models.Role;
 import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
+import com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities.RoleEntity;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities.UserLoginEntity;
 
 import java.util.List;
@@ -17,15 +19,21 @@ public class UserLoginMapper {
      * @param listLoginEntity lista de entidades provenientes de la base de datos
      * @return lista de modelos de dominio
      */
-    public static List<UserLogin> toDomain(List<UserLoginEntity> listLoginEntity) {
+  public static List<UserLogin> toDomain(List<UserLoginEntity> listLoginEntity) {
+
+
+
         return listLoginEntity.stream().map(entity -> new UserLogin(
                 entity.getId(),
                 entity.getUser(),
                 entity.getPassword(),
                 entity.getEmail(),
+                entity.getRole().getRole(),
                 entity.getDoctor()
         )).toList();
     }
+
+
 
     /**
      * Convierte una entidad {@link UserLoginEntity} en un modelo de dominio {@link UserLogin}.
@@ -33,12 +41,15 @@ public class UserLoginMapper {
      * @param entity entidad de persistencia
      * @return modelo de dominio correspondiente
      */
+
     public static UserLogin toDomain(UserLoginEntity entity) {
+
         return new UserLogin(
                 entity.getId(),
                 entity.getUser(),
                 entity.getPassword(),
                 entity.getEmail(),
+                entity.getRole().getRole(),
                 entity.getDoctor()
         );
     }
@@ -51,17 +62,26 @@ public class UserLoginMapper {
      * @param encoded contraseña codificada (por ejemplo, con BCrypt)
      * @return entidad lista para ser persistida
      */
+
+
+
     public static UserLoginEntity toEntity(UserLogin user, String encoded) {
-        return new UserLoginEntity(
-                user.id(),
-                user.user(),
-                encoded,
-                user.email(),
-                user.doctor()
-        );
+
+        RoleEntity roleEntity = new RoleEntity();
+        roleEntity.setRole(user.role());
+
+        UserLoginEntity entity = new UserLoginEntity();
+
+        entity.setUser(user.name());
+        entity.setPassword(encoded);
+        entity.setEmail(user.email());
+        entity.setDoctor(user.doctor());
+        entity.setRole(roleEntity);
+
+        return entity;
     }
     public static UserLoginEntity updateEntity(UserLogin user, UserLoginEntity entity) {
-        entity.setUser(user.user());
+        entity.setUser(user.name());
         entity.setPassword(entity.getPassword());
         entity.setEmail(entity.getEmail());
         return entity;

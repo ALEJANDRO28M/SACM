@@ -2,13 +2,20 @@ package com.sacm.Backend.Case.Login.Infrastructure.persistence.Adapter;
 
 import com.sacm.Backend.Case.Login.Application.Port.Out.UserLoginRepositoryOutPort;
 import com.sacm.Backend.Case.Login.Application.Service.Security.SecurityService;
+import com.sacm.Backend.Case.Login.Domain.Models.Role;
 import com.sacm.Backend.Case.Login.Domain.Models.UserLogin;
 import com.sacm.Backend.Case.Login.Infrastructure.Mappers.UserLoginMapper;
+import com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities.RoleEntity;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Entities.UserLoginEntity;
 import com.sacm.Backend.Case.Login.Infrastructure.persistence.Repositories.SpringDataLogin;
+import com.sacm.Backend.Case.Login.Infrastructure.persistence.Repositories.SpringDataRole;
 import com.sacm.Backend.Case.Users.Users_Patients.Domain.User;
 import com.sacm.Backend.Common.Exception.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -32,7 +39,7 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
     /**
      * Constructor del adaptador de persistencia.
      *
-     * @param crud repositorio Spring Data JPA
+     * @param crud     repositorio Spring Data JPA
      * @param security servicio de codificación de contraseñas
      */
     public LoginAdapter(SpringDataLogin crud, SecurityService security) {
@@ -93,16 +100,34 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
      * @return modelo de dominio persistido
      * @throws MethodArgumentNotValidException si ocurre un error en la validación o persistencia
      */
+    @Autowired
+    SpringDataRole dataRole;
     @Override
-    public UserLogin create(UserLogin user) {
+    public ResponseEntity<?> create(UserLogin user) {
         try {
+            // Buscar el rol existente en la BD
+            RoleEntity roleEntity = dataRole.findByRole(user.role())
+                    .orElseThrow(() -> new ResourceNotFoundException("Rol no encontrado"));
+
+            // Codificar la contraseña
             String encoded = security.encode(user.password());
+
+            // Mapear el DTO a la entidad
             UserLoginEntity entity = UserLoginMapper.toEntity(user, encoded);
-            return UserLoginMapper.toDomain(crud.save(entity));
-        } catch (Exception e) {
-            throw new MethodArgumentNotValidException("FALLO EN LAS VALIDACIONES DEL DTO A CREAR!");
+
+            // Asignar el rol existente
+            entity.setRole(roleEntity);
+
+            // Guardar el usuario
+            UserLoginEntity saved = crud.save(entity);
+            return new ResponseEntity<>(saved, HttpStatus.CREATED);
+
+        } catch (DataIntegrityViolationException e) {
+            throw new IllegalArgumentException("Error de integridad en la base de datos: " + e.getMessage());
         }
     }
+
+
 
     /**
      * Actualiza los datos de un usuario existente.
@@ -130,7 +155,7 @@ public class LoginAdapter implements UserLoginRepositoryOutPort {
     @Override
         public Map<String,Object> LoginUser(UserLogin login) {
         try {
-            Optional<UserLoginEntity> user = crud.findByUser(login.user());
+            Optional<UserLoginEntity> user = crud.findByUser(login.name());
             if (user.isPresent()) {
                 String password = user.get().getPassword();
                 security.matches(login.password(), password);
