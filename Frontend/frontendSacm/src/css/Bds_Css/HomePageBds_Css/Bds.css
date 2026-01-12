@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url("../../../assets/img/Background_Img/istockphoto-1460853312-612x612.jpg");
+  background-size: cover;
+}
+.containerbds{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#imgBdsCerebro{
+    margin: auto;
+    width: 700px;
+    height: 600px;
+}
+.flexBd_Container {
+  
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 1.5cm;
+}
+.flexBd_Container {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.opciones {
+  margin: 12px;
+}
+
+.bd-redirec {   
+  width: 500px; /* Mismo ancho para todos */
+  padding: 15px 20px;
+  border-radius: 30px 10px 10px 30px;
+  background-color: rgba(
+    0,
+    139,
+    139,
+    0.85
+  ); /* Color tipo "cadetblue" semi opaco */
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bd-redirec i {
+  font-size: 18px;
+}
+
+.bd-redirec:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.opciones:hover {
+  cursor: pointer;
+  transform: translateY(-2px); /* Efecto de "levantar" al pasar el mouse */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Sombra más fuerte */
+}
