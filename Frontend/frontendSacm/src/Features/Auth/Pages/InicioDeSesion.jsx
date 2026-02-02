@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
 import '../../../css/Login_Css/fondo.css';
 import '../../../css/Login_Css/colores.css';
 
 export default function InicioSesion() {
-  // Instanciamos la función de navegación
-  const redireccionar = useNavigate();
 
   // Estados para almacenar el usuario, contraseña y estado del checkbox "Recuérdame"
-  const [usuario, setUsuario] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [recuerdame, setRecuerdame] = useState(false);
 
@@ -31,20 +28,20 @@ export default function InicioSesion() {
     const llenarCamposInput = localStorage.getItem("keyRecuerdameUser");
     if (llenarCamposInput) {
       setRecuerdame(true);
-      setUsuario(llenarCamposInput);
+      setName(llenarCamposInput);
     }
   },[])// 👈 Esto evita el bucle infinito de seteo
   // Función para manejar el inicio de sesión
   async function ingresar() {
     try {
       // Hacer una solicitud POST al backend para iniciar sesion
-      const peticion = await fetch("http://localhost:8080/Api/validarInicio", {
+      const peticion = await fetch("http://localhost:8080/Auth/validarInicio", {
         method: "POST",
         headers: {
           "Content-Type": "application/json", // Indicar que los datos se envían en formato JSON
         },
         
-        body: JSON.stringify({usuario, password}), // Enviar los datos del formulario al backend
+        body: JSON.stringify({name, password}), // Enviar los datos del formulario al backend
       });
       
       if (peticion.ok) {
@@ -55,7 +52,7 @@ export default function InicioSesion() {
           alert("¡Bienvenido!");
 
           if (recuerdame) {
-            localStorage.setItem("keyRecuerdameUser", usuario );
+            localStorage.setItem("keyRecuerdameUser", name );
           }
         window.location.href='/index.html';
         } else {
@@ -74,7 +71,7 @@ export default function InicioSesion() {
   // Maneja el envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Usuario:", usuario);
+    console.log("Usuario:", name);
     console.log("Password:", password);
     console.log("Recuérdame:", recuerdame);
     ingresar(); // Llamar a la función de ingresar al hacer submit
@@ -92,7 +89,7 @@ export default function InicioSesion() {
             id="usuario"
             name="usuario"
             placeholder="Ingrese el usuario"
-            value={usuario}
+            value={name}
             onChange={handleUsuarioChange}
           />
           <br /><br />

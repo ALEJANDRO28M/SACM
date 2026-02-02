@@ -27,6 +27,7 @@ function DatosUser() {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`//se envia jwt que se guardo en el localStorage previamente en login
         },
       });
 
