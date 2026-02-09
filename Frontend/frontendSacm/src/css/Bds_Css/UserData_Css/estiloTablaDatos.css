@@ -1,0 +1,127 @@
+/* ======== CONTENEDOR GENERAL DE USUARIOS ======== */
+.contenedor-usuarios {
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: rgba(0, 0, 0, 0.7);
+  min-height: 100vh;
+  color: white;
+}
+
+/* ======== TÍTULO PRINCIPAL ======== */
+.titulo-usuarios {
+  text-align: center;
+  font-size: 28px;
+  color: aqua;
+  margin: 20px 0;
+}
+
+
+
+/* ======== CONTENEDOR DE LA TABLA ======== */
+.tabla-usuarios-container {
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+/* ======== TABLA DE USUARIOS ======== */
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.fila-cabecera-usuarios {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+.celda-cabecera-usuarios,
+.celda-dato-usuarios {
+  border: 1px solid aqua;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.fila-dato-usuarios:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+/* ======== BOTÓN ELIMINAR ======== */
+.btn-eliminar-usuario {
+  background-color: crimson;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-eliminar-usuario:hover {
+  background-color: darkred;
+}
+
+/* ======== RESPONSIVE ======== */
+@media screen and (max-width: 750px) {
+  .titulo-usuarios {
+    font-size: 22px;
+  }
+
+  .celda-cabecera-usuarios,
+  .celda-dato-usuarios {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .btn-eliminar-usuario {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+/* ======== DESING PAGINACION ======== */
+
+.ContainerPaginaded{
+  display: flex;
+  justify-content:center;
+}
+
+
+.ContainerPaginaded #labelPagened{
+margin-right: auto;
+}
+
+.numberPage{
+  color: antiquewhite;
+}
+.pagesContainer{
+  width: 40%;
+  display: flex;
+  gap: 50px;
+}
+
+.pages{
+  width: 100%;
+  height: 30px;
+  padding: 0%;
+  
+}
+#next{
+  background-color:forestgreen;
+}
+#back{
+  background-color: red;
+}
+.tabla-usuarios-container {
+  display: flex;
+  flex-direction: column;
+  /* ocupa toda la altura de la pantalla */
+}
+
+#backBtn{
+  margin-top: 5cm;
+  width: 40%;
+  align-self: center;
+}

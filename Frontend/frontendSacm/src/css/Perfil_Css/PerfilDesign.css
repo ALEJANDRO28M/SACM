@@ -1,0 +1,95 @@
+
+#bodyPerfil {
+    display: flex;
+}
+
+#PerfilContainer {
+    display: flex;
+    margin: auto;
+    margin-top: 1cm;
+    width: 90%;
+    gap: 1cm;
+}
+
+.perfildetails {
+    background-color: azure;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* sombra hacia abajo */
+}
+
+
+#titleprofile {
+    color: brown;
+    margin-left: 1cm;
+}
+
+dt {
+    color: brown;
+}
+
+#imgProfile {
+    position: static;
+    margin-top: 40px;
+    width: 350px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+dd {
+    color: black;
+}
+
+#about {
+    color: brown;
+}
+
+#idperfiltwo {
+    display: flex;
+    flex-direction: column;
+}
+
+.parrafperfil {
+    color: black;
+}
+
+.perfildetails {
+    display: flex;
+    flex-direction: column;
+}
+
+#imgcard {
+    position: static;
+    margin: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+
+    width: 450px;
+    height: 250px;
+}
+
+#imgcard:hover {
+    transform: scale(1.05); /* efecto zoom al pasar el mouse */
+}
+
+#about {
+    margin-bottom: 10px;
+}
+
+.listContainerUserEdit {
+    display: flex;
+}
+
+
+#editImg {
+    position: static;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+}
+#CheckAccept{
+    width: 150px;
+    height: 40px;
+}
+
+

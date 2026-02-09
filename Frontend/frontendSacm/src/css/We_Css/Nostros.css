@@ -1,0 +1,140 @@
+.cuerpo_Nosotros{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.title_Nosotros{
+    color: aqua;
+    position: absolute;
+    top: 130px; /* Mueve el elemento 10px desde la parte superior */
+    left: 50%;
+    transform: translateX(-27%);
+    text-shadow: 3px 2px 4px blue;
+    
+    
+    }
+    @media (max-width: 768px) {
+        .title_Nosotros {
+            font-size: 2rem; /* Reduce el tamaño en pantallas más pequeñas */
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .title_Nosotros {
+            font-size: 1.5rem; /* Más pequeño en pantallas muy pequeñas */
+        }
+    }
+    .title_Nosotros{
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 600px;
+    }
+
+.home{
+    max-width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+
+
+.in-flex{
+    
+    flex: 1;
+    font-family: 'Times New Roman', Times, serif;
+    min-width: 400px;
+    margin-top: 0;
+}
+.in-flex:first-child{
+    flex: 2;
+    padding: 25px;
+    background-color: black;
+    margin: 20px;
+    margin-top: 0.5cm;
+    border-radius: 22px;
+    font-size: 18px;
+    background-image: url('../../assets/img/homePage_Img/salud4.jpg');
+    background-size: cover;
+}
+
+.in-flex div{
+    
+    padding: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin: 20px;
+    border-radius: 22px;
+   
+
+}
+@media (max-width: 768px) {
+    .in-flex:first-child {
+        font-size: 15px; /* Reduce el tamaño en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .in-flex:first-child {
+        font-size: 13px; /* Más pequeño en pantallas muy pequeñas */
+    }
+}
+
+@media (max-width: 768px) {
+    .in-flex div {
+        font-size: 15px; /* Reduce el tamaño en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .in-flex div {
+        font-size: 13px; /* Más pequeño en pantallas muy pequeñas */
+    }
+}
+
+#flex-dos{
+background-image: url('../../assets/img/We_Img/images.jpeg') ;
+background-size: cover;
+color:darkorange ;
+font-size: 13px;
+}
+
+#flex-one{
+    background-image: url('../../assets/img/We_Img/fondo.jpg') ;
+    background-size: cover;
+    color:black ;  
+    font-size: 12px;
+}
+
+#flex-tres{
+    background-image: url('../../assets/img/We_Img/fondoPremium.jpg') ;
+    background-size: cover;
+    color:white ;  
+}
+
+#flex-tres h3{
+    color: aqua;
+}
+@media screen and (max-width: 880px) {
+  .home {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .in-flex,
+  .in-flex:first-child {
+    width: 90%;
+    min-width: unset;
+  }
+
+  .title_Nosotros {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-top: 20px;
+    min-width: unset;
+  }
+}

@@ -1,0 +1,154 @@
+.mainRegister {
+  height: 100%;
+  width: 100%;
+}
+.btnIcon{
+  gap: 1cm;
+}
+.registro-container {
+  width: 70vw;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1cm;
+  background-color: white;
+  border-radius: 62px;
+  padding: 2rem; /* Agregado para evitar que el contenido toque los bordes */
+  box-sizing: border-box;
+}
+
+.contForm {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  
+}
+
+.divOneForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#linkInicioSacm {
+  margin: auto;
+}
+
+img {
+  position: relative;
+  margin: auto;
+  height: 220px;
+  width: 300px;
+  border-radius: 80px;
+  margin: 2cm;
+}
+
+/* Estilo para el título del formulario */
+#titulo {
+  margin-top: 1cm;
+  color: darkblue;
+  text-align: center;
+}
+
+/* Estilo para el formulario */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 800px; /* Limita el ancho del formulario */
+  margin: auto;
+}
+
+/* Estilo para cada grupo de formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Estilo para las etiquetas de los campos */
+label {
+  padding: 2px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Estilo para los campos de entrada */
+.inputsRegister {
+  
+  width: 30vw;
+  margin: auto;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+/* Efecto al hacer foco en los campos */
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo para el botón de registro */
+.btn {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Hover para el botón */
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* ////////////////////////////////////////////
+   MEDIA QUERIES
+   //////////////////////////////////////////// */
+@media screen and (max-width: 1300px) {
+  .imgRegisterSacm {
+    display: none;
+  }
+
+  .formulario {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .formulario {
+    margin: auto;
+    flex-grow: 1;
+  }
+
+  .form-group input {
+    margin: auto;
+  }
+
+  .btn {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  #titulo {
+    margin-bottom: 0;
+    font-size: 30px;
+  }
+}
+#emailRegister{
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 15px;
+}

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../src/css/index.css">
-    <link rel="stylesheet" href="../src/css/mediaQuerySacm.css">
+    <link rel="stylesheet" href="../src/css/HomePage_Css/index.css">
+    <link rel="stylesheet" href="../src/css/HomePage_Css/mediaQuerySacm.css">
     <title>Document</title>
 </head>
 <body>
@@ -32,8 +32,8 @@
       <ul >
         <ul>
           <li><a href="#">Inicio</a></li>
-          <li><a href="http://localhost:5173/Nosotros">Nosotros</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="/Nosotros">Nosotros</a></li>
+          <li><a href="/BlogPerfect">Blog</a></li>
           <li><a href="/Contacto.html">Contacto</a></li>
         </ul>
     
@@ -44,14 +44,14 @@
     <div class="cont-menu">
       <nav>
         <a href="/BasesSacm.html">Bases de Datos</a>
-        <a href="http://localhost:5173/Sacm">Reportes</a>
-        <a href="http://localhost:5173/Sacm">Perfil</a>
+        <a href="/Sacm">Reportes</a>
+        <a href="/PerfilUser">Perfil</a>
         <a onclick="logout()" href="#">Cerrar Sesión</a>
       </nav>
       <label for="btn-menu">✖️</label>
     </div>
   </div>
-  <main>
+  <main class="indexMain">
     <section class="section-container">
       <article class="art-container">
         <h2 id="titlePagOne">LA SALUD DE NUESTROS PACIENTES ES PRIMORDIAL</h2>
@@ -62,7 +62,7 @@
           no es solo nuestra misión, es nuestra pasión.</p>
       </article>
       <article class="doctor-image">
-        <img src= "../src/img/salud3.webp" class="imgSacm"/>
+        <img src= "../src/assets/img/homePage_Img/salud3.webp" class="imgSacm"/>
       </article>
     </section>
     <section class="section-container " id="flex-order">
@@ -71,7 +71,7 @@
         <p id="textIndexSacm">Cada persona es única, y en SACM lo sabemos. Por eso, ofrecemos atención personalizada y soluciones médicas adaptadas a tus necesidades</p>
       </article>
       <article class="doctor-image">
-        <img src= "../src/img/salud4.jpg" class="imgSacm" />
+        <img src= "../src/assets/img/homePage_Img/salud4.jpg" class="imgSacm" />
       </article>
     </section>
   </main>
