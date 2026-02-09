@@ -11,7 +11,7 @@ export default function InicioSesion() {
 
   // Maneja el cambio en el campo de usuario
   const handleUsuarioChange = (e) => {
-    setUsuario(e.target.value); 
+    setName(e.target.value);
   };
 
   // Maneja el cambio en el campo de contraseña
@@ -31,7 +31,7 @@ export default function InicioSesion() {
       setName(llenarCamposInput);
     }
   },[])// 👈 Esto evita el bucle infinito de seteo
-  // Función para manejar el inicio de sesión
+  // Función para manejar el inicio de sesión|
   async function ingresar() {
     try {
       // Hacer una solicitud POST al backend para iniciar sesion
@@ -46,21 +46,21 @@ export default function InicioSesion() {
       
       if (peticion.ok) {
         const resultado = await peticion.json();
-        console.log(resultado);
+        console.log("hola este es un resultado" + resultado.token);
         if (resultado) {
-           localStorage.setItem("doctor", JSON.stringify(resultado.data));
+          console.log(resultado.token)
+           localStorage.setItem("token", resultado.token);
           alert("¡Bienvenido!");
 
           if (recuerdame) {
             localStorage.setItem("keyRecuerdameUser", name );
           }
-        window.location.href='/index.html';
+       window.location.href='/index.html';
         } else {
           alert('Usuario o clave incorrectos');
         }
       } else {
         alert('Error al conectar con el servidor');
-        
       }
     } catch (error) {
       console.error('Error en la solicitud:', error);

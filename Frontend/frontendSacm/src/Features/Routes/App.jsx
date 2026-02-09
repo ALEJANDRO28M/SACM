@@ -44,7 +44,7 @@ function App() {
         <Route path="/RecoverPassword" element={<Recover />}/> 
         <Route path="/ChangeCode" element={<ChangePassword />}/> 
         <Route path="/InsertCode" element={<InsertCodeRecover />}/>
-        <Route path="/PerfilUser" element ={<Perfil/>}/>
+          <Route path="/PerfilUser" element ={<Perfil/>}/>
         <Route path='/BlogPerfect' element={<BlogSacm/>} />
         <Route path='/Registro' element={<Registro/>}/>
       </Routes>

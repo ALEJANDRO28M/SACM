@@ -18,23 +18,42 @@ import AlertModal from "../../Components/Modal/AlertModal.jsx";
 
 function Perfil() {
 
+    const token = localStorage.getItem("token");
+    console.log("Este es el token recibido de InicioDeSesion: " + token);
+    //FUNCION PARA DESERIALIZAR DATOS DEL TOKEN Y CARGAR DATOS ALA INTERFAZ
+    const infoClaims = async () => {
+             try {
+                const peticion = await fetch("http://localhost:8080/Api/Profile",{
+                   method:"GET",
+                    credentials: "include",
+                   headers: {
+                       "Content-Type": "application/json",
+                       'Authorization': `Bearer ${token}`//se envia jwt que se guardo en el localStorage previamente en login
+                   }
+                });
+                if (peticion.ok){
+                    const getPerfil = await peticion.json();
+                    setUserPerfil(getPerfil.nombre);
+                    setId(getPerfil.id);
+                    setNombre(getPerfil.nombre || "" );
+                    console.log(nombre);
+                    setApellido(getPerfil.apellido || "");
+                    setEdad(getPerfil.edad);
+                    setEspecialidad( getPerfil.especialidad || "" );
+                    setTelefono(getPerfil.telefono || "" );
+                    setEmail(getPerfil.email || "" );
+                    setDescription(getPerfil.description)
+                }
+                //TERMINAR DE CONFIGURAR API FETCH
+                 //PARA MOSTRAR USUARIO CORRESPONDIENTE
+             }catch (error){
+                 console.error("Error al procesar token:", error);
+             }
+    };
 
     useEffect(() => {
 
-        const saveInfoLocalStorage = localStorage.getItem("doctor");
-        console.log(saveInfoLocalStorage)
-
-        if (saveInfoLocalStorage) {
-
-            const getPerfil = JSON.parse(saveInfoLocalStorage);
-            setUserPerfil(getPerfil.doctor);
-            setId(getPerfil.doctor.id);
-            setNombre(getPerfil.doctor.nombre || "");
-            setApellido(getPerfil.doctor.apellido || "");
-            setEspecialidad(getPerfil.doctor.especialidad || "");
-            setTelefono(getPerfil.doctor.telefono || "");
-            setEmail(getPerfil.doctor.email || "");
-        }
+        infoClaims();
 
     }, []);
 
@@ -43,10 +62,12 @@ function Perfil() {
     const [estadoModal, setearEstadoModal] = useState(false);
     const [modalConfirm, setModalConfirm] = useState(false);
     const [id, setId] = useState(null);
+    const [edad,setEdad] = useState(null);
     const [nombre, setNombre] = useState(null);
     const [apellido, setApellido] = useState(null);
     const [especialidad, setEspecialidad] = useState(null);
     const [telefono, setTelefono] = useState(null);
+    const [description, setDescription] = useState(null);
     const [email, setEmail] = useState(null);
 
 
@@ -129,19 +150,19 @@ function Perfil() {
                             <dl id="listProfile">
 
                                 <dt>Nombre:</dt>
-                                <dd>{userPerfil.nombre + " " + userPerfil.apellido}</dd>
+                                <dd>{nombre + " " + apellido}</dd>
 
                                 <dt>Edad:</dt>
-                                <dd>{userPerfil.edad}</dd>
+                                <dd>{edad}</dd>
 
                                 <dt>Especialidad:</dt>
-                                <dd>{userPerfil.especialidad}</dd>
+                                <dd>{especialidad}</dd>
 
                                 <dt>Telefono:</dt>
-                                <dd>{userPerfil.telefono}</dd>
+                                <dd>{telefono}</dd>
 
                                 <dt>Email:</dt>
-                                <dd>{userPerfil.email}</dd>
+                                <dd>{email}</dd>
                             </dl>
 
                             <BotonEditar onClick={() => setearEstadoModal(true)}>
@@ -152,7 +173,7 @@ function Perfil() {
                     </div>
                     <div className="perfildetails" id="idperfiltwo">
                         <h2 id="about">Sobre mi</h2>
-                        <p className="parrafperfil">{userPerfil.description}</p>
+                        <p className="parrafperfil">{description}</p>
                         <img src={imgCardiologia} alt="" id="imgcard"/>
                     </div>
                     <ModalV
