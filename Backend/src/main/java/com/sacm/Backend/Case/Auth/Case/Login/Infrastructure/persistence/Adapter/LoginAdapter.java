@@ -10,6 +10,7 @@ import com.sacm.Backend.Case.Auth.Case.Login.Infrastructure.persistence.Entities
 import com.sacm.Backend.Case.Auth.Case.Login.Infrastructure.persistence.Entities.UserLoginEntity;
 import com.sacm.Backend.Case.Auth.Case.Login.Infrastructure.persistence.Repositories.SpringDataLogin;
 import com.sacm.Backend.Case.Auth.Case.Login.Infrastructure.persistence.Repositories.SpringDataRole;
+import com.sacm.Backend.Common.Dto.ApiResult;
 import com.sacm.Backend.Common.Exception.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -175,32 +176,41 @@ public class LoginAdapter
                         )));
     }
 
-
     @Override
     public ResponseEntity<Map<String, String>> LoginUser(UserLogin login) {
+        log.info(">>> Iniciando proceso de login para usuario: {}", login.name());
+
         try {
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(login.name(), login.password())
             );
-            log.info("Auth object: {}", auth);
-            log.info("Auth.isAuthenticated(): {}", auth.isAuthenticated());
+            log.debug("Objeto Authentication recibido: {}", auth);
+            log.info("¿Autenticado?: {}", auth.isAuthenticated());
 
             if (auth.isAuthenticated()) {
                 UserDetails userDetails = (UserDetails) auth.getPrincipal();
-                log.info("Usuario autenticado: {}", userDetails.getUsername());
+                log.info("Usuario autenticado correctamente: {}", userDetails.getUsername());
+
                 String tokenBody = jwtToken.buildTokenWithData(userDetails);
+                log.info("Token JWT generado: {}", tokenBody);
+
                 Map<String, String> response = new HashMap<>();
                 response.put("token", tokenBody);
 
-                return ResponseEntity.ok(response); // Retorna como JSON bien formado
+                log.info(">>> Login exitoso para usuario: {}", userDetails.getUsername());
+                return ResponseEntity.ok(response);
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+                log.warn(">>> Fallo de autenticación: credenciales inválidas para usuario {}", login.name());
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Usuario o clave incorrectos"));
             }
 
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        } catch (Exception e) {
+            log.error(">>> Error inesperado durante login para usuario {}: {}", login.name(), e.getMessage(), e);
+           throw new InternalServerException(STR."Error inesperado durante el login: \{e.getMessage()}");
         }
     }
+
 
 
     @Override

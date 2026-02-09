@@ -20,7 +20,6 @@ import java.util.List;
 @RequestMapping("/Api")
 public class UserLoginController {
 
-    private final CreateUserService createUserService;
     private final DeleteUserService deleteUserService;
     private final FindAllUsersService findAllUsersService;
     private final UpdateUserService updateUserService;
@@ -30,15 +29,12 @@ public class UserLoginController {
     @Autowired
     public UserLoginController(
 
-            CreateUserService createUserService,
             DeleteUserService deleteUserService,
             FindAllUsersService findAllUsersService,
-            LoginUserService loginUserService,
             UpdateUserService updateUserService,
 
             FindByIdUserService findByIdUserService) {
 
-        this.createUserService = createUserService;
         this.deleteUserService = deleteUserService;
         this.findAllUsersService = findAllUsersService;
         this.updateUserService = updateUserService;

@@ -3,7 +3,7 @@ package com.sacm.Backend.Case.Auth.Case.Login.Application.Port.In.Service;
 import com.sacm.Backend.Case.Auth.Case.Domain.Models.UserLogin;
 import com.sacm.Backend.Case.Auth.Case.Login.Application.Port.In.CreateUserLoginCase;
 import com.sacm.Backend.Case.Auth.Case.Login.Application.Port.Out.CreateUserLoginOut;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ public class CreateUserService implements CreateUserLoginCase {
 
     private final CreateUserLoginOut createUserLoginOut;
 
-    @Autowired
+
     public CreateUserService(CreateUserLoginOut createUserLoginOut){
         this.createUserLoginOut = createUserLoginOut;
     }

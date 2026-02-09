@@ -28,12 +28,11 @@ public class AuthLoginController {
 
     @PostMapping("/validarInicio")
     public ResponseEntity<?> login(@RequestBody RequestUserLogin request) {
-
+        log.info("INFORMACION LOGIN: {}", request.name());
         try{
             return loginUserService.loginUser( RequestLoginMapper.toDomain(request));
         }catch (Exception e){
-            return null; //FALTA TERMINAR EL CATCH
-            //ResponseEntity.ok(ApiResult.success());
+            log.error("Error en login", e); return ResponseEntity .badRequest() .body(ApiResult.error("Error al iniciar sesión"));
         }
 
     }
