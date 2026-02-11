@@ -17,83 +17,93 @@ import AlertModal from "../../Components/Modal/AlertModal.jsx";
 
 
 function Perfil() {
-
+// 1. CONFIGURACIÓN INICIAL
     const token = localStorage.getItem("token");
-    console.log("Este es el token recibido de InicioDeSesion: " + token);
-    //FUNCION PARA DESERIALIZAR DATOS DEL TOKEN Y CARGAR DATOS ALA INTERFAZ
-    const infoClaims = async () => {
-             try {
-                const peticion = await fetch("http://localhost:8080/Api/Profile",{
-                   method:"GET",
-                    credentials: "include",
-                   headers: {
-                       "Content-Type": "application/json",
-                       'Authorization': `Bearer ${token}`//se envia jwt que se guardo en el localStorage previamente en login
-                   }
-                });
-                if (peticion.ok){
-                    const getPerfil = await peticion.json();
-                    setUserPerfil(getPerfil.nombre);
-                    setId(getPerfil.id);
-                    setNombre(getPerfil.nombre || "" );
-                    console.log(nombre);
-                    setApellido(getPerfil.apellido || "");
-                    setEdad(getPerfil.edad);
-                    setEspecialidad( getPerfil.especialidad || "" );
-                    setTelefono(getPerfil.telefono || "" );
-                    setEmail(getPerfil.email || "" );
-                    setDescription(getPerfil.description)
-                }
-                //TERMINAR DE CONFIGURAR API FETCH
-                 //PARA MOSTRAR USUARIO CORRESPONDIENTE
-             }catch (error){
-                 console.error("Error al procesar token:", error);
-             }
-    };
+    console.log("Token recibido de InicioDeSesion:", token);
 
-    useEffect(() => {
-
-        infoClaims();
-
-    }, []);
-
-
+// 2. HOOKS DE ESTADO
     const [userPerfil, setUserPerfil] = useState({});
     const [estadoModal, setearEstadoModal] = useState(false);
     const [modalConfirm, setModalConfirm] = useState(false);
+
     const [id, setId] = useState(null);
-    const [edad,setEdad] = useState(null);
+    const [edad, setEdad] = useState(null);
     const [nombre, setNombre] = useState(null);
     const [apellido, setApellido] = useState(null);
     const [especialidad, setEspecialidad] = useState(null);
     const [telefono, setTelefono] = useState(null);
-    const [description, setDescription] = useState(null);
     const [email, setEmail] = useState(null);
+    const [description, setDescription] = useState(null);
 
+// 3. FUNCIONES DE NEGOCIO (API)
 
-    const apiFetch = async () => {
-
+// 3.1 Obtener perfil desde el token
+    const infoClaims = async () => {
         try {
-            const peticion = await fetch("http://localhost:8080/Api/UpdateDoctor", {
-                method: "POST",
+            const peticion = await fetch("http://localhost:8080/Api/Profile", {
+                method: "GET",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                },
-                body: JSON.stringify({id, nombre, apellido, especialidad, telefono, email})
+                    "Authorization": `Bearer ${token}`
+                }
             });
+
             if (peticion.ok) {
-                const savedPeticion = await peticion.json();
-                setTimeout(() =>{
-                    setModalConfirm(true)
-                },400);
-                setUserPerfil(savedPeticion.data);
+                const getPerfil = await peticion.json();
+
+                // Actualizar estados con datos del perfil
+                setUserPerfil(getPerfil.nombre);
+                setId(getPerfil.id);
+                setNombre(getPerfil.nombre || "");
+                setApellido(getPerfil.apellido || "");
+                setEdad(getPerfil.edad);
+                setEspecialidad(getPerfil.especialidad || "");
+                setTelefono(getPerfil.telefono || "");
+                setEmail(getPerfil.email || "");
+                setDescription(getPerfil.description);
+
+                console.log(nombre);
             }
         } catch (error) {
-            console.error('Error en la solicitud:', error);
-            alert('Hubo un problema al realizar la solicitud');
+            console.error("Error al procesar token:", error);
         }
     };
 
+// 3.2 Actualizar perfil (POST)
+    const apiFetch = async () => {
+        try {
+            const peticion = await fetch("http://localhost:8080/Api/UpdateDoctor", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ id, nombre, apellido, especialidad, telefono, email })
+            });
+
+            if (peticion.ok) {
+                const newToken = await peticion.json();
+                // Mostrar confirmación
+                setTimeout(() => {
+                    setModalConfirm(true);
+                }, 400);
+
+                setUserPerfil(newToken.data);
+            }
+        } catch (error) {
+            console.error("Error en la solicitud:", error);
+            alert("Hubo un problema al realizar la solicitud");
+        }
+    };
+
+// 4. EFECTOS
+    useEffect(() => {
+        infoClaims();
+    }, []);
+
+// 5. COMPONENTES/ESTILOS
     const BotonEditar = styled.button`
         position: static;
         transition: transform 0.3s ease-in-out;
@@ -103,7 +113,7 @@ function Perfil() {
         height: 60px;
 
         &:hover {
-            transform: scale(1.20); /* efecto zoom al pasar el mouse */
+            transform: scale(1.20);
             background-color: transparent;
             border-radius: 70px;
         }
@@ -220,16 +230,18 @@ function Perfil() {
                             </form>
                         </Contenido>
                     </ModalV>
-                    {modalConfirm &&
-                    <AlertModal
-                    >
-                        <ContenidoModal>
-                            <CheckImg src={imgCheck}/>
-                            <Mensaje>Usuario Modificado con exito!</Mensaje>
-                            <button id="CheckAccept" onClick={() => setModalConfirm(false)}>Aceptar</button>
-                        </ContenidoModal>
-                    </AlertModal>
-                    }
+
+                    {modalConfirm && (
+                        <AlertModal estado={modalConfirm} cambiarEstado={setModalConfirm}>
+                            <ContenidoModal>
+                                <CheckImg src={imgCheck} />
+                                <Mensaje>Usuario modificado con éxito!</Mensaje>
+                                <button id="CheckAccept" onClick={() => setModalConfirm(false)}>
+                                    Aceptar
+                                </button>
+                            </ContenidoModal>
+                        </AlertModal>
+                        )}
                 </div>
             </div>
         </div>

@@ -202,7 +202,7 @@ public class LoginAdapter
             } else {
                 log.warn(">>> Fallo de autenticación: credenciales inválidas para usuario {}", login.name());
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                        .body(Map.of("error", "Usuario o clave incorrectos"));
+                        .body(Map.of("error", "Uw"));
             }
 
         } catch (Exception e) {
