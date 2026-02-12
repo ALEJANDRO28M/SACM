@@ -12,6 +12,7 @@ import com.sacm.Backend.Case.Auth.Case.Login.Infrastructure.persistence.Reposito
 import com.sacm.Backend.Case.Auth.Case.Login.Infrastructure.persistence.Repositories.SpringDataRole;
 import com.sacm.Backend.Common.Dto.ApiResult;
 import com.sacm.Backend.Common.Exception.*;
+import jakarta.servlet.http.Cookie;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -177,7 +178,7 @@ public class LoginAdapter
     }
 
     @Override
-    public ResponseEntity<Map<String, String>> LoginUser(UserLogin login) {
+    public Map<String, String> LoginUser(UserLogin login) {
         log.info(">>> Iniciando proceso de login para usuario: {}", login.name());
 
         try {
@@ -191,18 +192,22 @@ public class LoginAdapter
                 UserDetails userDetails = (UserDetails) auth.getPrincipal();
                 log.info("Usuario autenticado correctamente: {}", userDetails.getUsername());
 
-                String tokenBody = jwtToken.buildTokenWithData(userDetails);
-                log.info("Token JWT generado: {}", tokenBody);
+                String accessToken = jwtToken.buildTokenWithData(userDetails);
+                log.info("Token JWT generado: {}", accessToken);
+
+                String refreshToken = jwtToken.buildrefreshTokenData(userDetails);
+                log.info("RefreshToken generado: {}", refreshToken);
+
 
                 Map<String, String> response = new HashMap<>();
-                response.put("token", tokenBody);
+                response.put("access_Token",accessToken);
+                response.put("refresh_token",refreshToken);
 
                 log.info(">>> Login exitoso para usuario: {}", userDetails.getUsername());
-                return ResponseEntity.ok(response);
+                return response;
             } else {
                 log.warn(">>> Fallo de autenticación: credenciales inválidas para usuario {}", login.name());
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                        .body(Map.of("error", "Uw"));
+                throw new UnauthorizedException("Usuario no encontrado, credenciales incorrectas"); //HttpStatus.UNAUTHORIZED
             }
 
         } catch (Exception e) {
