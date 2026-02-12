@@ -83,6 +83,12 @@ public interface JwtUtils {
         */
        String createToken(String subject, Map<String, Object> claims);
 
+
+       String refreshToken(String subject,Map<String, Object> claims);
+
+       String buildrefreshTokenData(UserDetails userDetails);
+
+
        /**
         * Extrae la fecha de expiración del token JWT.
         *

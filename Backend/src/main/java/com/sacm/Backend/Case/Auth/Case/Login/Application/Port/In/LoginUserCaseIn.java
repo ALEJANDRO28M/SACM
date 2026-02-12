@@ -6,5 +6,5 @@ import org.springframework.http.ResponseEntity;
 import java.util.Map;
 
 public interface LoginUserCaseIn {
-    ResponseEntity<Map<String,String>> loginUser(UserLogin login);
+    Map<String,String> loginUser(UserLogin login);
 }

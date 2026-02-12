@@ -18,7 +18,7 @@ public class LoginUserService implements LoginUserCaseIn {
     }
 
     @Override
-    public ResponseEntity<Map<String,String>> loginUser(UserLogin login) {
+    public Map<String,String> loginUser(UserLogin login) {
         return userLoginRepositoryOutPort.LoginUser(login);
     }
 }

@@ -113,6 +113,15 @@ public class JwtUtilsImp implements JwtUtils {
         return createToken(subjectUsername, claims);
     }
 
+    @Override
+    public String buildrefreshTokenData(UserDetails userDetails) {
+        String  subjectUsername = userDetails.getUsername();
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", userDetails.getAuthorities());
+        claims.put("username", userDetails.getUsername());
+        return refreshToken(subjectUsername, claims);
+    }
+
     /**
      * Crea un token JWT con un subject y claims personalizados.
      *
@@ -130,6 +139,20 @@ public class JwtUtilsImp implements JwtUtils {
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
+
+    ///////////IMPLEMENTACION POR HACER
+    @Override
+    public String refreshToken(String subject, Map<String, Object> claims) {
+        return Jwts.builder()
+                .claims(claims)
+                .subject(subject)
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000)) // 7 dias
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+
 
     /**
      * Extrae la fecha de expiración del token JWT.

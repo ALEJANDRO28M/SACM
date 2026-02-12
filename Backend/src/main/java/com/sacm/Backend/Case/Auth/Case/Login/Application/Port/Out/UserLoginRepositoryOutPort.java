@@ -14,5 +14,5 @@ public interface UserLoginRepositoryOutPort {
     Boolean deleteById(Long id);
     ResponseEntity<?> create(UserLogin user);
     UserLogin update(UserLogin user);
-    ResponseEntity<Map<String,String>> LoginUser(UserLogin login);
+    Map<String,String>LoginUser(UserLogin login);
 }
